@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediNest — Consultorios para Médicos</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#042C53;--blue:#185FA5;--blue-mid:#378ADD;--blue-light:#B5D4F4;--blue-pale:#E6F1FB;
+  --teal:#1D9E75;--teal-light:#E1F5EE;
+  --gray-dark:#2C2C2A;--gray:#5F5E5A;--gray-mid:#888780;--gray-light:#D3D1C7;--gray-pale:#F1EFE8;
+  --white:#ffffff;--offwhite:#F7F9FB;
+  --radius:12px;--radius-lg:20px;--shadow:0 2px 16px rgba(4,44,83,.10);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--offwhite);color:var(--gray-dark);min-height:100vh;}
+.app{display:grid;grid-template-columns:260px 1fr;grid-template-rows:64px 1fr;min-height:100vh;}
+.topnav{grid-column:1/-1;background:var(--white);border-bottom:1px solid var(--gray-light);display:flex;align-items:center;padding:0 28px;gap:16px;z-index:100;}
+.sidebar{background:var(--white);border-right:1px solid var(--gray-light);display:flex;flex-direction:column;padding:20px 0;overflow-y:auto;}
+.main{overflow-y:auto;position:relative;}
+.logo{font-family:'DM Serif Display',serif;font-size:22px;color:var(--navy);letter-spacing:-.5px;margin-right:auto;cursor:pointer;}
+.logo span{color:var(--blue);}
+.nav-search{background:var(--offwhite);border:1px solid var(--gray-light);border-radius:30px;padding:8px 16px;font-size:13px;color:var(--gray);width:240px;display:flex;align-items:center;gap:8px;}
+.nav-pill{background:var(--blue-pale);color:var(--blue);border-radius:20px;padding:7px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:background .15s;}
+.nav-pill:hover{background:var(--blue-light);}
+.nav-pill.ghost{background:var(--offwhite);color:var(--gray);}
+.nav-avatar{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#fff;cursor:pointer;flex-shrink:0;}
+.sidebar-label{font-size:10px;font-weight:600;color:var(--gray-mid);letter-spacing:.8px;text-transform:uppercase;padding:0 24px 6px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;font-size:13.5px;color:var(--gray);cursor:pointer;transition:all .15s;border-radius:0;}
+.nav-item:hover{background:var(--offwhite);color:var(--gray-dark);}
+.nav-item.active{background:var(--blue-pale);color:var(--blue);font-weight:600;border-right:3px solid var(--blue);}
+.sidebar-divider{height:1px;background:var(--gray-pale);margin:12px 20px;}
+.filter-block{padding:12px 20px;}
+.filter-title{font-size:12px;font-weight:600;color:var(--gray-dark);margin-bottom:8px;}
+.filter-chip{display:inline-block;background:var(--offwhite);border:1px solid var(--gray-light);border-radius:20px;padding:4px 11px;font-size:11.5px;color:var(--gray);cursor:pointer;margin:2px 2px 2px 0;transition:all .15s;}
+.filter-chip:hover{border-color:var(--blue-mid);color:var(--blue);}
+.filter-chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.price-range{width:100%;margin-top:6px;accent-color:var(--blue);}
+.price-vals{display:flex;justify-content:space-between;font-size:11px;color:var(--gray-mid);margin-top:4px;}
+.screen{display:none;padding:28px 32px;animation:fadeIn .2s ease;}
+.screen.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px;}
+.page-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--navy);}
+.page-subtitle{font-size:13px;color:var(--gray-mid);margin-top:3px;}
+.map-layout{display:grid;grid-template-columns:1fr 340px;gap:20px;height:calc(100vh - 186px);}
+.map-container{border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-light);position:relative;}
+.map-container iframe{width:100%;height:100%;border:none;}
+.map-overlay-pins{position:absolute;inset:0;pointer-events:none;}
+.clinic-marker{position:absolute;pointer-events:all;cursor:pointer;transform:translate(-50%,-100%);}
+.marker-body{background:var(--blue);color:#fff;border-radius:10px;padding:5px 10px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:5px;border:2px solid #fff;box-shadow:0 3px 12px rgba(24,95,165,.4);transition:all .2s;white-space:nowrap;}
+.marker-body.sel{background:var(--teal);}
+.marker-tail{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid var(--blue);margin:0 auto;transition:border-top-color .2s;}
+.marker-tail.sel{border-top-color:var(--teal);}
+.clinic-list{display:flex;flex-direction:column;gap:10px;overflow-y:auto;height:100%;padding-right:4px;}
+.clinic-card{background:var(--white);border-radius:var(--radius);border:1.5px solid var(--gray-light);padding:14px;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.clinic-card:hover{border-color:var(--blue-mid);box-shadow:var(--shadow);}
+.clinic-card.sel{border-color:var(--blue);background:var(--blue-pale);}
+.cc-img{width:100%;height:75px;border-radius:8px;object-fit:cover;margin-bottom:9px;background:var(--blue-light);}
+.cc-name{font-size:13px;font-weight:600;color:var(--navy);}
+.cc-addr{font-size:11px;color:var(--gray-mid);margin:2px 0 6px;}
+.cc-row{display:flex;align-items:center;justify-content:space-between;}
+.cc-price{font-size:14px;font-weight:700;color:var(--blue);}
+.star-gold{color:#F0A500;}
+.cc-badge{background:var(--teal-light);color:var(--teal);border-radius:6px;padding:2px 8px;font-size:10px;font-weight:600;}
+.reserve-map-btn{background:var(--blue);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s;}
+.reserve-map-btn:hover{background:var(--navy);}
+.detail-layout{display:grid;grid-template-columns:1fr 360px;gap:28px;}
+.detail-gallery{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 110px;gap:8px;border-radius:var(--radius-lg);overflow:hidden;}
+.gallery-img{width:100%;height:100%;object-fit:cover;background:var(--blue-light);}
+.gallery-main{grid-column:1/-1;}
+.detail-name{font-family:'DM Serif Display',serif;font-size:26px;color:var(--navy);margin-top:16px;}
+.detail-addr{font-size:13px;color:var(--gray-mid);margin:5px 0 10px;display:flex;align-items:center;gap:4px;}
+.detail-rating{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.rating-num{font-size:20px;font-weight:700;color:var(--navy);}
+.section-label{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:8px;margin-top:16px;}
+.equip-grid{display:flex;flex-wrap:wrap;gap:7px;}
+.equip-item{background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:8px;padding:5px 11px;font-size:12px;color:var(--blue);font-weight:500;}
+.amenities-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.amenity{background:var(--offwhite);border-radius:8px;padding:7px 11px;font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px;}
+.booking-panel{background:var(--white);border-radius:var(--radius-lg);border:1.5px solid var(--gray-light);padding:22px;position:sticky;top:20px;}
+.bp-price{font-size:26px;font-weight:700;color:var(--navy);margin-bottom:2px;}
+.bp-price span{font-size:13px;font-weight:400;color:var(--gray-mid);}
+.bp-divider{height:1px;background:var(--gray-pale);margin:14px 0;}
+.bp-label{font-size:11px;font-weight:600;color:var(--gray);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px;}
+.slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.slot-btn{border:1.5px solid var(--blue-light);border-radius:10px;padding:9px;text-align:center;font-size:13px;color:var(--blue);font-weight:600;cursor:pointer;transition:all .15s;}
+.slot-btn:hover{border-color:var(--blue);background:var(--blue-pale);}
+.slot-btn.on{background:var(--blue);color:#fff;border-color:var(--blue);}
+.bp-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;margin-top:6px;}
+.bp-btn:hover{background:var(--navy);}
+.review-item{border-top:1px solid var(--gray-pale);padding:10px 0;}
+.review-doc{font-size:12px;font-weight:600;color:var(--gray-dark);}
+.review-text{font-size:12px;color:var(--gray-mid);margin-top:2px;line-height:1.5;}
+.sched-layout{display:grid;grid-template-columns:1fr 340px;gap:24px;}
+.cal-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--gray-light);padding:22px;}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.cal-month-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--navy);}
+.cal-nav-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--gray-light);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:var(--blue);}
+.cal-nav-btn:hover{background:var(--blue-pale);}
+.cal-dow{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:4px;}
+.cal-dow span{font-size:11px;font-weight:600;color:var(--gray-mid);padding:4px;}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+.cal-day{aspect-ratio:1;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.cal-day.avail{color:var(--blue);font-weight:600;cursor:pointer;}
+.cal-day.avail:hover{background:var(--blue-pale);}
+.cal-day.sel{background:var(--blue);color:#fff;font-weight:700;}
+.cal-day.muted{color:var(--gray-light);}
+.cal-legend{display:flex;gap:14px;margin-top:12px;font-size:11px;color:var(--gray-mid);}
+.leg-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:3px;}
+.slots-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--gray-light);padding:22px;}
+.slots-header{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.slots-sub{font-size:12px;color:var(--gray-mid);margin-bottom:16px;}
+.slot-big{border:2px solid var(--blue-light);border-radius:var(--radius);padding:14px 18px;cursor:pointer;transition:all .2s;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;}
+.slot-big:hover,.slot-big.on{border-color:var(--blue);background:var(--blue-pale);}
+.slot-time{font-size:17px;font-weight:700;color:var(--navy);}
+.slot-duration{font-size:11px;color:var(--gray-mid);margin-top:2px;}
+.slot-avail{font-size:11px;color:var(--teal);font-weight:600;background:var(--teal-light);padding:3px 9px;border-radius:20px;}
+.slot-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.slot-radio.on{background:var(--blue);border-color:var(--blue);}
+.slot-radio.on::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff;}
+.continue-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;margin-top:14px;}
+.continue-btn:hover{background:var(--navy);}
+.confirm-layout{max-width:660px;margin:0 auto;}
+.steps{display:flex;margin-bottom:28px;}
+.step{display:flex;align-items:center;gap:7px;flex:1;}
+.step-circle{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.step-circle.done{background:var(--blue);color:#fff;}
+.step-circle.cur{background:var(--navy);color:#fff;}
+.step-circle.pend{background:var(--gray-pale);color:var(--gray-mid);}
+.step-label{font-size:11px;color:var(--gray-mid);}
+.step-label.cur{color:var(--navy);font-weight:700;}
+.step-line{flex:1;height:2px;background:var(--gray-pale);margin:0 4px;}
+.step-line.done{background:var(--blue);}
+.confirm-card{background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--gray-light);overflow:hidden;margin-bottom:18px;}
+.cc-hero{height:150px;position:relative;overflow:hidden;}
+.cc-hero img{width:100%;height:100%;object-fit:cover;}
+.cc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,44,83,.55),transparent);}
+.cc-hero-text{position:absolute;bottom:14px;left:18px;color:#fff;}
+.cc-hero-name{font-family:'DM Serif Display',serif;font-size:19px;}
+.cc-hero-addr{font-size:11px;opacity:.85;margin-top:2px;}
+.cc-body{padding:18px 22px;}
+.confirm-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gray-pale);}
+.confirm-row:last-child{border-bottom:none;}
+.cr-label{font-size:13px;color:var(--gray-mid);}
+.cr-value{font-size:13px;font-weight:600;color:var(--gray-dark);}
+.total-confirm{display:flex;align-items:center;justify-content:space-between;background:var(--blue-pale);border-radius:var(--radius);padding:16px 20px;margin-bottom:18px;}
+.total-label{font-size:14px;font-weight:600;color:var(--navy);}
+.total-amount{font-size:24px;font-weight:800;color:var(--navy);}
+.confirm-actions{display:flex;gap:12px;}
+.btn-secondary{flex:1;background:var(--white);color:var(--blue);border:1.5px solid var(--blue);border-radius:12px;padding:13px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;}
+.btn-secondary:hover{background:var(--blue-pale);}
+.btn-primary{flex:2;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;}
+.btn-primary:hover{background:var(--navy);}
+.breadcrumb{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--gray-mid);margin-bottom:18px;}
+.breadcrumb span{cursor:pointer;transition:color .15s;}
+.breadcrumb span:hover{color:var(--blue);}
+.breadcrumb .sep{color:var(--gray-light);cursor:default;}
+.breadcrumb .cur{color:var(--navy);font-weight:600;cursor:default;}
+.success-overlay{display:none;position:fixed;inset:0;background:rgba(4,44,83,.5);z-index:200;align-items:center;justify-content:center;}
+.success-overlay.show{display:flex;}
+.success-box{background:#fff;border-radius:24px;padding:44px 38px;max-width:400px;width:90%;text-align:center;}
+.success-icon{width:68px;height:68px;border-radius:50%;background:var(--teal-light);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+.success-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--navy);margin-bottom:10px;}
+.success-sub{font-size:14px;color:var(--gray-mid);line-height:1.6;margin-bottom:22px;}
+.success-id{background:var(--offwhite);border-radius:10px;padding:11px 18px;display:flex;justify-content:space-between;margin-bottom:22px;}
+.success-id-label{font-size:13px;color:var(--gray-mid);}
+.success-id-val{font-size:13px;font-weight:700;color:var(--navy);font-family:monospace;}
+.success-btn{background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px 28px;font-size:14px;font-weight:700;cursor:pointer;width:100%;}
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="topnav">
+    <div class="logo" onclick="goTo('map')">Medi<span>Nest</span></div>
+    <div class="nav-search">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="#888780" stroke-width="1.5"/><line x1="9.5" y1="9.5" x2="13" y2="13" stroke="#888780" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Buscar consultorios en Guadalajara…
+    </div>
+    <button class="nav-pill" onclick="goTo('map')">Explorar mapa</button>
+    <button class="nav-pill ghost">Mis reservas</button>
+    <div class="nav-avatar">DR</div>
+  </nav>
+
+  <aside class="sidebar">
+    <div style="padding:8px 0 6px;">
+      <div class="sidebar-label">Navegación</div>
+      <div class="nav-item active" id="ni-map" onclick="goTo('map')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="6.5" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M7.5 15s-6-5-6-8.5a6 6 0 0112 0C13.5 10 7.5 15 7.5 15z" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+        Buscar en mapa
+      </div>
+      <div class="nav-item" onclick="goTo('map')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2" width="13" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><line x1="4" y1="6" x2="11" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="4" y1="9" x2="8" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
+        Ver lista
+      </div>
+      <div class="nav-item">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M7.5 2l2 4 4.5.7-3.2 3.1.8 4.5-4.1-2.1-4.1 2.1.8-4.5L1 6.7 5.5 6z" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>
+        Guardados
+      </div>
+      <div class="nav-item">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="2" y="1" width="11" height="13" rx="2" stroke="currentColor" stroke-width="1.4"/><line x1="5" y1="5" x2="10" y2="5" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="8" x2="10" y2="8" stroke="currentColor" stroke-width="1.2"/><line x1="5" y1="11" x2="7.5" y2="11" stroke="currentColor" stroke-width="1.2"/></svg>
+        Mis reservas
+      </div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="filter-block">
+      <div class="filter-title">Especialidad</div>
+      <div class="filter-chip on">Todas</div>
+      <div class="filter-chip">Medicina Gral.</div>
+      <div class="filter-chip">Cardiología</div>
+      <div class="filter-chip">Pediatría</div>
+      <div class="filter-chip">Ginecología</div>
+      <div class="filter-chip">Dermatología</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="filter-block">
+      <div class="filter-title">Precio máximo por turno</div>
+      <input type="range" class="price-range" min="400" max="1200" value="1200" id="price-slider" oninput="document.getElementById('price-max').textContent='$'+parseInt(this.value).toLocaleString()+' MXN'">
+      <div class="price-vals"><span>$400 MXN</span><span id="price-max">$1,200 MXN</span></div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="filter-block">
+      <div class="filter-title">Equipo disponible</div>
+      <div class="filter-chip">Ultrasonido</div>
+      <div class="filter-chip">Camilla</div>
+      <div class="filter-chip">Monitor ECG</div>
+      <div class="filter-chip">Oxímetro</div>
+    </div>
+    <div class="sidebar-divider"></div>
+    <div class="filter-block">
+      <div class="filter-title">Amenidades</div>
+      <div class="filter-chip">Estacionamiento</div>
+      <div class="filter-chip">Recepcionista</div>
+      <div class="filter-chip">WiFi</div>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+
+    <!-- PANTALLA 1: MAPA -->
+    <div class="screen active" id="sc-map">
+      <div class="page-header">
+        <div>
+          <div class="page-title">Consultorios disponibles</div>
+          <div class="page-subtitle">5 espacios disponibles cerca de Guadalajara</div>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="nav-pill" style="font-size:13px;">📅 Hoy, 12 Mar</button>
+          <button class="nav-pill ghost" style="font-size:13px;">Ordenar: Precio ↑</button>
+        </div>
+      </div>
+      <div class="map-layout">
+        <div class="map-container">
+          <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-103.4500%2C20.6200%2C-103.2800%2C20.7200&layer=mapnik" loading="lazy"></iframe>
+          <div class="map-overlay-pins" id="map-pins"></div>
+        </div>
+        <div class="clinic-list" id="clinic-list"></div>
+      </div>
+    </div>
+
+    <!-- PANTALLA 2: DETALLE -->
+    <div class="screen" id="sc-detail">
+      <div class="breadcrumb">
+        <span onclick="goTo('map')">Buscar</span><span class="sep">›</span>
+        <span class="cur" id="bc-name">Detalle</span>
+      </div>
+      <div class="detail-layout">
+        <div>
+          <div class="detail-gallery" id="det-gallery"></div>
+          <div class="detail-name" id="d-name"></div>
+          <div class="detail-addr" id="d-addr"></div>
+          <div class="detail-rating">
+            <div class="rating-num" id="d-rating-num">4.9</div>
+            <div style="display:flex;gap:2px;font-size:15px;color:#F0A500;">★★★★★</div>
+            <div style="font-size:13px;color:var(--gray-mid);" id="d-rating-count">(48 reseñas)</div>
+          </div>
+          <div class="section-label">Equipo disponible</div>
+          <div class="equip-grid" id="d-equip"></div>
+          <div class="section-label">Amenidades</div>
+          <div class="amenities-grid" id="d-amenities"></div>
+          <div class="section-label">Acerca del espacio</div>
+          <p style="font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px;" id="d-desc"></p>
+          <div class="section-label">Reseñas de médicos</div>
+          <div id="d-reviews"></div>
+        </div>
+        <div>
+          <div class="booking-panel">
+            <div class="bp-price" id="d-price-panel">$850 <span>MXN / turno</span></div>
+            <div style="font-size:13px;color:var(--teal);font-weight:600;margin-bottom:4px;">Próximo disponible: Hoy 9:00 AM</div>
+            <div class="bp-divider"></div>
+            <div class="bp-label">Turno</div>
+            <div class="slot-grid">
+              <div class="slot-btn on" id="bp-s0" onclick="selectBPSlot(0)">9:00 AM</div>
+              <div class="slot-btn" id="bp-s1" onclick="selectBPSlot(1)">2:00 PM</div>
+            </div>
+            <div class="bp-label">Fecha</div>
+            <div style="background:var(--offwhite);border:1px solid var(--gray-light);border-radius:8px;padding:9px 13px;font-size:13px;color:var(--gray-dark);margin-bottom:14px;">Jueves, 12 de marzo 2026</div>
+            <div class="bp-divider"></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--gray-mid);margin-bottom:5px;"><span>Precio por turno</span><span id="bp-sub">$850 MXN</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--gray-mid);margin-bottom:10px;"><span>Cargo de servicio</span><span>$0 MXN</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;"><span>Total</span><span id="bp-total">$850 MXN</span></div>
+            <button class="bp-btn" onclick="goTo('schedule')">Reservar este consultorio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA 3: HORARIO -->
+    <div class="screen" id="sc-schedule">
+      <div class="breadcrumb">
+        <span onclick="goTo('map')">Buscar</span><span class="sep">›</span>
+        <span onclick="goTo('detail')" style="cursor:pointer;color:var(--gray-mid);">Detalle</span><span class="sep">›</span>
+        <span class="cur">Seleccionar horario</span>
+      </div>
+      <div style="margin-bottom:20px;">
+        <div class="page-title" style="font-size:22px;">Elige tu fecha y turno</div>
+        <div class="page-subtitle" id="sched-name">Consultorio Santa Anita Premium</div>
+      </div>
+      <div class="sched-layout">
+        <div class="cal-card">
+          <div class="cal-header">
+            <button class="cal-nav-btn">‹</button>
+            <div class="cal-month-title">Marzo 2026</div>
+            <button class="cal-nav-btn">›</button>
+          </div>
+          <div class="cal-dow"><span>Do</span><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span></div>
+          <div class="cal-days" id="cal-days-web"></div>
+          <div class="cal-legend">
+            <div><span class="leg-dot" style="background:var(--blue);"></span>Disponible</div>
+            <div><span class="leg-dot" style="background:var(--blue);opacity:.3;border:2px solid var(--blue);"></span>Seleccionado</div>
+            <div><span class="leg-dot" style="background:var(--gray-pale);"></span>No disponible</div>
+          </div>
+        </div>
+        <div class="slots-card">
+          <div class="slots-header">Jueves, 12 de marzo</div>
+          <div class="slots-sub">Selecciona el turno que prefieras</div>
+          <div class="slot-big on" id="ws0" onclick="selectWebSlot(0)">
+            <div><div class="slot-time">9:00 AM</div><div class="slot-duration">Turno matutino · 4 horas</div></div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="slot-avail">Disponible</span>
+              <div class="slot-radio on" id="wr0"></div>
+            </div>
+          </div>
+          <div class="slot-big" id="ws1" onclick="selectWebSlot(1)">
+            <div><div class="slot-time">2:00 PM</div><div class="slot-duration">Turno vespertino · 4 horas</div></div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="slot-avail">Disponible</span>
+              <div class="slot-radio" id="wr1"></div>
+            </div>
+          </div>
+          <div style="background:var(--offwhite);border-radius:var(--radius);padding:13px;margin-top:10px;">
+            <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;" id="ss-name">Consultorio</div>
+            <div style="font-size:12px;color:var(--gray-mid);">Jueves, 12 de marzo · <span id="ss-slot" style="color:var(--blue);font-weight:600;">9:00 AM – 1:00 PM</span></div>
+            <div style="font-size:14px;font-weight:700;color:var(--navy);margin-top:5px;" id="ss-price">$850 MXN</div>
+          </div>
+          <button class="continue-btn" onclick="goTo('confirm')">Continuar →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PANTALLA 4: CONFIRMACIÓN -->
+    <div class="screen" id="sc-confirm">
+      <div class="confirm-layout">
+        <div class="breadcrumb">
+          <span onclick="goTo('map')">Buscar</span><span class="sep">›</span>
+          <span onclick="goTo('detail')">Detalle</span><span class="sep">›</span>
+          <span onclick="goTo('schedule')">Horario</span><span class="sep">›</span>
+          <span class="cur">Confirmar</span>
+        </div>
+        <div class="steps">
+          <div class="step"><div class="step-circle done">✓</div><div class="step-label">Buscar</div><div class="step-line done"></div></div>
+          <div class="step"><div class="step-circle done">✓</div><div class="step-label">Detalle</div><div class="step-line done"></div></div>
+          <div class="step"><div class="step-circle done">✓</div><div class="step-label">Horario</div><div class="step-line done"></div></div>
+          <div class="step"><div class="step-circle cur">4</div><div class="step-label cur">Confirmar</div></div>
+        </div>
+        <div class="page-title" style="font-size:22px;margin-bottom:20px;">Revisa tu reserva</div>
+        <div class="confirm-card">
+          <div class="cc-hero">
+            <img id="ch-img" src="" onerror="this.style.display='none';this.parentElement.style.background='var(--blue-light)'">
+            <div class="cc-hero-overlay"></div>
+            <div class="cc-hero-text">
+              <div class="cc-hero-name" id="ch-name"></div>
+              <div class="cc-hero-addr" id="ch-addr"></div>
+            </div>
+          </div>
+          <div class="cc-body">
+            <div class="confirm-row"><span class="cr-label">Fecha</span><span class="cr-value">Jueves, 12 de marzo 2026</span></div>
+            <div class="confirm-row"><span class="cr-label">Turno</span><span class="cr-value" id="cf-time">9:00 AM – 1:00 PM</span></div>
+            <div class="confirm-row"><span class="cr-label">Duración</span><span class="cr-value">4 horas</span></div>
+            <div class="confirm-row"><span class="cr-label">Especialidad</span><span class="cr-value">Medicina general</span></div>
+            <div class="confirm-row"><span class="cr-label">Equipo incluido</span><span class="cr-value" id="cf-equip">Escritorio, Camilla</span></div>
+          </div>
+        </div>
+        <div class="total-confirm">
+          <div class="total-label">Total a pagar</div>
+          <div class="total-amount" id="cf-total">$850 MXN</div>
+        </div>
+        <div class="confirm-actions">
+          <button class="btn-secondary" onclick="goTo('schedule')">← Regresar</button>
+          <button class="btn-primary" onclick="showSuccess()">Confirmar reserva</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="success-overlay" id="success-overlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="success-box">
+    <div class="success-icon">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="15" stroke="#1D9E75" stroke-width="2"/><polyline points="9,17 14,22 25,11" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="success-title">¡Reserva confirmada!</div>
+    <div class="success-sub" id="s-msg">Tu consultorio ha sido reservado exitosamente.</div>
+    <div class="success-id"><span class="success-id-label">ID de confirmación</span><span class="success-id-val">#MN-29043</span></div>
+    <button class="success-btn" onclick="document.getElementById('success-overlay').classList.remove('show');goTo('map')">Hacer otra reserva</button>
+  </div>
+</div>
+
+<script>
+const clinics=[
+  {name:"Consultorio Providencia",addr:"Av. Américas 320, Providencia, Guadalajara",short:"Av. Américas 320",price:850,rating:"4.9",rcount:"(48 reseñas)",
+   equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG"],
+   amenities:["Sala de espera","Recepcionista","Estacionamiento","WiFi","A/C","Sanitarios"],
+   desc:"Espacio clínico de alta gama en Providencia. Consultorio completamente equipado, ambiente tranquilo y profesional. Ideal para medicina general y especialidades.",
+   reviews:[{doc:"Dr. Carlos Vega — Cardiología",txt:"Excelente espacio, muy bien equipado. El ultrasonido en perfectas condiciones."},{doc:"Dra. Ana Torres — Ginecología",txt:"Ambiente muy profesional, pacientes cómodos en la sala de espera."}],
+   imgs:["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80"],
+   mapX:"42%",mapY:"44%"},
+  {name:"Centro Médico Chapalita",addr:"Av. Patria 150, Chapalita, Guadalajara",short:"Av. Patria 150",price:700,rating:"4.7",rcount:"(32 reseñas)",
+   equip:["Escritorio","Camilla","Monitor ECG","Báscula"],
+   amenities:["Sala de espera","Estacionamiento","WiFi","A/C"],
+   desc:"Consultorio moderno en Chapalita, zona céntrica y de fácil acceso. Espacio luminoso con equipo básico incluido.",
+   reviews:[{doc:"Dr. Miguel Ríos — Medicina Gral.",txt:"Muy accesible para mis pacientes, fácil estacionamiento."}],
+   imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=800&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=400&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80"],
+   mapX:"64%",mapY:"56%"},
+  {name:"Consultorio Zapopan Centro",addr:"Av. Laureles 88, Zapopan, Jalisco",short:"Av. Laureles 88",price:600,rating:"4.5",rcount:"(19 reseñas)",
+   equip:["Escritorio","Camilla","Oxímetro"],
+   amenities:["Sala de espera","WiFi"],
+   desc:"Opción práctica en Zapopan. Consultorio limpio y funcional, perfecto para jornadas de servicio social.",
+   reviews:[{doc:"Dra. Laura Mora — Pediatría",txt:"Buena opción para comenzar la consulta privada a bajo costo."}],
+   imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=400&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80"],
+   mapX:"28%",mapY:"32%"},
+  {name:"Clínica Santa María del Oro",addr:"Blvd. Puerta de Hierro 45, Guadalajara",short:"Blvd. Puerta de Hierro 45",price:950,rating:"5.0",rcount:"(61 reseñas)",
+   equip:["Escritorio","Camilla","Ultrasonido","Oxímetro","Monitor ECG","Nebulizador"],
+   amenities:["Sala de espera VIP","Recepcionista","Valet parking","WiFi","Cafetería","A/C"],
+   desc:"La opción premium de la plataforma. Clínica boutique en Puerta de Hierro con acabados de lujo y tecnología de punta.",
+   reviews:[{doc:"Dr. Fernando Leal — Dermatología",txt:"El mejor consultorio en el que he trabajado. Definitivamente regreso."},{doc:"Dra. Patricia Soto — Endocrinología",txt:"Pacientes encantados con las instalaciones. Vale cada peso."}],
+   imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=800&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=400&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&q=80"],
+   mapX:"76%",mapY:"33%"},
+  {name:"Consultorio Tlaquepaque",addr:"Independencia 200, Tlaquepaque, Jalisco",short:"Independencia 200",price:550,rating:"4.3",rcount:"(14 reseñas)",
+   equip:["Escritorio","Camilla"],
+   amenities:["Sala de espera","Estacionamiento"],
+   desc:"Opción económica en San Pedro Tlaquepaque. Zona histórica con mucho tráfico peatonal.",
+   reviews:[{doc:"Dr. Jorge Ibarra — Medicina Gral.",txt:"Buena ubicación, precio muy accesible para empezar."}],
+   imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=400&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=400&q=80"],
+   mapX:"53%",mapY:"75%"}
+];
+
+let sel=0, selSlot=0;
+const times=["9:00 AM – 1:00 PM","2:00 PM – 6:00 PM"];
+
+function buildPins(){
+  document.getElementById('map-pins').innerHTML=clinics.map((c,i)=>`
+    <div class="clinic-marker" style="left:${c.mapX};top:${c.mapY};" onclick="selectClinic(${i})">
+      <div style="display:flex;flex-direction:column;align-items:center;">
+        <div class="marker-body${i===sel?' sel':''}">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="1" y="3.5" width="11" height="8.5" rx="1.5" fill="white" opacity=".9"/>
+            <rect x="2.5" y="1" width="8" height="4.5" rx="1" fill="white" opacity=".7"/>
+            <rect x="5" y="7" width="3" height="4" rx=".5" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+            <rect x="2.5" y="6" width="2.5" height="2.5" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+            <rect x="8" y="6" width="2.5" height="2.5" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+          </svg>
+          $${c.price}
+        </div>
+        <div class="marker-tail${i===sel?' sel':''}"></div>
+      </div>
+    </div>`).join('');
+}
+
+function buildList(){
+  document.getElementById('clinic-list').innerHTML=clinics.map((c,i)=>`
+    <div class="clinic-card${i===sel?' sel':''}" onclick="selectClinic(${i})">
+      <img class="cc-img" src="${c.imgs[0]}" onerror="this.style.display='none'">
+      <div class="cc-name">${c.name}</div>
+      <div class="cc-addr">${c.short}</div>
+      <div class="cc-row">
+        <div class="cc-price">$${c.price} <span style="font-size:10px;font-weight:400;color:var(--gray-mid)">MXN/turno</span></div>
+        <div style="font-size:11px;color:var(--gray-mid);display:flex;align-items:center;gap:2px;"><span class="star-gold">★</span>${c.rating} ${c.rcount}</div>
+      </div>
+      <div style="margin:7px 0 8px;display:flex;gap:4px;flex-wrap:wrap;">
+        ${c.equip.slice(0,3).map(e=>`<span style="background:var(--blue-pale);color:var(--blue);border-radius:6px;padding:2px 7px;font-size:10px;">${e}</span>`).join('')}
+      </div>
+      <div class="cc-row">
+        <span class="cc-badge">Disponible hoy</span>
+        <button class="reserve-map-btn" onclick="event.stopPropagation();goDetail(${i})">Ver detalle →</button>
+      </div>
+    </div>`).join('');
+}
+
+function selectClinic(i){sel=i;buildPins();buildList();}
+
+function goDetail(i){
+  if(i!==undefined)sel=i;
+  const c=clinics[sel];
+  document.getElementById('bc-name').textContent=c.name;
+  document.getElementById('d-name').textContent=c.name;
+  document.getElementById('d-addr').innerHTML=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="5.5" r="2.5" stroke="#888" stroke-width="1.3"/><path d="M6.5 13s-5-4-5-7.5a5 5 0 0110 0C11.5 9 6.5 13 6.5 13z" stroke="#888" stroke-width="1.3" fill="none"/></svg> ${c.addr}`;
+  document.getElementById('d-rating-num').textContent=c.rating;
+  document.getElementById('d-rating-count').textContent=c.rcount;
+  document.getElementById('d-equip').innerHTML=c.equip.map(e=>`<div class="equip-item">✓ ${e}</div>`).join('');
+  document.getElementById('d-amenities').innerHTML=c.amenities.map(a=>`<div class="amenity">· ${a}</div>`).join('');
+  document.getElementById('d-desc').textContent=c.desc;
+  document.getElementById('d-reviews').innerHTML=c.reviews.map(r=>`<div class="review-item"><div class="review-doc">${r.doc}</div><div class="review-text">"${r.txt}"</div></div>`).join('');
+  document.getElementById('d-price-panel').innerHTML=`$${c.price} <span>MXN / turno</span>`;
+  document.getElementById('bp-sub').textContent=`$${c.price} MXN`;
+  document.getElementById('bp-total').textContent=`$${c.price} MXN`;
+  document.getElementById('det-gallery').innerHTML=`
+    <img class="gallery-img gallery-main" src="${c.imgs[0]}" onerror="this.style.background='var(--blue-light)'">
+    <img class="gallery-img" src="${c.imgs[1]||c.imgs[0]}" onerror="this.style.background='var(--blue-light)'">
+    <img class="gallery-img" src="${c.imgs[2]||c.imgs[0]}" onerror="this.style.background='var(--blue-light)'">`;
+  goTo('detail');
+}
+
+function selectBPSlot(i){
+  selSlot=i;
+  [0,1].forEach(j=>{document.getElementById('bp-s'+j).classList.toggle('on',j===i);});
+}
+
+function buildCalWeb(){
+  const avail=[2,4,5,7,9,10,12,13,14,16,17,18,19,21,23,24,25];
+  let html='';
+  for(let i=0;i<6;i++) html+=`<div class="cal-day muted"></div>`;
+  for(let d=1;d<=31;d++){
+    const isSel=d===12, isAv=avail.includes(d);
+    html+=`<div class="cal-day${isSel?' sel':isAv?' avail':' muted'}">${d}</div>`;
+  }
+  document.getElementById('cal-days-web').innerHTML=html;
+}
+
+function selectWebSlot(i){
+  selSlot=i;
+  [0,1].forEach(j=>{
+    document.getElementById('ws'+j).classList.toggle('on',j===i);
+    document.getElementById('wr'+j).classList.toggle('on',j===i);
+  });
+  document.getElementById('ss-slot').textContent=times[i];
+}
+
+function goTo(sc){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  const map={map:'sc-map',detail:'sc-detail',schedule:'sc-schedule',confirm:'sc-confirm'};
+  document.getElementById(map[sc]).classList.add('active');
+  document.getElementById('main').scrollTop=0;
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(sc==='map') document.getElementById('ni-map').classList.add('active');
+  if(sc==='schedule'){
+    const c=clinics[sel];
+    document.getElementById('sched-name').textContent=c.name;
+    document.getElementById('ss-name').textContent=c.name;
+    document.getElementById('ss-price').textContent=`$${c.price} MXN`;
+    buildCalWeb();
+  }
+  if(sc==='confirm'){
+    const c=clinics[sel];
+    document.getElementById('ch-img').src=c.imgs[0];
+    document.getElementById('ch-name').textContent=c.name;
+    document.getElementById('ch-addr').textContent=c.addr;
+    document.getElementById('cf-time').textContent=times[selSlot];
+    document.getElementById('cf-equip').textContent=c.equip.join(', ');
+    document.getElementById('cf-total').textContent=`$${c.price} MXN`;
+  }
+}
+
+function showSuccess(){
+  const c=clinics[sel];
+  document.getElementById('s-msg').textContent=`${c.name} reservado para el jueves 12 de marzo, turno ${times[selSlot]}. Recibirás confirmación en tu correo electrónico.`;
+  document.getElementById('success-overlay').classList.add('show');
+}
+
+document.querySelectorAll('.filter-chip').forEach(ch=>{
+  ch.addEventListener('click',function(){
+    this.closest('.filter-block').querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('on'));
+    this.classList.add('on');
+  });
+});
+
+buildPins();
+buildList();
+buildCalWeb();
+</script>
+</body>
+</html>
