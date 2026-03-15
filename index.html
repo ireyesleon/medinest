@@ -279,7 +279,7 @@ svg{display:block;}
     <div class="chip">Equipo</div>
   </div>
   <div class="map-wrap">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-104.6000%2C19.9000%2C-102.2000%2C21.4000&layer=mapnik" loading="lazy"></iframe>
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-104.8000%2C19.5000%2C-102.0000%2C21.5000&layer=mapnik" loading="lazy"></iframe>
     <div class="map-pins" id="map-pins"></div>
     <div class="map-card" onclick="goDetail(-1)">
       <div class="mc-name" id="mc-name">Consultorio Médico Tepatitlán</div>
@@ -680,7 +680,7 @@ svg{display:block;}
         </div>
         <div class="info-row"><span class="info-lbl">Institución</span><span class="info-val">U de G — CUCS</span></div>
         <div class="info-row"><span class="info-lbl">Experiencia</span><span class="info-val">7 años</span></div>
-        <div class="info-row"><span class="info-lbl">Correo</span><span style="font-size:13px;font-weight:600;color:var(--blue);">c.mendoza@medinest.mx</span></div>
+        <div class="info-row"><span class="info-lbl">Correo</span><span style="font-size:13px;font-weight:600;color:var(--blue);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3e5d10535b505a51445f7e535b5a57505b4d4a105346">[email&#160;protected]</a></span></div>
       </div>
     </div>
 
@@ -717,22 +717,51 @@ svg{display:block;}
     </div>
 
     <div style="padding:16px 16px 0;">
-      <div class="section-lbl">Reseñas recibidas</div>
+      <div class="section-lbl">Reseñas que has dejado</div>
+
+      <!-- Tepatitlán -->
       <div class="rev-item">
-        <div class="rev-head">
-          <div class="rev-avatar" style="background:var(--blue-pale);color:var(--blue);">AT</div>
-          <div><div style="font-size:12px;font-weight:700;color:var(--navy);">Dra. Ana Torres</div><div style="font-size:10px;color:#F0A500;">★★★★★</div></div>
-          <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">5 Mar 2026</div>
+        <div class="rev-head" style="margin-bottom:8px;">
+          <div class="hist-thumb" style="width:38px;height:38px;border-radius:8px;">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=80&q=70" onerror="this.style.display='none'" alt="">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Consultorio Médico Tepatitlán</div>
+            <div style="font-size:10px;color:var(--blue);font-weight:600;">Tepatitlán de Morelos · 5 Mar 2026</div>
+          </div>
+          <div style="font-size:13px;color:#F0A500;font-weight:700;">★ 5.0</div>
         </div>
-        <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Médico muy profesional. El consultorio perfecto para atender pacientes de la región."</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.6;background:var(--bg);border-radius:8px;padding:9px 11px;">"Excelente espacio. Sala de espera cómoda, equipo en buen estado y la recepcionista muy amable. Lo recomiendo ampliamente para médicos de especialidad que quieren llegar a esta región."</div>
       </div>
+
+      <!-- Colima -->
       <div class="rev-item">
-        <div class="rev-head">
-          <div class="rev-avatar" style="background:var(--teal-bg);color:var(--teal);">MR</div>
-          <div><div style="font-size:12px;font-weight:700;color:var(--navy);">Dr. Miguel Ríos</div><div style="font-size:10px;color:#F0A500;">★★★★☆</div></div>
-          <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">20 Feb 2026</div>
+        <div class="rev-head" style="margin-bottom:8px;">
+          <div class="hist-thumb" style="width:38px;height:38px;border-radius:8px;">
+            <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=80&q=70" onerror="this.style.display='none'" alt="">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Clínica Privada Colima Norte</div>
+            <div style="font-size:10px;color:var(--blue);font-weight:600;">Colima, Col. · 20 Feb 2026</div>
+          </div>
+          <div style="font-size:13px;color:#F0A500;font-weight:700;">★ 4.8</div>
         </div>
-        <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Buen trato con los pacientes, muy puntual. Espacio en Colima muy recomendable."</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.6;background:var(--bg);border-radius:8px;padding:9px 11px;">"Muy buenas instalaciones, el mejor consultorio fuera de GDL en el que he trabajado. Tienen ultrasonido moderno y el personal es muy profesional. Llegaré de nuevo sin duda."</div>
+      </div>
+
+      <!-- San Juan de los Lagos -->
+      <div class="rev-item">
+        <div class="rev-head" style="margin-bottom:8px;">
+          <div class="hist-thumb" style="width:38px;height:38px;border-radius:8px;">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&q=70" onerror="this.style.display='none'" alt="">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Consultorio San Juan de los Lagos</div>
+            <div style="font-size:10px;color:var(--blue);font-weight:600;">San Juan de los Lagos · 8 Feb 2026</div>
+          </div>
+          <div style="font-size:13px;color:#F0A500;font-weight:700;">★ 4.7</div>
+        </div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.6;background:var(--bg);border-radius:8px;padding:9px 11px;">"Buen espacio, bien ubicado en el centro. Llegaron pacientes de varios municipios cercanos que no tienen acceso a especialistas. La demanda es alta, definitivamente regresaré."</div>
       </div>
     </div>
 
@@ -771,7 +800,7 @@ svg{display:block;}
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const DISC = 0.20; // 20% discount for full day
 
 const clinics=[
@@ -779,7 +808,7 @@ const clinics=[
   {name:"Centro Médico Lagos de Moreno",loc:"Lagos de Moreno, Jal.",addr:"Av. Juárez 120, Centro",fullAddr:"Av. Juárez 120, Centro, Lagos de Moreno, Jalisco",distKm:95,driveMin:80,price:600,rating:"4.6",rcount:"(18 reseñas)",equip:["Escritorio","Camilla","Ultrasonido","Báscula"],amenities:["Sala espera","WiFi","A/C","Sanitarios"],desc:"Consultorio amplio en Lagos de Moreno, ciudad fronteriza con poca oferta de especialistas.",impact:"Lagos de Moreno tiene más de 160,000 habitantes y muy pocos especialistas. Tu visita puede atender a decenas de pacientes.",reviews:[{doc:"Dr. Héctor Sandoval — Cardiología",txt:"Pacientes llegaron desde ranchos cercanos. La comunidad lo necesita mucho."},{doc:"Dra. Verónica Castro — Pediatría",txt:"Buen espacio, la gente muy receptiva y agradecida."}],imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"],colors:["#b8cce8","#c8ddf5","#a8bbdb"],mapX:"85%",mapY:"25%"},
   {name:"Consultorio San Juan de los Lagos",loc:"San Juan de los Lagos, Jal.",addr:"Portal Morelos 8, Centro",fullAddr:"Portal Morelos 8, Centro, San Juan de los Lagos",distKm:80,driveMin:65,price:580,rating:"4.7",rcount:"(22 reseñas)",equip:["Escritorio","Camilla","Oxímetro","Estetoscopio digital"],amenities:["Sala espera","Estacionamiento","WiFi"],desc:"Consultorio céntrico en San Juan de los Lagos. Alta afluencia de personas de toda la región los fines de semana.",impact:"San Juan atrae peregrinos de toda la región — muchos vienen de municipios sin atención médica especializada.",reviews:[{doc:"Dra. Patricia Núñez — Endocrinología",txt:"Llegaron pacientes de 3 municipios distintos el mismo día."},{doc:"Dr. Alfonso Leal — Medicina Gral.",txt:"Espacio cómodo, bien ubicado junto a la plaza principal."}],imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80"],colors:["#a8bbdb","#c8ddf5","#b8cce8"],mapX:"80%",mapY:"32%"},
   {name:"Clínica Privada Colima Norte",loc:"Colima, Col.",addr:"Blvd. Camino Real 310",fullAddr:"Blvd. Camino Real 310, Colima, Col.",distKm:98,driveMin:85,price:720,rating:"4.9",rcount:"(44 reseñas)",equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG","Nebulizador","Oxímetro"],amenities:["Sala espera VIP","Recepcionista","Estacionamiento","WiFi","A/C","Cafetería"],desc:"Clínica bien equipada en la capital colimense. Espacio moderno, ideal para especialistas.",impact:"Colima tiene escasa oferta de especialistas privados. Atender aquí amplía el acceso a salud a toda la región costera.",reviews:[{doc:"Dra. Claudia Ibarra — Dermatología",txt:"Instalaciones excelentes, los mejores de mi red fuera de GDL."},{doc:"Dr. Roberto Ángeles — Neurología",txt:"Pacientes muy bien atendidos, la clínica tiene todo lo necesario."}],imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],colors:["#c8ddf5","#a8bbdb","#b8cce8"],mapX:"30%",mapY:"82%"},
-  {name:"Consultorio Médico Ameca",loc:"Ameca, Jalisco",addr:"Calle Hidalgo 55, Centro",fullAddr:"Hidalgo 55, Centro, Ameca, Jalisco",distKm:55,driveMin:45,price:520,rating:"4.4",rcount:"(14 reseñas)",equip:["Escritorio","Camilla","Báscula","Tensiómetro"],amenities:["Sala espera","Estacionamiento"],desc:"Consultorio funcional en Ameca. Zona agrícola con alta necesidad de atención especializada accesible.",impact:"La región Valles carece de especialistas. Ameca es punto de concentración para docenas de comunidades rurales.",reviews:[{doc:"Dr. Jaime Delgado — Medicina Interna",txt:"La gente espera mucho poder ver a un especialista aquí."},{doc:"Dra. Silvia Torres — Nutrición",txt:"Buena opción para llegar a pacientes que nunca han tenido acceso."}],imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],colors:["#a8bbdb","#b8cce8","#c8ddf5"],mapX:"18%",mapY:"44%"}
+  {name:"Consultorio Médico Sayula",loc:"Sayula, Jalisco",addr:"Calle Constitución 28, Centro",fullAddr:"Constitución 28, Centro, Sayula, Jalisco",distKm:97,driveMin:80,price:490,rating:"4.5",rcount:"(11 reseñas)",equip:["Escritorio","Camilla","Tensiómetro","Oxímetro"],amenities:["Sala espera","Estacionamiento"],desc:"Consultorio accesible en Sayula, municipio del sur de Jalisco con alta prevalencia de enfermedades crónicas y escaso acceso a especialistas privados. Zona de alto impacto social.",impact:"Sayula y la región Sur de Jalisco tienen muy poca oferta médica especializada. Tu presencia puede cambiar la vida de decenas de familias que no pueden costear el viaje a GDL.",reviews:[{doc:"Dr. Jaime Delgado — Medicina Interna",txt:"La gente espera mucho poder ver a un especialista. Vale completamente la pena el viaje."},{doc:"Dra. Silvia Torres — Nutrición",txt:"Altísima demanda reprimida. Pacientes muy agradecidos y puntuales."}],imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],colors:["#a8bbdb","#b8cce8","#c8ddf5"],mapX:"52%",mapY:"80%"}
 ];
 
 const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
@@ -896,6 +925,25 @@ function updatePrice(){
   btn.textContent=total>0?`Continuar — $${total} MXN →`:'Selecciona un turno';
 }
 
+function updatePrice(){
+  const{s0,s1,both,gross,saving,total,price}=calcTotal();
+  document.getElementById('ps-r1').style.display=s0?'flex':'none';
+  document.getElementById('ps-r2').style.display=s1?'flex':'none';
+  document.getElementById('ps-p1').textContent=`$${price} MXN`;
+  document.getElementById('ps-p2').textContent=`$${price} MXN`;
+  document.getElementById('ps-orig').style.display=both?'flex':'none';
+  document.getElementById('ps-save').style.display=both?'flex':'none';
+  document.getElementById('disc-badge').style.display=both?'flex':'none';
+  if(both){
+    document.getElementById('ps-orig-val').textContent=`$${gross} MXN`;
+    document.getElementById('ps-save-val').textContent=`-$${saving} MXN`;
+  }
+  document.getElementById('ps-total').textContent=total>0?`$${total} MXN`:'$0 MXN';
+  const btn=document.getElementById('sched-btn');
+  btn.disabled=total===0;
+  btn.textContent=total>0?`Continuar — $${total} MXN →`:'Selecciona un turno';
+}
+
 // Navigation
 function goDetail(i){
   if(i>=0)sel=i;
@@ -976,14 +1024,4 @@ function showSuccess(){
   document.getElementById('modal-bg').classList.add('show');
 }
 
-document.querySelectorAll('.chip').forEach(ch=>{
-  ch.addEventListener('click',function(){
-    this.closest('.chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-    this.classList.add('on');
-  });
-});
-
-buildPins();updatePreview();
-</script>
-</body>
-</html>
+document.querySelectorAll('.chip').forEach(ch=
