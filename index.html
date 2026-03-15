@@ -15,14 +15,13 @@
   --r:14px;--r-lg:20px;
   --safe-bottom:env(safe-area-inset-bottom,0px);
 }
-html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#e0e8f0;color:var(--gray-dark);}
-#app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;background:var(--white);position:relative;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.15);}
+html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#d0dce8;color:var(--gray-dark);}
+#app{height:100dvh;display:flex;flex-direction:column;max-width:430px;margin:0 auto;background:var(--white);position:relative;overflow:hidden;box-shadow:0 0 40px rgba(0,0,0,.18);}
 .screen{display:none;flex:1;flex-direction:column;overflow:hidden;}
 .screen.active{display:flex;}
 .scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .scroll-area::-webkit-scrollbar{display:none;}
 
-/* topbar */
 .topbar{background:var(--white);padding:14px 18px 10px;border-bottom:1px solid var(--gray-pale);flex-shrink:0;display:flex;align-items:center;gap:10px;}
 .topbar-logo{font-size:20px;font-weight:700;color:var(--navy);letter-spacing:-.5px;margin-right:auto;}
 .topbar-logo span{color:var(--blue);}
@@ -30,13 +29,11 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .topbar-back{width:34px;height:34px;border-radius:50%;background:var(--gray-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
 .topbar-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;text-align:center;}
 
-/* bottom nav */
 .bottom-nav{background:var(--white);border-top:1px solid var(--gray-pale);display:flex;padding:8px 0 calc(8px + var(--safe-bottom));flex-shrink:0;}
 .bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;}
 .bn-label{font-size:10px;color:var(--gray-mid);font-weight:500;}
 .bn-label.on{color:var(--blue);}
 
-/* search */
 .search-wrap{padding:12px 16px 8px;}
 .search-box{background:var(--bg);border:1.5px solid var(--gray-pale);border-radius:30px;padding:10px 16px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-mid);}
 .chips-wrap{padding:0 16px 10px;display:flex;gap:7px;overflow-x:auto;}
@@ -44,28 +41,30 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .chip{background:var(--white);border:1.5px solid var(--gray-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--gray);white-space:nowrap;cursor:pointer;transition:all .15s;flex-shrink:0;font-weight:500;}
 .chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
 
-/* map */
+/* MAP */
 .map-wrap{flex:1;position:relative;overflow:hidden;}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block;}
 .map-pins{position:absolute;inset:0;pointer-events:none;}
 .pin{position:absolute;pointer-events:all;cursor:pointer;transform:translate(-50%,-100%);}
-.pin-body{background:var(--blue);color:#fff;border-radius:10px;padding:5px 9px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px;border:2px solid #fff;box-shadow:0 2px 10px rgba(24,95,165,.4);transition:all .2s;white-space:nowrap;}
+.pin-body{background:var(--blue);color:#fff;border-radius:10px;padding:5px 8px;font-size:10px;font-weight:600;display:flex;align-items:center;gap:4px;border:2px solid #fff;box-shadow:0 2px 10px rgba(24,95,165,.4);transition:all .2s;white-space:nowrap;}
 .pin-body.on{background:var(--teal);}
+.pin-dist{font-size:9px;opacity:.85;font-weight:400;}
 .pin-tail{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--blue);margin:0 auto;}
 .pin-tail.on{border-top-color:var(--teal);}
+
 .map-preview{position:absolute;bottom:12px;left:12px;right:12px;background:var(--white);border-radius:var(--r-lg);padding:12px 14px;box-shadow:0 4px 20px rgba(4,44,83,.15);cursor:pointer;}
 .mp-name{font-size:13px;font-weight:700;color:var(--navy);}
-.mp-addr{font-size:11px;color:var(--gray-mid);margin:2px 0 6px;}
-.mp-row{display:flex;align-items:center;justify-content:space-between;}
+.mp-loc{font-size:11px;color:var(--gray-mid);margin:1px 0;}
+.mp-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
 .mp-price{font-size:14px;font-weight:700;color:var(--blue);}
+.mp-dist-badge{display:flex;align-items:center;gap:4px;background:var(--blue-pale);border-radius:8px;padding:3px 9px;font-size:11px;color:var(--blue);font-weight:600;}
 .mp-btn{background:var(--blue);color:#fff;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:600;border:none;cursor:pointer;}
 
-/* gallery — SVG placeholder fallback */
+/* GALLERY */
 .detail-gallery{position:relative;height:230px;overflow:hidden;background:var(--blue-pale);flex-shrink:0;}
 .gallery-slides{display:flex;height:100%;transition:transform .3s ease;}
-.gallery-slide{min-width:100%;height:100%;overflow:hidden;position:relative;}
-.gallery-slide-img{width:100%;height:100%;object-fit:cover;display:block;}
-.gallery-slide-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;}
+.gallery-slide{min-width:100%;height:100%;overflow:hidden;}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;}
 .avail-float{position:absolute;top:12px;right:12px;background:var(--teal);color:#fff;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;z-index:5;}
 .gallery-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--navy);z-index:5;font-weight:700;}
 .gallery-btn.prev{left:10px;}
@@ -74,11 +73,16 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .gdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);}
 .gdot.on{background:#fff;width:16px;border-radius:3px;}
 
-/* detail body */
+/* Distance pill in detail */
+.dist-pill{display:inline-flex;align-items:center;gap:5px;background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--blue);font-weight:600;margin-bottom:10px;}
+.dist-pill svg{flex-shrink:0;}
+.drive-pill{display:inline-flex;align-items:center;gap:5px;background:#FFF8E6;border:1px solid #FAC775;border-radius:20px;padding:5px 12px;font-size:12px;color:#633806;font-weight:600;margin-bottom:10px;margin-left:6px;}
+
 .section-title{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:8px;margin-top:14px;}
 .detail-body{padding:16px;}
-.detail-name{font-size:20px;font-weight:700;color:var(--navy);line-height:1.2;}
-.detail-addr{font-size:12px;color:var(--gray-mid);margin:5px 0 10px;display:flex;align-items:center;gap:4px;}
+.detail-name{font-size:20px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:4px;}
+.detail-loc{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:3px;}
+.detail-addr{font-size:12px;color:var(--gray-mid);margin-bottom:8px;display:flex;align-items:center;gap:4px;}
 .stars-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;}
 .stars-num{font-size:18px;font-weight:700;color:var(--navy);}
 .equip-grid{display:flex;flex-wrap:wrap;gap:6px;}
@@ -90,7 +94,12 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .review-doc{font-size:12px;font-weight:600;color:var(--gray-dark);}
 .review-txt{font-size:12px;color:var(--gray-mid);margin-top:2px;line-height:1.5;}
 
-/* booking footer */
+/* Impact banner */
+.impact-banner{background:var(--navy);border-radius:var(--r);padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.impact-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.impact-text{font-size:12px;color:rgba(255,255,255,.85);line-height:1.5;}
+.impact-text strong{color:#fff;font-weight:700;}
+
 .booking-footer{background:var(--white);border-top:1px solid var(--gray-pale);padding:12px 16px calc(12px + var(--safe-bottom));flex-shrink:0;}
 .bf-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .bf-price{font-size:20px;font-weight:700;color:var(--navy);}
@@ -98,14 +107,14 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .bf-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;}
 .bf-btn:active{background:var(--navy);}
 
-/* schedule */
+/* SCHEDULE */
 .clinic-mini{margin:12px 16px;background:var(--blue-pale);border-radius:var(--r);padding:10px 13px;display:flex;align-items:center;gap:10px;}
 .cm-thumb{width:44px;height:44px;border-radius:8px;background:var(--blue-light);flex-shrink:0;overflow:hidden;}
 .cm-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .cm-name{font-size:13px;font-weight:700;color:var(--navy);}
-.cm-addr{font-size:11px;color:var(--gray-mid);}
+.cm-loc{font-size:11px;color:var(--blue);font-weight:600;}
+.cm-addr{font-size:10px;color:var(--gray-mid);}
 
-/* calendar */
 .cal-card{margin:0 16px 14px;background:var(--white);border-radius:var(--r);border:1.5px solid var(--gray-pale);padding:14px;}
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .cal-month{font-size:15px;font-weight:700;color:var(--navy);}
@@ -122,7 +131,6 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .cal-legend{display:flex;gap:14px;margin-top:10px;font-size:11px;color:var(--gray-mid);}
 .leg-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:3px;vertical-align:middle;}
 
-/* slots */
 .slots-section{margin:0 16px 12px;}
 .slot-date-label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;}
 .slot-card{border:2px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;margin-bottom:8px;cursor:pointer;transition:all .2s;}
@@ -142,7 +150,6 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .fd-check{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent;}
 .fd-check.on{background:#fff;border-color:#fff;}
 
-/* price summary */
 .price-summary{margin:0 16px 14px;background:var(--bg);border-radius:var(--r);padding:12px 14px;}
 .ps-row{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-mid);margin-bottom:5px;}
 .ps-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:var(--navy);border-top:1px solid var(--gray-pale);padding-top:8px;margin-top:4px;}
@@ -152,7 +159,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .sched-btn:disabled{opacity:.4;cursor:not-allowed;}
 .sched-btn:not(:disabled):active{background:var(--navy);}
 
-/* confirm */
+/* CONFIRM */
 .steps-bar{display:flex;align-items:center;padding:14px 16px 10px;}
 .step-item{display:flex;align-items:center;gap:5px;flex:1;}
 .step-circle{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
@@ -164,15 +171,17 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .step-line.done{background:var(--blue);}
 .confirm-hero{height:160px;position:relative;overflow:hidden;margin:0 16px;border-radius:var(--r-lg);}
 .confirm-hero img{width:100%;height:100%;object-fit:cover;display:block;}
-.ch-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,44,83,.6),transparent);}
+.ch-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,44,83,.65),transparent);}
 .ch-text{position:absolute;bottom:14px;left:14px;color:#fff;}
 .ch-name{font-size:16px;font-weight:700;}
-.ch-addr{font-size:11px;opacity:.85;margin-top:2px;}
+.ch-loc{font-size:12px;font-weight:600;color:rgba(255,255,255,.9);margin-top:1px;}
+.ch-addr{font-size:11px;opacity:.8;margin-top:1px;}
 .confirm-rows{margin:14px 16px 0;}
 .cr{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--gray-pale);}
 .cr:last-child{border-bottom:none;}
 .cr-label{font-size:12px;color:var(--gray-mid);}
-.cr-value{font-size:13px;font-weight:600;color:var(--gray-dark);text-align:right;max-width:60%;}
+.cr-value{font-size:13px;font-weight:600;color:var(--gray-dark);text-align:right;max-width:62%;}
+.cr-dist{font-size:13px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:4px;}
 .total-bar{margin:0 16px 14px;background:var(--blue-pale);border-radius:var(--r);padding:13px 15px;display:flex;justify-content:space-between;align-items:center;}
 .tb-label{font-size:13px;font-weight:600;color:var(--navy);}
 .tb-amount{font-size:22px;font-weight:800;color:var(--navy);}
@@ -181,7 +190,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .btn-pri{flex:2;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;}
 .btn-pri:active{background:var(--navy);}
 
-/* modal */
+/* MODAL */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(4,44,83,.5);z-index:300;align-items:flex-end;justify-content:center;}
 .modal-bg.show{display:flex;}
 .modal-box{background:var(--white);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:28px 22px calc(28px + var(--safe-bottom));width:100%;max-width:430px;text-align:center;animation:slideUp .3s ease;}
@@ -209,44 +218,45 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
     <div class="search-wrap">
       <div class="search-box">
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#888" stroke-width="1.5"/><line x1="10" y1="10" x2="14" y2="14" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Buscar consultorios en Guadalajara…
+        Buscar consultorios cerca de GDL…
       </div>
     </div>
     <div class="chips-wrap">
       <div class="chip on">Todos</div>
       <div class="chip">Especialidad</div>
-      <div class="chip">Precio</div>
-      <div class="chip">Fecha</div>
+      <div class="chip">&lt; 50 km</div>
+      <div class="chip">&lt; 100 km</div>
       <div class="chip">Equipo</div>
     </div>
     <div class="map-wrap">
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-103.4500%2C20.6200%2C-103.2800%2C20.7200&layer=mapnik" loading="lazy"></iframe>
+      <!-- Wider bbox to show ~100km radius around GDL -->
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-104.6000%2C19.9000%2C-102.2000%2C21.4000&layer=mapnik" loading="lazy"></iframe>
       <div class="map-pins" id="map-pins"></div>
       <div class="map-preview" id="map-preview" onclick="goDetail(-1)">
-        <div class="mp-name" id="mp-name">Consultorio Providencia</div>
-        <div class="mp-addr" id="mp-addr">Av. Américas 320, Guadalajara</div>
+        <div class="mp-name" id="mp-name">Centro de Salud Tepatitlán</div>
+        <div class="mp-loc" id="mp-loc" style="font-size:11px;color:var(--blue);font-weight:600;margin:1px 0;">Tepatitlán de Morelos</div>
         <div class="mp-row">
-          <div class="mp-price" id="mp-price">$850 MXN / turno</div>
+          <div class="mp-price" id="mp-price">$650 MXN / turno</div>
+          <div class="mp-dist-badge" id="mp-dist">
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
+            62 km
+          </div>
           <button class="mp-btn">Ver detalle →</button>
         </div>
       </div>
     </div>
-    <div class="bottom-nav">
-      <div class="bn-item" onclick="goTo('map')">
+    <div class="bottom-nav" id="bnav-main">
+      <div class="bn-item on" id="bn-map" onclick="goTo('map')">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
-        <span class="bn-label on">Mapa</span>
+        <span class="bn-label on" id="bnl-map">Mapa</span>
       </div>
-      <div class="bn-item">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="3" stroke="#888" stroke-width="1.5"/><line x1="6" y1="8" x2="14" y2="8" stroke="#888" stroke-width="1.3"/><line x1="6" y1="12" x2="11" y2="12" stroke="#888" stroke-width="1.3"/></svg>
-        <span class="bn-label">Lista</span>
+      <div class="bn-item" id="bn-agenda" onclick="goTo('agenda')">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
+        <span class="bn-label" id="bnl-agenda">Agenda</span>
       </div>
-      <div class="bn-item">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3l2.5 5.5 6 .9-4.3 4.2 1 6-5.2-2.7-5.2 2.7 1-6L1.5 9.4l6-.9z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-        <span class="bn-label">Guardados</span>
-      </div>
-      <div class="bn-item">
+      <div class="bn-item" id="bn-perfil" onclick="goTo('perfil')">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-        <span class="bn-label">Perfil</span>
+        <span class="bn-label" id="bnl-perfil">Perfil</span>
       </div>
     </div>
   </div>
@@ -263,7 +273,6 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
       </div>
     </div>
     <div class="scroll-area">
-      <!-- gallery -->
       <div class="detail-gallery">
         <div class="gallery-slides" id="gallery-slides"></div>
         <div class="avail-float">Disponible</div>
@@ -273,11 +282,30 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
       </div>
       <div class="detail-body">
         <div class="detail-name" id="d-name"></div>
+        <div class="detail-loc" id="d-loc"></div>
         <div class="detail-addr" id="d-addr"></div>
+        <!-- Distance + drive time pills -->
+        <div style="margin-bottom:10px;">
+          <span class="dist-pill" id="d-dist-pill">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
+            62 km desde GDL
+          </span>
+          <span class="drive-pill" id="d-drive-pill">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="10" height="6" rx="1.5" stroke="#633806" stroke-width="1.1"/><path d="M3 4V3a3 3 0 016 0v1" stroke="#633806" stroke-width="1.1" fill="none"/><circle cx="3.5" cy="8" r="1" fill="#633806"/><circle cx="8.5" cy="8" r="1" fill="#633806"/></svg>
+            ~45 min en auto
+          </span>
+        </div>
         <div class="stars-row">
           <div class="stars-num" id="d-rating">4.9</div>
           <div style="font-size:14px;color:#F0A500;">★★★★★</div>
           <div style="font-size:12px;color:var(--gray-mid);" id="d-rcount"></div>
+        </div>
+        <!-- Impact banner -->
+        <div class="impact-banner" id="d-impact">
+          <div class="impact-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5.1 2 2 5.1 2 9s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z" stroke="white" stroke-width="1.3" fill="none"/><path d="M9 6v4l2.5 2.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="impact-text" id="d-impact-text">Llevarás medicina especializada a <strong>Tepatitlán</strong>, donde hay acceso limitado a especialistas.</div>
         </div>
         <div class="section-title">Equipo disponible</div>
         <div class="equip-grid" id="d-equip"></div>
@@ -292,7 +320,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
     </div>
     <div class="booking-footer">
       <div class="bf-price-row">
-        <div class="bf-price" id="d-price">$850 <span>MXN / turno</span></div>
+        <div class="bf-price" id="d-price">$650 <span>MXN / turno</span></div>
         <div style="font-size:11px;color:var(--teal);font-weight:600;">Hoy disponible</div>
       </div>
       <button class="bf-btn" onclick="goTo('schedule')">Reservar este consultorio</button>
@@ -313,6 +341,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
         <div class="cm-thumb"><img id="sch-img" src="" alt=""></div>
         <div>
           <div class="cm-name" id="sch-name"></div>
+          <div class="cm-loc" id="sch-loc"></div>
           <div class="cm-addr" id="sch-addr"></div>
         </div>
       </div>
@@ -335,9 +364,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
         <div class="slot-card on" id="slot0" onclick="toggleSlot(0)">
           <div class="slot-card-top">
             <div class="slot-time">9:00 AM</div>
-            <div class="slot-check on" id="sc0">
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
+            <div class="slot-check on" id="sc0"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
           <div class="slot-info">Turno matutino · 9:00 AM – 1:00 PM · 4 horas</div>
           <div class="slot-badge">Disponible</div>
@@ -357,7 +384,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
           <div class="fd-sub">9:00 AM – 6:00 PM · Ambos turnos · 8 horas</div>
         </div>
         <div class="fd-check" id="fd-check">
-          <svg id="fd-check-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none;"><polyline points="2,6 5,9 10,3" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg id="fd-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none;"><polyline points="2,6 5,9 10,3" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
       <div class="price-summary">
@@ -394,6 +421,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
         <div class="ch-overlay"></div>
         <div class="ch-text">
           <div class="ch-name" id="cf-name"></div>
+          <div class="ch-loc" id="cf-loc"></div>
           <div class="ch-addr" id="cf-addr"></div>
         </div>
       </div>
@@ -401,6 +429,13 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
         <div class="cr"><span class="cr-label">Fecha</span><span class="cr-value" id="cf-date">Jueves, 12 de marzo 2026</span></div>
         <div class="cr"><span class="cr-label">Turno(s)</span><span class="cr-value" id="cf-times"></span></div>
         <div class="cr"><span class="cr-label">Duración</span><span class="cr-value" id="cf-dur"></span></div>
+        <div class="cr">
+          <span class="cr-label">Distancia</span>
+          <span class="cr-dist" id="cf-dist">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
+            62 km · ~45 min
+          </span>
+        </div>
         <div class="cr"><span class="cr-label">Equipo</span><span class="cr-value" id="cf-equip"></span></div>
         <div class="cr"><span class="cr-label">Especialidad</span><span class="cr-value">Medicina general</span></div>
       </div>
@@ -416,10 +451,379 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
       <button class="btn-pri" onclick="showSuccess()">Confirmar reserva</button>
     </div>
   </div>
-
 </div>
 
-<!-- MODAL ÉXITO -->
+<!-- SCREEN 5: AGENDA -->
+<div class="screen" id="sc-agenda">
+  <div class="topbar">
+    <div class="topbar-logo">Medi<span>Nest</span></div>
+    <div class="topbar-icon" onclick="goTo('perfil')">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#185FA5" stroke-width="1.5"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
+    </div>
+  </div>
+  <div class="scroll-area">
+
+    <!-- Próxima reserva destacada -->
+    <div style="margin:14px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Próxima reserva</div>
+      <div style="background:var(--navy);border-radius:var(--r-lg);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="goTo('map')">
+        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.05);"></div>
+        <div style="position:absolute;bottom:-30px;right:20px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.04);"></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+          <div style="background:var(--teal);border-radius:8px;padding:3px 9px;font-size:10px;font-weight:700;color:#fff;">Confirmada</div>
+          <div style="font-size:11px;color:rgba(255,255,255,.6);">en 3 días</div>
+        </div>
+        <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:3px;">Consultorio Médico Tepatitlán</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:12px;">Tepatitlán de Morelos, Jal. · 62 km</div>
+        <div style="display:flex;gap:16px;">
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Fecha</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">Jue 19 Mar 2026</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Turno</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">9:00 AM – 1:00 PM</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Total</div>
+            <div style="font-size:13px;font-weight:600;color:#fff;">$650 MXN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recordatorios -->
+    <div style="margin:18px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Recordatorios</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--blue);">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="#185FA5" stroke-width="1.4"/><path d="M8 5v4l2.5 2" stroke="#185FA5" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Salir temprano — Jue 19 Mar</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">62 km a Tepatitlán · Salida recomendada: 7:30 AM</div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid #F0A500;">
+          <div style="width:36px;height:36px;border-radius:10px;background:#FAEEDA;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.5 6H14l-3.5 2.5 1.3 4L8 10l-3.8 2.5 1.3-4L2 6h4.5z" stroke="#854F0B" stroke-width="1.3" fill="none"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Completar perfil</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">Sube tu foto y agrega tu especialidad para más visibilidad</div>
+          </div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--teal);">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,9 6,13 14,4" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Cédula verificada</div>
+            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">Tu cédula profesional está activa y verificada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Próximas reservas -->
+    <div style="margin:18px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Próximas reservas</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:10px;background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:16px;font-weight:800;color:var(--blue);line-height:1;">19</div>
+            <div style="font-size:9px;font-weight:600;color:var(--blue-mid);">MAR</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;color:var(--navy);">Tepatitlán de Morelos</div>
+            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 1:00 PM · $650 MXN</div>
+          </div>
+          <div style="background:var(--teal-bg);color:var(--teal);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Confirmada</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:10px;background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:16px;font-weight:800;color:var(--blue);line-height:1;">2</div>
+            <div style="font-size:9px;font-weight:600;color:var(--blue-mid);">ABR</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;color:var(--navy);">Lagos de Moreno</div>
+            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 6:00 PM · $1,200 MXN</div>
+          </div>
+          <div style="background:var(--teal-bg);color:var(--teal);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Confirmada</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:44px;height:44px;border-radius:10px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:16px;font-weight:800;color:var(--gray-mid);line-height:1;">10</div>
+            <div style="font-size:9px;font-weight:600;color:var(--gray-mid);">ABR</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;color:var(--navy);">Ameca, Jalisco</div>
+            <div style="font-size:11px;color:var(--gray-mid);">2:00 PM – 6:00 PM · $520 MXN</div>
+          </div>
+          <div style="background:var(--blue-pale);color:var(--blue);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Pendiente</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial -->
+    <div style="margin:18px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Historial reciente</div>
+      <div style="display:flex;flex-direction:column;gap:1px;background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
+        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--gray-pale);">
+          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">5</div>
+            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">MAR</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--gray);">Colima, Col.</div>
+            <div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,440 MXN</div>
+          </div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--gray-pale);">
+          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">20</div>
+            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">FEB</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--gray);">San Juan de los Lagos</div>
+            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 1:00 PM · $580 MXN</div>
+          </div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
+            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">8</div>
+            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">FEB</div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--gray);">Tepatitlán de Morelos</div>
+            <div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,300 MXN</div>
+          </div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estadísticas rápidas -->
+    <div style="margin:18px 16px 24px;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Tu impacto en 2026</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:var(--blue-pale);border-radius:var(--r);padding:14px;text-align:center;">
+          <div style="font-size:26px;font-weight:800;color:var(--blue);">8</div>
+          <div style="font-size:11px;color:var(--blue-mid);margin-top:2px;">Consultas realizadas</div>
+        </div>
+        <div style="background:var(--teal-bg);border-radius:var(--r);padding:14px;text-align:center;">
+          <div style="font-size:26px;font-weight:800;color:var(--teal);">5</div>
+          <div style="font-size:11px;color:var(--teal);margin-top:2px;">Localidades visitadas</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r);padding:14px;text-align:center;border:1.5px solid var(--gray-pale);">
+          <div style="font-size:26px;font-weight:800;color:var(--navy);">$6,290</div>
+          <div style="font-size:11px;color:var(--gray-mid);margin-top:2px;">MXN generados</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--r);padding:14px;text-align:center;border:1.5px solid var(--gray-pale);">
+          <div style="font-size:26px;font-weight:800;color:var(--navy);">4.8</div>
+          <div style="font-size:11px;color:var(--gray-mid);margin-top:2px;">★ Calificación promedio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="bn-item" onclick="goTo('map')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bn-label">Mapa</span>
+    </div>
+    <div class="bn-item on" onclick="goTo('agenda')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#185FA5" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#185FA5" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#185FA5"/><circle cx="10" cy="13" r="1" fill="#185FA5"/><circle cx="13" cy="13" r="1" fill="#185FA5"/></svg>
+      <span class="bn-label on">Agenda</span>
+    </div>
+    <div class="bn-item" onclick="goTo('perfil')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bn-label">Perfil</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 6: PERFIL -->
+<div class="screen" id="sc-perfil">
+  <div class="topbar">
+    <div class="topbar-logo">Medi<span>Nest</span></div>
+    <div style="background:var(--gray-pale);border-radius:8px;padding:5px 11px;font-size:12px;color:var(--gray);cursor:pointer;font-weight:500;">Editar</div>
+  </div>
+  <div class="scroll-area">
+
+    <!-- Header de perfil -->
+    <div style="background:var(--navy);padding:24px 20px 28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);"></div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+        <div style="width:68px;height:68px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0;border:3px solid rgba(255,255,255,.25);">CM</div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#fff;">Dr. Carlos Mendoza</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.75);margin-top:2px;">Médico Internista</div>
+          <div style="display:flex;align-items:center;gap:5px;margin-top:5px;">
+            <div style="background:var(--teal);border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px;">
+              <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cédula verificada
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:rgba(255,255,255,.08);border-radius:12px;padding:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:800;color:#fff;">8</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Reservas</div>
+        </div>
+        <div style="text-align:center;border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15);">
+          <div style="font-size:20px;font-weight:800;color:#fff;">4.8★</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Calificación</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:20px;font-weight:800;color:#fff;">5</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Localidades</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datos profesionales -->
+    <div style="margin:16px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Datos profesionales</div>
+      <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
+        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
+          <span style="font-size:12px;color:var(--gray-mid);">Especialidad</span>
+          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">Medicina Interna</span>
+        </div>
+        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
+          <span style="font-size:12px;color:var(--gray-mid);">Cédula profesional</span>
+          <span style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal);">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D9E75" stroke-width="1.2"/><polyline points="3,6 5,8 9,3.5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/></svg>
+            6243891 · Verificada
+          </span>
+        </div>
+        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
+          <span style="font-size:12px;color:var(--gray-mid);">Institución</span>
+          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">U de G — CUCS</span>
+        </div>
+        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
+          <span style="font-size:12px;color:var(--gray-mid);">Años de experiencia</span>
+          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">7 años</span>
+        </div>
+        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:12px;color:var(--gray-mid);">Correo</span>
+          <span style="font-size:13px;font-weight:600;color:var(--blue);">c.mendoza@medinest.mx</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Especialidades secundarias -->
+    <div style="margin:16px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Áreas de atención</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;">
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Medicina Interna</span>
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Diabetes tipo 2</span>
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Hipertensión</span>
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Chequeos generales</span>
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Enfermedades crónicas</span>
+      </div>
+    </div>
+
+    <!-- Historial de reservas -->
+    <div style="margin:16px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Historial de reservas</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
+            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Tepatitlán de Morelos</div>
+            <div style="font-size:11px;color:var(--gray-mid);">5 Mar 2026 · Día completo</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">$1,300</div>
+            <div style="font-size:10px;color:var(--teal);">★ 5.0</div>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
+            <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">Colima, Col.</div>
+            <div style="font-size:11px;color:var(--gray-mid);">20 Feb 2026 · Tarde</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">$720</div>
+            <div style="font-size:10px;color:var(--teal);">★ 4.8</div>
+          </div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
+          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">San Juan de los Lagos</div>
+            <div style="font-size:11px;color:var(--gray-mid);">8 Feb 2026 · Mañana</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:12px;font-weight:700;color:var(--navy);">$580</div>
+            <div style="font-size:10px;color:var(--teal);">★ 4.7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reseñas recibidas -->
+    <div style="margin:16px 16px 0;">
+      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Reseñas de otros médicos</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;">AT</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--navy);">Dra. Ana Torres</div>
+              <div style="font-size:10px;color:#F0A500;">★★★★★</div>
+            </div>
+            <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">5 Mar 2026</div>
+          </div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Médico muy profesional, el consultorio perfecto para atender pacientes de la región."</div>
+        </div>
+        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+            <div style="width:30px;height:30px;border-radius:50%;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--teal);flex-shrink:0;">MR</div>
+            <div>
+              <div style="font-size:12px;font-weight:700;color:var(--navy);">Dr. Miguel Ríos</div>
+              <div style="font-size:10px;color:#F0A500;">★★★★☆</div>
+            </div>
+            <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">20 Feb 2026</div>
+          </div>
+          <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Buen trato con los pacientes, muy puntual. El espacio en Colima muy recomendable."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón cerrar sesión -->
+    <div style="margin:20px 16px 28px;">
+      <button style="width:100%;background:transparent;border:1.5px solid var(--gray-light);border-radius:12px;padding:13px;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;font-family:'Sora',sans-serif;">Cerrar sesión</button>
+    </div>
+  </div>
+  <div class="bottom-nav">
+    <div class="bn-item" onclick="goTo('map')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bn-label">Mapa</span>
+    </div>
+    <div class="bn-item" onclick="goTo('agenda')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
+      <span class="bn-label">Agenda</span>
+    </div>
+    <div class="bn-item on" onclick="goTo('perfil')">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
+      <span class="bn-label on">Perfil</span>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
 <div class="modal-bg" id="modal-bg" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal-box">
     <div class="modal-icon">
@@ -433,114 +837,139 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 </div>
 
 <script>
+// Clinics ~50–100 km from Guadalajara in real towns
 const clinics=[
-  {name:"Consultorio Providencia",addr:"Av. Américas 320, Providencia",fullAddr:"Av. Américas 320, Providencia, Guadalajara",price:850,rating:"4.9",rcount:"(48 reseñas)",
-   equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG"],
-   amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi","A/C","Sanitarios"],
-   desc:"Espacio clínico de alta gama en Providencia. Completamente equipado, ambiente tranquilo y profesional. Ideal para medicina general y especialidades.",
-   reviews:[{doc:"Dr. Carlos Vega — Cardiología",txt:"Excelente espacio, muy bien equipado. El ultrasonido en perfectas condiciones."},{doc:"Dra. Ana Torres — Ginecología",txt:"Ambiente profesional, pacientes cómodos en la sala de espera."}],
-   imgs:["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80"],
-   colors:["#c8ddf5","#b8cce8","#a8bbdb"],
-   mapX:"42%",mapY:"44%"},
-  {name:"Centro Médico Chapalita",addr:"Av. Patria 150, Chapalita",fullAddr:"Av. Patria 150, Chapalita, Guadalajara",price:700,rating:"4.7",rcount:"(32 reseñas)",
-   equip:["Escritorio","Camilla","Monitor ECG","Báscula"],
-   amenities:["Sala espera","Estacionamiento","WiFi","A/C"],
-   desc:"Consultorio moderno en Chapalita, zona céntrica y de fácil acceso. Espacio luminoso con equipo básico incluido.",
-   reviews:[{doc:"Dr. Miguel Ríos — Medicina Gral.",txt:"Muy accesible para mis pacientes, fácil estacionamiento."}],
-   imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"],
-   colors:["#b8cce8","#c8ddf5","#a8bbdb"],
-   mapX:"64%",mapY:"56%"},
-  {name:"Consultorio Zapopan",addr:"Av. Laureles 88, Zapopan",fullAddr:"Av. Laureles 88, Zapopan, Jalisco",price:600,rating:"4.5",rcount:"(19 reseñas)",
-   equip:["Escritorio","Camilla","Oxímetro"],
-   amenities:["Sala espera","WiFi"],
-   desc:"Opción práctica en Zapopan. Consultorio limpio y funcional, perfecto para jornadas de servicio social.",
-   reviews:[{doc:"Dra. Laura Mora — Pediatría",txt:"Buena opción para comenzar la consulta privada a bajo costo."}],
-   imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],
-   colors:["#a8bbdb","#c8ddf5","#b8cce8"],
-   mapX:"28%",mapY:"32%"},
-  {name:"Clínica Puerta de Hierro",addr:"Blvd. Puerta de Hierro 45",fullAddr:"Blvd. Puerta de Hierro 45, Guadalajara",price:950,rating:"5.0",rcount:"(61 reseñas)",
-   equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG","Oxímetro","Nebulizador"],
-   amenities:["Sala VIP","Recepcionista","Valet","WiFi","Cafetería","A/C"],
-   desc:"La opción premium de la plataforma. Clínica boutique con acabados de lujo y tecnología de punta.",
-   reviews:[{doc:"Dr. Fernando Leal — Dermatología",txt:"El mejor consultorio en el que he trabajado. Definitivamente regreso."},{doc:"Dra. Patricia Soto — Endocrinología",txt:"Pacientes encantados con las instalaciones."}],
-   imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80"],
-   colors:["#c8ddf5","#a8bbdb","#b8cce8"],
-   mapX:"76%",mapY:"33%"},
-  {name:"Consultorio Tlaquepaque",addr:"Independencia 200, Tlaquepaque",fullAddr:"Independencia 200, Tlaquepaque, Jalisco",price:550,rating:"4.3",rcount:"(14 reseñas)",
-   equip:["Escritorio","Camilla"],
-   amenities:["Sala espera","Estacionamiento"],
-   desc:"Opción económica en San Pedro Tlaquepaque. Zona histórica con mucho tráfico peatonal.",
-   reviews:[{doc:"Dr. Jorge Ibarra — Medicina Gral.",txt:"Buena ubicación, precio muy accesible para empezar."}],
-   imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80"],
-   colors:["#a8bbdb","#b8cce8","#c8ddf5"],
-   mapX:"53%",mapY:"75%"}
+  {
+    name:"Consultorio Médico Tepatitlán",
+    loc:"Tepatitlán de Morelos, Jal.",
+    addr:"Calle Morelos 45, Centro",
+    fullAddr:"Morelos 45, Centro, Tepatitlán de Morelos, Jalisco",
+    distKm:62, driveMin:50,
+    price:650, rating:"4.8", rcount:"(31 reseñas)",
+    equip:["Escritorio","Camilla","Monitor ECG","Oxímetro"],
+    amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi"],
+    desc:"Espacio clínico en el corazón de Tepatitlán, ciudad con alta demanda de especialistas. Consultorio equipado, con sala de espera cómoda y fácil acceso desde la carretera GDL–Tepa.",
+    impact:"Llevarás medicina especializada a Tepatitlán, donde la mayoría de pacientes deben viajar a GDL para ver un especialista.",
+    reviews:[{doc:"Dra. Lucía Ríos — Ginecología",txt:"Muy bien ubicado, pacientes muy agradecidos de no tener que ir hasta Guadalajara."},{doc:"Dr. Ernesto Mora — Medicina Interna",txt:"Excelente instalaciones para ser una ciudad del interior."}],
+    imgs:["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80"],
+    colors:["#c8ddf5","#b8cce8","#a8bbdb"],
+    mapX:"72%",mapY:"38%"
+  },
+  {
+    name:"Centro Médico Lagos de Moreno",
+    loc:"Lagos de Moreno, Jal.",
+    addr:"Av. Juárez 120, Centro",
+    fullAddr:"Av. Juárez 120, Centro, Lagos de Moreno, Jalisco",
+    distKm:95, driveMin:80,
+    price:600, rating:"4.6", rcount:"(18 reseñas)",
+    equip:["Escritorio","Camilla","Ultrasonido","Báscula"],
+    amenities:["Sala espera","WiFi","A/C","Sanitarios"],
+    desc:"Consultorio amplio en Lagos de Moreno, ciudad fronteriza entre Jalisco y Guanajuato. Zona de alta concentración ganadera con poca oferta de especialistas médicos privados.",
+    impact:"Lagos de Moreno tiene más de 160,000 habitantes y muy pocos especialistas. Tu visita puede atender a decenas de pacientes sin opciones locales.",
+    reviews:[{doc:"Dr. Héctor Sandoval — Cardiología",txt:"La comunidad lo necesita mucho. Los pacientes llegaron desde ranchos cercanos."},{doc:"Dra. Verónica Castro — Pediatría",txt:"Buen espacio, la gente muy receptiva y agradecida."}],
+    imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"],
+    colors:["#b8cce8","#c8ddf5","#a8bbdb"],
+    mapX:"85%",mapY:"25%"
+  },
+  {
+    name:"Consultorio San Juan de los Lagos",
+    loc:"San Juan de los Lagos, Jal.",
+    addr:"Portal Morelos 8, Centro",
+    fullAddr:"Portal Morelos 8, Centro, San Juan de los Lagos",
+    distKm:80, driveMin:65,
+    price:580, rating:"4.7", rcount:"(22 reseñas)",
+    equip:["Escritorio","Camilla","Oxímetro","Estetoscopio digital"],
+    amenities:["Sala espera","Estacionamiento","WiFi"],
+    desc:"Consultorio céntrico en una de las ciudades más visitadas de Jalisco por su basílica. Alta afluencia de personas de toda la región los fines de semana y días festivos.",
+    impact:"San Juan atrae peregrinos de toda la región. Muchos vienen de municipios sin atención médica especializada — una gran oportunidad de impacto.",
+    reviews:[{doc:"Dra. Patricia Núñez — Endocrinología",txt:"Llegaron pacientes de 3 municipios distintos el mismo día. Gran necesidad."},{doc:"Dr. Alfonso Leal — Medicina Gral.",txt:"Espacio cómodo, bien ubicado junto a la plaza principal."}],
+    imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80"],
+    colors:["#a8bbdb","#c8ddf5","#b8cce8"],
+    mapX:"80%",mapY:"32%"
+  },
+  {
+    name:"Clínica Privada Colima Norte",
+    loc:"Colima, Col.",
+    addr:"Blvd. Camino Real 310",
+    fullAddr:"Blvd. Camino Real 310, Col. Las Víboras, Colima",
+    distKm:98, driveMin:85,
+    price:720, rating:"4.9", rcount:"(44 reseñas)",
+    equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG","Nebulizador","Oxímetro"],
+    amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi","A/C","Cafetería"],
+    desc:"Clínica bien equipada en la capital colimense. Espacio moderno, ideal para especialistas que buscan atender pacientes de Colima y municipios del estado con poca oferta privada.",
+    impact:"Colima tiene escasa oferta de especialistas privados. Atender aquí amplía el acceso a salud a toda la región costera y de la sierra.",
+    reviews:[{doc:"Dra. Claudia Ibarra — Dermatología",txt:"Instalaciones excelentes, los mejores de mi red fuera de GDL."},{doc:"Dr. Roberto Ángeles — Neurología",txt:"Pacientes muy bien atendidos, la clínica tiene todo lo necesario."}],
+    imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],
+    colors:["#c8ddf5","#a8bbdb","#b8cce8"],
+    mapX:"30%",mapY:"82%"
+  },
+  {
+    name:"Consultorio Médico Ameca",
+    loc:"Ameca, Jalisco",
+    addr:"Calle Hidalgo 55, Centro",
+    fullAddr:"Hidalgo 55, Centro, Ameca, Jalisco",
+    distKm:55, driveMin:45,
+    price:520, rating:"4.4", rcount:"(14 reseñas)",
+    equip:["Escritorio","Camilla","Báscula","Tensiómetro"],
+    amenities:["Sala espera","Estacionamiento"],
+    desc:"Consultorio funcional en Ameca, municipio de la región Valles. Zona agrícola con alta necesidad de atención médica especializada accesible.",
+    impact:"La región Valles carece de especialistas. Ameca es punto de concentración para docenas de comunidades rurales del entorno.",
+    reviews:[{doc:"Dr. Jaime Delgado — Medicina Interna",txt:"La gente espera mucho poder ver a un especialista aquí, vale la pena el viaje."},{doc:"Dra. Silvia Torres — Nutrición",txt:"Buena opción para llegar a pacientes que nunca han tenido acceso."}],
+    imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],
+    colors:["#a8bbdb","#b8cce8","#c8ddf5"],
+    mapX:"18%",mapY:"44%"
+  }
 ];
 
-// ── Calendar state ──
 const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-const DAYS_ES=["Do","Lu","Ma","Mi","Ju","Vi","Sá"];
 const DAY_NAMES=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
 const MONTH_NAMES_ES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 
-// Available days per month (by day-of-month). We'll generate for current + next months.
+let sel=0, galIdx=0, slots=[true,false], fullDay=false;
+let calYear=2026, calMonth=2, selDay=12;
+
 function getAvailDays(year,month){
-  // Simulate: all weekdays are available
-  const avail=[];
-  const d=new Date(year,month,1);
+  const avail=[], d=new Date(year,month,1);
   const today=new Date(); today.setHours(0,0,0,0);
   while(d.getMonth()===month){
-    const dow=d.getDay();
-    if(dow!==0&&dow!==6&&d>=today) avail.push(d.getDate());
+    if(d.getDay()!==0&&d.getDay()!==6&&d>=today) avail.push(d.getDate());
     d.setDate(d.getDate()+1);
   }
   return avail;
 }
 
-let sel=0, galIdx=0, slots=[true,false], fullDay=false;
-let calYear=2026, calMonth=2; // March 2026 (0-indexed)
-let selDay=12; // default selected day
-
-// ── Gallery ──
 function buildGallery(){
   const c=clinics[sel];
-  const slides=document.getElementById('gallery-slides');
-  slides.innerHTML=c.imgs.map((url,i)=>`
-    <div class="gallery-slide">
-      <img class="gallery-slide-img" src="${url}"
-        style="background:${c.colors[i]||'#c8ddf5'};"
-        onerror="this.style.display='none';this.parentElement.style.background='${c.colors[i]||'#c8ddf5'}'">
+  document.getElementById('gallery-slides').innerHTML=c.imgs.map((url,i)=>`
+    <div style="min-width:100%;height:100%;overflow:hidden;background:${c.colors[i]||'#c8ddf5'};">
+      <img src="${url}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
     </div>`).join('');
-  galIdx=0;
-  updateGalleryPos();
+  galIdx=0; updateGalleryPos();
 }
 
 function updateGalleryPos(){
-  const c=clinics[sel];
   document.getElementById('gallery-slides').style.transform=`translateX(-${galIdx*100}%)`;
-  const dots=document.getElementById('gallery-dots');
-  dots.innerHTML=c.imgs.map((_,i)=>`<div class="gdot${i===galIdx?' on':''}"></div>`).join('');
+  const c=clinics[sel];
+  document.getElementById('gallery-dots').innerHTML=c.imgs.map((_,i)=>`<div class="gdot${i===galIdx?' on':''}"></div>`).join('');
 }
 
 function galNav(dir){
-  const c=clinics[sel];
-  galIdx=(galIdx+dir+c.imgs.length)%c.imgs.length;
-  updateGalleryPos();
+  const c=clinics[sel]; galIdx=(galIdx+dir+c.imgs.length)%c.imgs.length; updateGalleryPos();
 }
 
-// ── Map pins ──
 function buildPins(){
   document.getElementById('map-pins').innerHTML=clinics.map((c,i)=>`
     <div class="pin" style="left:${c.mapX};top:${c.mapY};" onclick="selectPin(${i})">
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div class="pin-body${i===sel?' on':''}">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <rect x="1" y="3" width="10" height="8" rx="1.5" fill="white" opacity=".9"/>
-            <rect x="2" y="1" width="8" height="4" rx="1" fill="white" opacity=".7"/>
-            <rect x="4.5" y="6" width="3" height="4" rx=".5" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
-            <rect x="2" y="5.5" width="2.5" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
-            <rect x="7.5" y="5.5" width="2.5" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <rect x="1" y="3" width="9" height="7" rx="1.3" fill="white" opacity=".9"/>
+            <rect x="2" y="1" width="7" height="3.5" rx=".8" fill="white" opacity=".7"/>
+            <rect x="4" y="5.5" width="3" height="3.5" rx=".4" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+            <rect x="1.8" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
+            <rect x="7.2" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
           </svg>
-          $${c.price}
+          <span>${c.distKm} km</span>
         </div>
         <div class="pin-tail${i===sel?' on':''}"></div>
       </div>
@@ -550,13 +979,13 @@ function buildPins(){
 function updatePreview(){
   const c=clinics[sel];
   document.getElementById('mp-name').textContent=c.name;
-  document.getElementById('mp-addr').textContent=c.addr;
+  document.getElementById('mp-loc').textContent=c.loc;
   document.getElementById('mp-price').textContent=`$${c.price} MXN / turno`;
+  document.getElementById('mp-dist').innerHTML=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km`;
 }
 
 function selectPin(i){sel=i;buildPins();updatePreview();}
 
-// ── Calendar ──
 function buildCal(){
   const avail=getAvailDays(calYear,calMonth);
   document.getElementById('cal-month-label').textContent=`${MONTHS[calMonth]} ${calYear}`;
@@ -565,47 +994,32 @@ function buildCal(){
   let html='';
   for(let i=0;i<firstDow;i++) html+=`<div class="cday mut"></div>`;
   for(let d=1;d<=daysInMonth;d++){
-    const isSel=d===selDay&&calMonth===calMonth;
+    const isSel=d===selDay;
     const isAv=avail.includes(d);
-    let cls='cday';
-    if(isSel&&isAv) cls+=' sel';
-    else if(isAv) cls+=' av';
-    else cls+=' mut';
-    html+=`<div class="${cls}" ${isAv?`onclick="selectDay(${d})"`:''} >${d}</div>`;
+    let cls='cday'+(isSel&&isAv?' sel':isAv?' av':' mut');
+    html+=`<div class="${cls}"${isAv?` onclick="selectDay(${d})"`:''}>${d}</div>`;
   }
   document.getElementById('cal-days').innerHTML=html;
   updateSlotLabel();
 }
 
-function selectDay(d){
-  selDay=d;
-  buildCal();
-}
+function selectDay(d){selDay=d;buildCal();}
 
 function updateSlotLabel(){
   const dow=new Date(calYear,calMonth,selDay).getDay();
   const dayName=DAY_NAMES[dow];
-  const monthName=MONTH_NAMES_ES[calMonth];
-  document.getElementById('slot-date-label').textContent=
-    `${dayName.charAt(0).toUpperCase()+dayName.slice(1)}, ${selDay} de ${monthName} — Turnos disponibles`;
-  document.getElementById('cf-date').textContent=
-    `${dayName.charAt(0).toUpperCase()+dayName.slice(1)}, ${selDay} de ${monthName} ${calYear}`;
+  const mName=MONTH_NAMES_ES[calMonth];
+  document.getElementById('slot-date-label').textContent=`${dayName[0].toUpperCase()+dayName.slice(1)}, ${selDay} de ${mName} — Turnos disponibles`;
+  document.getElementById('cf-date').textContent=`${dayName[0].toUpperCase()+dayName.slice(1)}, ${selDay} de ${mName} ${calYear}`;
 }
 
 document.getElementById('cal-prev').addEventListener('click',()=>{
-  calMonth--;
-  if(calMonth<0){calMonth=11;calYear--;}
-  selDay=1;
-  buildCal();
+  calMonth--; if(calMonth<0){calMonth=11;calYear--;} selDay=1; buildCal();
 });
 document.getElementById('cal-next').addEventListener('click',()=>{
-  calMonth++;
-  if(calMonth>11){calMonth=0;calYear++;}
-  selDay=1;
-  buildCal();
+  calMonth++; if(calMonth>11){calMonth=0;calYear++;} selDay=1; buildCal();
 });
 
-// ── Slot logic ──
 function toggleSlot(i){
   if(fullDay)return;
   slots[i]=!slots[i];
@@ -617,10 +1031,9 @@ function toggleSlot(i){
 }
 
 function toggleFullDay(){
-  fullDay=!fullDay;
-  slots=[fullDay,fullDay];
+  fullDay=!fullDay; slots=[fullDay,fullDay];
   document.getElementById('fd-check').classList.toggle('on',fullDay);
-  document.getElementById('fd-check-svg').style.display=fullDay?'block':'none';
+  document.getElementById('fd-svg').style.display=fullDay?'block':'none';
   document.getElementById('full-day-btn').classList.toggle('on',fullDay);
   [0,1].forEach(i=>{
     document.getElementById('slot'+i).classList.toggle('on',fullDay);
@@ -634,9 +1047,7 @@ function toggleFullDay(){
 function updatePriceSummary(){
   const c=clinics[sel];
   const s0=slots[0],s1=slots[1];
-  let total=0;
-  if(s0)total+=c.price;
-  if(s1)total+=c.price;
+  let total=(s0?c.price:0)+(s1?c.price:0);
   document.getElementById('ps-row1').style.display=s0?'flex':'none';
   document.getElementById('ps-row2').style.display=s1?'flex':'none';
   document.getElementById('ps-p1').textContent=`$${c.price} MXN`;
@@ -647,15 +1058,18 @@ function updatePriceSummary(){
   btn.textContent=total>0?`Continuar — $${total} MXN →`:'Selecciona un turno';
 }
 
-// ── Navigation ──
 function goDetail(i){
   if(i>=0) sel=i;
   const c=clinics[sel];
-  document.getElementById('det-title').textContent=c.name.length>18?c.name.slice(0,17)+'…':c.name;
+  document.getElementById('det-title').textContent=c.loc;
   document.getElementById('d-name').textContent=c.name;
+  document.getElementById('d-loc').textContent=c.loc;
   document.getElementById('d-addr').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#888" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#888" stroke-width="1.2" fill="none"/></svg> ${c.fullAddr}`;
+  document.getElementById('d-dist-pill').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km desde GDL`;
+  document.getElementById('d-drive-pill').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="10" height="6" rx="1.5" stroke="#633806" stroke-width="1.1"/><path d="M3 4V3a3 3 0 016 0v1" stroke="#633806" stroke-width="1.1" fill="none"/><circle cx="3.5" cy="8" r="1" fill="#633806"/><circle cx="8.5" cy="8" r="1" fill="#633806"/></svg>~${c.driveMin} min en auto`;
   document.getElementById('d-rating').textContent=c.rating;
   document.getElementById('d-rcount').textContent=c.rcount;
+  document.getElementById('d-impact-text').innerHTML=c.impact.replace(c.loc.split(',')[0],`<strong>${c.loc.split(',')[0]}</strong>`);
   document.getElementById('d-equip').innerHTML=c.equip.map(e=>`<div class="equip-chip">${e}</div>`).join('');
   document.getElementById('d-amenities').innerHTML=c.amenities.map(a=>`<div class="am-item"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#888" stroke-width="1"/><polyline points="2.5,5 4,6.5 7.5,3" stroke="#888" stroke-width="1.2" stroke-linecap="round"/></svg>${a}</div>`).join('');
   document.getElementById('d-desc').textContent=c.desc;
@@ -667,36 +1081,40 @@ function goDetail(i){
 
 function goTo(sc){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  const ids={map:'sc-map',detail:'sc-detail',schedule:'sc-schedule',confirm:'sc-confirm'};
+  const ids={map:'sc-map',detail:'sc-detail',schedule:'sc-schedule',confirm:'sc-confirm',agenda:'sc-agenda',perfil:'sc-perfil'};
   document.getElementById(ids[sc]).classList.add('active');
   document.querySelector(`#${ids[sc]} .scroll-area`)?.scrollTo(0,0);
-
+  // update main nav badge
+  ['map','agenda','perfil'].forEach(n=>{
+    const el=document.getElementById('bn-'+n);
+    const lbl=document.getElementById('bnl-'+n);
+    if(el&&lbl){el.classList.toggle('on',n===sc);lbl.classList.toggle('on',n===sc);}
+  });
   if(sc==='schedule'){
     const c=clinics[sel];
-    const img=document.getElementById('sch-img');
-    img.src=c.imgs[0];
+    document.getElementById('sch-img').src=c.imgs[0];
     document.getElementById('sch-name').textContent=c.name;
-    document.getElementById('sch-addr').textContent=c.addr;
-    // reset slots
+    document.getElementById('sch-loc').textContent=c.loc;
+    document.getElementById('sch-addr').textContent=`${c.distKm} km · ~${c.driveMin} min desde GDL`;
     slots=[true,false]; fullDay=false;
     document.getElementById('full-day-btn').classList.remove('on');
     document.getElementById('fd-check').classList.remove('on');
-    document.getElementById('fd-check-svg').style.display='none';
+    document.getElementById('fd-svg').style.display='none';
     [0,1].forEach(i=>{
       const s=document.getElementById('slot'+i);
       const chk=document.getElementById('sc'+i);
       if(i===0){s.classList.add('on');chk.classList.add('on');chk.innerHTML=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
       else{s.classList.remove('on');chk.classList.remove('on');chk.innerHTML='';}
     });
-    buildCal();
-    updatePriceSummary();
+    buildCal(); updatePriceSummary();
   }
-
   if(sc==='confirm'){
     const c=clinics[sel];
     document.getElementById('cf-img').src=c.imgs[0];
     document.getElementById('cf-name').textContent=c.name;
+    document.getElementById('cf-loc').textContent=c.loc;
     document.getElementById('cf-addr').textContent=c.fullAddr;
+    document.getElementById('cf-dist').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km · ~${c.driveMin} min en auto`;
     document.getElementById('cf-equip').textContent=c.equip.join(', ');
     const s0=slots[0],s1=slots[1];
     let timesStr='',dur='';
@@ -705,8 +1123,7 @@ function goTo(sc){
     else{timesStr='2:00 PM – 6:00 PM';dur='4 horas';}
     document.getElementById('cf-times').textContent=timesStr;
     document.getElementById('cf-dur').textContent=dur;
-    const total=(s0?c.price:0)+(s1?c.price:0);
-    document.getElementById('cf-total').textContent=`$${total} MXN`;
+    document.getElementById('cf-total').textContent=`$${(s0?c.price:0)+(s1?c.price:0)} MXN`;
     updateSlotLabel();
   }
 }
@@ -714,12 +1131,11 @@ function goTo(sc){
 function showSuccess(){
   const c=clinics[sel];
   const s0=slots[0],s1=slots[1];
-  const t=s0&&s1?'día completo (9 AM – 6 PM)':s0?'turno matutino (9 AM – 1 PM)':'turno vespertino (2 PM – 6 PM)';
-  document.getElementById('modal-msg').textContent=`${c.name} reservado para el ${document.getElementById('cf-date').textContent}, ${t}. Confirmación enviada a tu correo.`;
+  const t=s0&&s1?'día completo (9 AM – 6 PM)':s0?'turno matutino':'turno vespertino';
+  document.getElementById('modal-msg').textContent=`${c.name} en ${c.loc} reservado para el ${document.getElementById('cf-date').textContent}, ${t}. Confirmación enviada a tu correo.`;
   document.getElementById('modal-bg').classList.add('show');
 }
 
-// chips
 document.querySelectorAll('.chip').forEach(ch=>{
   ch.addEventListener('click',function(){
     this.closest('.chips-wrap').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
@@ -727,9 +1143,7 @@ document.querySelectorAll('.chip').forEach(ch=>{
   });
 });
 
-// init
-buildPins();
-updatePreview();
+buildPins(); updatePreview();
 </script>
 </body>
 </html>
