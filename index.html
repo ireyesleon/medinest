@@ -10,6 +10,7 @@
 :root{
   --navy:#042C53;--blue:#185FA5;--blue-mid:#378ADD;--blue-light:#B5D4F4;--blue-pale:#E6F1FB;
   --teal:#1D9E75;--teal-bg:#E1F5EE;
+  --amber:#854F0B;--amber-bg:#FAEEDA;--amber-border:#FAC775;
   --gray-dark:#1a1a1a;--gray:#5F5E5A;--gray-mid:#888780;--gray-light:#D3D1C7;--gray-pale:#F1EFE8;
   --white:#fff;--bg:#F4F7FB;
   --r:14px;--r-lg:20px;
@@ -22,99 +23,92 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .scroll-area::-webkit-scrollbar{display:none;}
 
+/* topbar */
 .topbar{background:var(--white);padding:14px 18px 10px;border-bottom:1px solid var(--gray-pale);flex-shrink:0;display:flex;align-items:center;gap:10px;}
-.topbar-logo{font-size:20px;font-weight:700;color:var(--navy);letter-spacing:-.5px;margin-right:auto;}
-.topbar-logo span{color:var(--blue);}
-.topbar-icon{width:36px;height:36px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.topbar-back{width:34px;height:34px;border-radius:50%;background:var(--gray-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
-.topbar-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;text-align:center;}
+.logo{font-size:20px;font-weight:700;color:var(--navy);letter-spacing:-.5px;margin-right:auto;}
+.logo span{color:var(--blue);}
+.tb-icon{width:36px;height:36px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.tb-back{width:34px;height:34px;border-radius:50%;background:var(--gray-pale);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.tb-title{font-size:15px;font-weight:600;color:var(--navy);flex:1;text-align:center;}
 
-.bottom-nav{background:var(--white);border-top:1px solid var(--gray-pale);display:flex;padding:8px 0 calc(8px + var(--safe-bottom));flex-shrink:0;}
-.bn-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;}
-.bn-label{font-size:10px;color:var(--gray-mid);font-weight:500;}
-.bn-label.on{color:var(--blue);}
+/* bottom nav */
+.bnav{background:var(--white);border-top:1px solid var(--gray-pale);display:flex;padding:8px 0 calc(8px + var(--safe-bottom));flex-shrink:0;}
+.bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;}
+.bni-lbl{font-size:10px;color:var(--gray-mid);font-weight:500;}
+.bni-lbl.on{color:var(--blue);}
+.bni-ico{display:flex;}
 
+/* search */
 .search-wrap{padding:12px 16px 8px;}
 .search-box{background:var(--bg);border:1.5px solid var(--gray-pale);border-radius:30px;padding:10px 16px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-mid);}
-.chips-wrap{padding:0 16px 10px;display:flex;gap:7px;overflow-x:auto;}
-.chips-wrap::-webkit-scrollbar{display:none;}
-.chip{background:var(--white);border:1.5px solid var(--gray-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--gray);white-space:nowrap;cursor:pointer;transition:all .15s;flex-shrink:0;font-weight:500;}
+.chips{padding:0 16px 10px;display:flex;gap:7px;overflow-x:auto;}
+.chips::-webkit-scrollbar{display:none;}
+.chip{background:var(--white);border:1.5px solid var(--gray-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--gray);white-space:nowrap;cursor:pointer;font-weight:500;flex-shrink:0;}
 .chip.on{background:var(--blue);color:#fff;border-color:var(--blue);}
 
-/* MAP */
+/* map */
 .map-wrap{flex:1;position:relative;overflow:hidden;}
 .map-wrap iframe{width:100%;height:100%;border:none;display:block;}
 .map-pins{position:absolute;inset:0;pointer-events:none;}
 .pin{position:absolute;pointer-events:all;cursor:pointer;transform:translate(-50%,-100%);}
-.pin-body{background:var(--blue);color:#fff;border-radius:10px;padding:5px 8px;font-size:10px;font-weight:600;display:flex;align-items:center;gap:4px;border:2px solid #fff;box-shadow:0 2px 10px rgba(24,95,165,.4);transition:all .2s;white-space:nowrap;}
+.pin-body{background:var(--blue);color:#fff;border-radius:10px;padding:5px 9px;font-size:10px;font-weight:600;display:flex;align-items:center;gap:4px;border:2px solid #fff;box-shadow:0 2px 10px rgba(24,95,165,.4);transition:all .2s;white-space:nowrap;}
 .pin-body.on{background:var(--teal);}
-.pin-dist{font-size:9px;opacity:.85;font-weight:400;}
 .pin-tail{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--blue);margin:0 auto;}
 .pin-tail.on{border-top-color:var(--teal);}
+.map-card{position:absolute;bottom:12px;left:12px;right:12px;background:var(--white);border-radius:var(--r-lg);padding:12px 14px;box-shadow:0 4px 20px rgba(4,44,83,.15);cursor:pointer;}
+.mc-name{font-size:13px;font-weight:700;color:var(--navy);}
+.mc-loc{font-size:11px;color:var(--blue);font-weight:600;margin:1px 0;}
+.mc-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
+.mc-price{font-size:14px;font-weight:700;color:var(--blue);}
+.mc-dist{display:flex;align-items:center;gap:4px;background:var(--blue-pale);border-radius:8px;padding:3px 9px;font-size:11px;color:var(--blue);font-weight:600;}
+.mc-btn{background:var(--blue);color:#fff;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:600;border:none;cursor:pointer;}
 
-.map-preview{position:absolute;bottom:12px;left:12px;right:12px;background:var(--white);border-radius:var(--r-lg);padding:12px 14px;box-shadow:0 4px 20px rgba(4,44,83,.15);cursor:pointer;}
-.mp-name{font-size:13px;font-weight:700;color:var(--navy);}
-.mp-loc{font-size:11px;color:var(--gray-mid);margin:1px 0;}
-.mp-row{display:flex;align-items:center;justify-content:space-between;margin-top:6px;}
-.mp-price{font-size:14px;font-weight:700;color:var(--blue);}
-.mp-dist-badge{display:flex;align-items:center;gap:4px;background:var(--blue-pale);border-radius:8px;padding:3px 9px;font-size:11px;color:var(--blue);font-weight:600;}
-.mp-btn{background:var(--blue);color:#fff;border-radius:10px;padding:6px 14px;font-size:12px;font-weight:600;border:none;cursor:pointer;}
-
-/* GALLERY */
-.detail-gallery{position:relative;height:230px;overflow:hidden;background:var(--blue-pale);flex-shrink:0;}
-.gallery-slides{display:flex;height:100%;transition:transform .3s ease;}
-.gallery-slide{min-width:100%;height:100%;overflow:hidden;}
-.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;}
-.avail-float{position:absolute;top:12px;right:12px;background:var(--teal);color:#fff;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;z-index:5;}
-.gallery-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--navy);z-index:5;font-weight:700;}
-.gallery-btn.prev{left:10px;}
-.gallery-btn.next{right:10px;}
-.gallery-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5;}
+/* gallery */
+.gallery{position:relative;height:230px;overflow:hidden;background:var(--blue-pale);flex-shrink:0;}
+.gslides{display:flex;height:100%;transition:transform .3s ease;}
+.gslide{min-width:100%;height:100%;overflow:hidden;}
+.gslide img{width:100%;height:100%;object-fit:cover;display:block;}
+.avail-tag{position:absolute;top:12px;right:12px;background:var(--teal);color:#fff;border-radius:8px;padding:4px 10px;font-size:11px;font-weight:700;z-index:5;}
+.gbtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--navy);z-index:5;font-weight:700;}
+.gbtn.prev{left:10px;}
+.gbtn.next,.gbtnnext{right:10px;}
+.gdots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:5;}
 .gdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5);}
 .gdot.on{background:#fff;width:16px;border-radius:3px;}
 
-/* Distance pill in detail */
+/* detail */
+.sec-lbl{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:8px;margin-top:14px;}
+.d-body{padding:16px;}
+.d-name{font-size:20px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:3px;}
+.d-loc{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:2px;}
+.d-addr{font-size:12px;color:var(--gray-mid);margin-bottom:8px;display:flex;align-items:center;gap:4px;}
 .dist-pill{display:inline-flex;align-items:center;gap:5px;background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--blue);font-weight:600;margin-bottom:10px;}
-.dist-pill svg{flex-shrink:0;}
-.drive-pill{display:inline-flex;align-items:center;gap:5px;background:#FFF8E6;border:1px solid #FAC775;border-radius:20px;padding:5px 12px;font-size:12px;color:#633806;font-weight:600;margin-bottom:10px;margin-left:6px;}
-
-.section-title{font-size:10px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:8px;margin-top:14px;}
-.detail-body{padding:16px;}
-.detail-name{font-size:20px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:4px;}
-.detail-loc{font-size:13px;font-weight:600;color:var(--blue);margin-bottom:3px;}
-.detail-addr{font-size:12px;color:var(--gray-mid);margin-bottom:8px;display:flex;align-items:center;gap:4px;}
+.drive-pill{display:inline-flex;align-items:center;gap:5px;background:var(--amber-bg);border:1px solid var(--amber-border);border-radius:20px;padding:5px 12px;font-size:12px;color:var(--amber);font-weight:600;margin-bottom:10px;margin-left:6px;}
 .stars-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;}
-.stars-num{font-size:18px;font-weight:700;color:var(--navy);}
 .equip-grid{display:flex;flex-wrap:wrap;gap:6px;}
 .equip-chip{background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:8px;padding:5px 10px;font-size:12px;color:var(--blue);font-weight:500;}
-.amenities{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.am-item{background:var(--bg);border-radius:8px;padding:7px 10px;font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px;}
-.desc-text{font-size:13px;color:var(--gray);line-height:1.7;}
+.amen-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.amen-item{background:var(--bg);border-radius:8px;padding:7px 10px;font-size:12px;color:var(--gray);display:flex;align-items:center;gap:5px;}
+.impact-box{background:var(--navy);border-radius:var(--r);padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.impact-ico{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.impact-txt{font-size:12px;color:rgba(255,255,255,.85);line-height:1.5;}
 .review-item{border-top:1px solid var(--gray-pale);padding:11px 0;}
 .review-doc{font-size:12px;font-weight:600;color:var(--gray-dark);}
 .review-txt{font-size:12px;color:var(--gray-mid);margin-top:2px;line-height:1.5;}
-
-/* Impact banner */
-.impact-banner{background:var(--navy);border-radius:var(--r);padding:12px 14px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.impact-icon{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.impact-text{font-size:12px;color:rgba(255,255,255,.85);line-height:1.5;}
-.impact-text strong{color:#fff;font-weight:700;}
-
-.booking-footer{background:var(--white);border-top:1px solid var(--gray-pale);padding:12px 16px calc(12px + var(--safe-bottom));flex-shrink:0;}
-.bf-price-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.bfooter{background:var(--white);border-top:1px solid var(--gray-pale);padding:12px 16px calc(12px + var(--safe-bottom));flex-shrink:0;}
+.bf-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
 .bf-price{font-size:20px;font-weight:700;color:var(--navy);}
 .bf-price span{font-size:12px;font-weight:400;color:var(--gray-mid);}
 .bf-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;}
 .bf-btn:active{background:var(--navy);}
 
-/* SCHEDULE */
+/* schedule */
 .clinic-mini{margin:12px 16px;background:var(--blue-pale);border-radius:var(--r);padding:10px 13px;display:flex;align-items:center;gap:10px;}
 .cm-thumb{width:44px;height:44px;border-radius:8px;background:var(--blue-light);flex-shrink:0;overflow:hidden;}
 .cm-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .cm-name{font-size:13px;font-weight:700;color:var(--navy);}
 .cm-loc{font-size:11px;color:var(--blue);font-weight:600;}
-.cm-addr{font-size:10px;color:var(--gray-mid);}
-
+.cm-sub{font-size:10px;color:var(--gray-mid);}
 .cal-card{margin:0 16px 14px;background:var(--white);border-radius:var(--r);border:1.5px solid var(--gray-pale);padding:14px;}
 .cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
 .cal-month{font-size:15px;font-weight:700;color:var(--navy);}
@@ -130,36 +124,41 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .cday.mut{color:var(--gray-light);}
 .cal-legend{display:flex;gap:14px;margin-top:10px;font-size:11px;color:var(--gray-mid);}
 .leg-dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:3px;vertical-align:middle;}
-
-.slots-section{margin:0 16px 12px;}
-.slot-date-label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.slots-sec{margin:0 16px 12px;}
+.slot-lbl{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;}
 .slot-card{border:2px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;margin-bottom:8px;cursor:pointer;transition:all .2s;}
 .slot-card.on{border-color:var(--blue);background:var(--blue-pale);}
 .slot-card:active{transform:scale(.98);}
-.slot-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
+.slot-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
 .slot-time{font-size:17px;font-weight:700;color:var(--navy);}
-.slot-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--gray-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s;background:#fff;}
-.slot-check.on{background:var(--blue);border-color:var(--blue);}
+.slot-chk{width:22px;height:22px;border-radius:50%;border:2px solid var(--gray-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#fff;}
+.slot-chk.on{background:var(--blue);border-color:var(--blue);}
 .slot-info{font-size:11px;color:var(--gray-mid);}
 .slot-badge{display:inline-block;background:var(--teal-bg);color:var(--teal);border-radius:5px;padding:2px 8px;font-size:10px;font-weight:600;margin-top:4px;}
-.full-day-banner{margin:0 16px 12px;background:var(--navy);border-radius:var(--r);padding:13px 15px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
-.full-day-banner:active{opacity:.85;}
-.full-day-banner.on{background:var(--blue-mid);}
+.fullday-btn{margin:0 16px 12px;background:var(--navy);border-radius:var(--r);padding:13px 15px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;}
+.fullday-btn.on{background:var(--blue-mid);}
+.fullday-btn:active{opacity:.85;}
 .fd-title{font-size:14px;font-weight:700;color:#fff;}
 .fd-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px;}
-.fd-check{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent;}
-.fd-check.on{background:#fff;border-color:#fff;}
+.fd-chk{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:transparent;}
+.fd-chk.on{background:#fff;border-color:#fff;}
 
-.price-summary{margin:0 16px 14px;background:var(--bg);border-radius:var(--r);padding:12px 14px;}
+/* discount badge */
+.discount-badge{margin:0 16px 12px;background:#FFF8E6;border:1.5px solid var(--amber-border);border-radius:var(--r);padding:10px 14px;display:flex;align-items:center;gap:10px;}
+.disc-pct{font-size:22px;font-weight:800;color:var(--amber);line-height:1;}
+.disc-txt{font-size:12px;color:var(--amber);font-weight:600;line-height:1.4;}
+
+.price-sum{margin:0 16px 14px;background:var(--bg);border-radius:var(--r);padding:12px 14px;}
 .ps-row{display:flex;justify-content:space-between;font-size:12px;color:var(--gray-mid);margin-bottom:5px;}
+.ps-row.strike{text-decoration:line-through;opacity:.6;}
+.ps-row.saving{color:var(--teal);font-weight:600;}
 .ps-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;color:var(--navy);border-top:1px solid var(--gray-pale);padding-top:8px;margin-top:4px;}
-
 .sched-footer{background:var(--white);border-top:1px solid var(--gray-pale);padding:12px 16px calc(12px + var(--safe-bottom));flex-shrink:0;}
-.sched-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;transition:all .15s;}
+.sched-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;}
 .sched-btn:disabled{opacity:.4;cursor:not-allowed;}
 .sched-btn:not(:disabled):active{background:var(--navy);}
 
-/* CONFIRM */
+/* confirm */
 .steps-bar{display:flex;align-items:center;padding:14px 16px 10px;}
 .step-item{display:flex;align-items:center;gap:5px;flex:1;}
 .step-circle{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
@@ -169,28 +168,78 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .step-lbl.cur{color:var(--navy);font-weight:700;}
 .step-line{flex:1;height:2px;background:var(--gray-pale);margin:0 3px;}
 .step-line.done{background:var(--blue);}
-.confirm-hero{height:160px;position:relative;overflow:hidden;margin:0 16px;border-radius:var(--r-lg);}
-.confirm-hero img{width:100%;height:100%;object-fit:cover;display:block;}
+.conf-hero{height:160px;position:relative;overflow:hidden;margin:0 16px;border-radius:var(--r-lg);}
+.conf-hero img{width:100%;height:100%;object-fit:cover;display:block;}
 .ch-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,44,83,.65),transparent);}
-.ch-text{position:absolute;bottom:14px;left:14px;color:#fff;}
+.ch-txt{position:absolute;bottom:14px;left:14px;color:#fff;}
 .ch-name{font-size:16px;font-weight:700;}
 .ch-loc{font-size:12px;font-weight:600;color:rgba(255,255,255,.9);margin-top:1px;}
 .ch-addr{font-size:11px;opacity:.8;margin-top:1px;}
-.confirm-rows{margin:14px 16px 0;}
+.conf-rows{margin:14px 16px 0;}
 .cr{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--gray-pale);}
 .cr:last-child{border-bottom:none;}
-.cr-label{font-size:12px;color:var(--gray-mid);}
-.cr-value{font-size:13px;font-weight:600;color:var(--gray-dark);text-align:right;max-width:62%;}
+.cr-lbl{font-size:12px;color:var(--gray-mid);}
+.cr-val{font-size:13px;font-weight:600;color:var(--gray-dark);text-align:right;max-width:62%;}
 .cr-dist{font-size:13px;font-weight:600;color:var(--blue);display:flex;align-items:center;gap:4px;}
-.total-bar{margin:0 16px 14px;background:var(--blue-pale);border-radius:var(--r);padding:13px 15px;display:flex;justify-content:space-between;align-items:center;}
+.total-bar{margin:0 16px 14px;background:var(--blue-pale);border-radius:var(--r);padding:13px 15px;}
+.tb-main{display:flex;justify-content:space-between;align-items:center;}
 .tb-label{font-size:13px;font-weight:600;color:var(--navy);}
 .tb-amount{font-size:22px;font-weight:800;color:var(--navy);}
-.confirm-actions{padding:0 16px calc(14px + var(--safe-bottom));display:flex;gap:10px;flex-shrink:0;}
+.tb-saving{font-size:11px;color:var(--teal);font-weight:600;margin-top:4px;text-align:right;}
+.conf-actions{padding:0 16px calc(14px + var(--safe-bottom));display:flex;gap:10px;flex-shrink:0;}
 .btn-sec{flex:1;background:var(--white);color:var(--blue);border:1.5px solid var(--blue);border-radius:12px;padding:13px;font-size:13px;font-weight:600;cursor:pointer;}
 .btn-pri{flex:2;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:13px;font-size:14px;font-weight:700;cursor:pointer;}
 .btn-pri:active{background:var(--navy);}
 
-/* MODAL */
+/* agenda & perfil shared */
+.section-lbl{font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.stat-box{border-radius:var(--r);padding:14px;text-align:center;}
+.stat-num{font-size:26px;font-weight:800;line-height:1;}
+.stat-sub{font-size:11px;margin-top:3px;}
+
+/* agenda */
+.next-card{background:var(--navy);border-radius:var(--r-lg);padding:18px;position:relative;overflow:hidden;cursor:pointer;}
+.nc-badge{background:var(--teal);border-radius:8px;padding:3px 9px;font-size:10px;font-weight:700;color:#fff;display:inline-block;margin-bottom:10px;}
+.nc-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:2px;}
+.nc-loc{font-size:12px;color:rgba(255,255,255,.7);margin-bottom:12px;}
+.nc-row{display:flex;gap:18px;}
+.nc-col-lbl{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;}
+.nc-col-val{font-size:13px;font-weight:600;color:#fff;}
+.reminder-card{background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.rem-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.rem-title{font-size:12px;font-weight:700;color:var(--navy);}
+.rem-sub{font-size:11px;color:var(--gray-mid);margin-top:1px;}
+.agenda-item{background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;}
+.ai-date{width:44px;height:44px;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.ai-day{font-size:16px;font-weight:800;line-height:1;}
+.ai-mon{font-size:9px;font-weight:600;}
+.ai-name{font-size:13px;font-weight:700;color:var(--navy);}
+.ai-sub{font-size:11px;color:var(--gray-mid);}
+.ai-badge{border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;}
+.hist-row{padding:12px 14px;display:flex;align-items:center;gap:12px;}
+.hist-date{width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.hist-day{font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;}
+.hist-mon{font-size:8px;font-weight:600;color:var(--gray-mid);}
+
+/* perfil */
+.perfil-header{background:var(--navy);padding:24px 20px 28px;position:relative;overflow:hidden;}
+.p-avatar{width:68px;height:68px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0;border:3px solid rgba(255,255,255,.25);}
+.p-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:rgba(255,255,255,.08);border-radius:12px;padding:12px;margin-top:16px;}
+.p-stat{text-align:center;}
+.p-stat-num{font-size:20px;font-weight:800;color:#fff;}
+.p-stat-lbl{font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;}
+.info-row{padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);}
+.info-row:last-child{border-bottom:none;}
+.info-lbl{font-size:12px;color:var(--gray-mid);}
+.info-val{font-size:13px;font-weight:600;color:var(--gray-dark);}
+.rev-item{background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;margin-bottom:8px;}
+.rev-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.rev-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;}
+.hist-thumb{width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);}
+.hist-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* modal */
 .modal-bg{display:none;position:fixed;inset:0;background:rgba(4,44,83,.5);z-index:300;align-items:flex-end;justify-content:center;}
 .modal-bg.show{display:flex;}
 .modal-box{background:var(--white);border-radius:var(--r-lg) var(--r-lg) 0 0;padding:28px 22px calc(28px + var(--safe-bottom));width:100%;max-width:430px;text-align:center;animation:slideUp .3s ease;}
@@ -199,867 +248,657 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;background:#
 .modal-title{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 .modal-sub{font-size:13px;color:var(--gray-mid);line-height:1.6;margin-bottom:18px;}
 .modal-id{background:var(--bg);border-radius:10px;padding:10px 16px;display:flex;justify-content:space-between;margin-bottom:18px;}
-.mid-label{font-size:12px;color:var(--gray-mid);}
-.mid-val{font-size:12px;font-weight:700;color:var(--navy);font-family:monospace;}
 .modal-btn{width:100%;background:var(--blue);color:#fff;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;}
+
+/* SVG helpers */
+svg{display:block;}
 </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- SCREEN 1: MAPA -->
-  <div class="screen active" id="sc-map">
-    <div class="topbar">
-      <div class="topbar-logo">Medi<span>Nest</span></div>
-      <div class="topbar-icon">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#185FA5" stroke-width="1.5"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
-      </div>
-    </div>
-    <div class="search-wrap">
-      <div class="search-box">
-        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#888" stroke-width="1.5"/><line x1="10" y1="10" x2="14" y2="14" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
-        Buscar consultorios cerca de GDL…
-      </div>
-    </div>
-    <div class="chips-wrap">
-      <div class="chip on">Todos</div>
-      <div class="chip">Especialidad</div>
-      <div class="chip">&lt; 50 km</div>
-      <div class="chip">&lt; 100 km</div>
-      <div class="chip">Equipo</div>
-    </div>
-    <div class="map-wrap">
-      <!-- Wider bbox to show ~100km radius around GDL -->
-      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-104.6000%2C19.9000%2C-102.2000%2C21.4000&layer=mapnik" loading="lazy"></iframe>
-      <div class="map-pins" id="map-pins"></div>
-      <div class="map-preview" id="map-preview" onclick="goDetail(-1)">
-        <div class="mp-name" id="mp-name">Centro de Salud Tepatitlán</div>
-        <div class="mp-loc" id="mp-loc" style="font-size:11px;color:var(--blue);font-weight:600;margin:1px 0;">Tepatitlán de Morelos</div>
-        <div class="mp-row">
-          <div class="mp-price" id="mp-price">$650 MXN / turno</div>
-          <div class="mp-dist-badge" id="mp-dist">
-            <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
-            62 km
-          </div>
-          <button class="mp-btn">Ver detalle →</button>
-        </div>
-      </div>
-    </div>
-    <div class="bottom-nav" id="bnav-main">
-      <div class="bn-item on" id="bn-map" onclick="goTo('map')">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
-        <span class="bn-label on" id="bnl-map">Mapa</span>
-      </div>
-      <div class="bn-item" id="bn-agenda" onclick="goTo('agenda')">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
-        <span class="bn-label" id="bnl-agenda">Agenda</span>
-      </div>
-      <div class="bn-item" id="bn-perfil" onclick="goTo('perfil')">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-        <span class="bn-label" id="bnl-perfil">Perfil</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- SCREEN 2: DETALLE -->
-  <div class="screen" id="sc-detail">
-    <div class="topbar">
-      <div class="topbar-back" onclick="goTo('map')">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="topbar-title" id="det-title">Detalle</div>
-      <div class="topbar-icon">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l2 3.5 4 .6-2.9 2.8.7 4L8 11.3l-3.8 2 .7-4L2 6.1l4-.6z" stroke="#185FA5" stroke-width="1.4" fill="none"/></svg>
-      </div>
-    </div>
-    <div class="scroll-area">
-      <div class="detail-gallery">
-        <div class="gallery-slides" id="gallery-slides"></div>
-        <div class="avail-float">Disponible</div>
-        <button class="gallery-btn prev" onclick="galNav(-1)">‹</button>
-        <button class="gallery-btn next" onclick="galNav(1)">›</button>
-        <div class="gallery-dots" id="gallery-dots"></div>
-      </div>
-      <div class="detail-body">
-        <div class="detail-name" id="d-name"></div>
-        <div class="detail-loc" id="d-loc"></div>
-        <div class="detail-addr" id="d-addr"></div>
-        <!-- Distance + drive time pills -->
-        <div style="margin-bottom:10px;">
-          <span class="dist-pill" id="d-dist-pill">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
-            62 km desde GDL
-          </span>
-          <span class="drive-pill" id="d-drive-pill">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="10" height="6" rx="1.5" stroke="#633806" stroke-width="1.1"/><path d="M3 4V3a3 3 0 016 0v1" stroke="#633806" stroke-width="1.1" fill="none"/><circle cx="3.5" cy="8" r="1" fill="#633806"/><circle cx="8.5" cy="8" r="1" fill="#633806"/></svg>
-            ~45 min en auto
-          </span>
-        </div>
-        <div class="stars-row">
-          <div class="stars-num" id="d-rating">4.9</div>
-          <div style="font-size:14px;color:#F0A500;">★★★★★</div>
-          <div style="font-size:12px;color:var(--gray-mid);" id="d-rcount"></div>
-        </div>
-        <!-- Impact banner -->
-        <div class="impact-banner" id="d-impact">
-          <div class="impact-icon">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5.1 2 2 5.1 2 9s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z" stroke="white" stroke-width="1.3" fill="none"/><path d="M9 6v4l2.5 2.5" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg>
-          </div>
-          <div class="impact-text" id="d-impact-text">Llevarás medicina especializada a <strong>Tepatitlán</strong>, donde hay acceso limitado a especialistas.</div>
-        </div>
-        <div class="section-title">Equipo disponible</div>
-        <div class="equip-grid" id="d-equip"></div>
-        <div class="section-title">Amenidades</div>
-        <div class="amenities" id="d-amenities"></div>
-        <div class="section-title">Descripción</div>
-        <div class="desc-text" id="d-desc"></div>
-        <div class="section-title">Reseñas</div>
-        <div id="d-reviews"></div>
-        <div style="height:20px;"></div>
-      </div>
-    </div>
-    <div class="booking-footer">
-      <div class="bf-price-row">
-        <div class="bf-price" id="d-price">$650 <span>MXN / turno</span></div>
-        <div style="font-size:11px;color:var(--teal);font-weight:600;">Hoy disponible</div>
-      </div>
-      <button class="bf-btn" onclick="goTo('schedule')">Reservar este consultorio</button>
-    </div>
-  </div>
-
-  <!-- SCREEN 3: HORARIO -->
-  <div class="screen" id="sc-schedule">
-    <div class="topbar">
-      <div class="topbar-back" onclick="goTo('detail')">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="topbar-title">Seleccionar horario</div>
-      <div style="width:34px;"></div>
-    </div>
-    <div class="scroll-area">
-      <div class="clinic-mini">
-        <div class="cm-thumb"><img id="sch-img" src="" alt=""></div>
-        <div>
-          <div class="cm-name" id="sch-name"></div>
-          <div class="cm-loc" id="sch-loc"></div>
-          <div class="cm-addr" id="sch-addr"></div>
-        </div>
-      </div>
-      <div class="cal-card">
-        <div class="cal-nav">
-          <button class="cal-btn" id="cal-prev">‹</button>
-          <div class="cal-month" id="cal-month-label"></div>
-          <button class="cal-btn" id="cal-next">›</button>
-        </div>
-        <div class="cal-dow"><span>Do</span><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span></div>
-        <div class="cal-days" id="cal-days"></div>
-        <div class="cal-legend">
-          <div><span class="leg-dot" style="background:var(--blue);"></span>Disponible</div>
-          <div><span class="leg-dot" style="background:var(--blue);opacity:.35;"></span>Seleccionado</div>
-          <div><span class="leg-dot" style="background:var(--gray-pale);"></span>No disponible</div>
-        </div>
-      </div>
-      <div class="slots-section">
-        <div class="slot-date-label" id="slot-date-label">Selecciona una fecha</div>
-        <div class="slot-card on" id="slot0" onclick="toggleSlot(0)">
-          <div class="slot-card-top">
-            <div class="slot-time">9:00 AM</div>
-            <div class="slot-check on" id="sc0"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          </div>
-          <div class="slot-info">Turno matutino · 9:00 AM – 1:00 PM · 4 horas</div>
-          <div class="slot-badge">Disponible</div>
-        </div>
-        <div class="slot-card" id="slot1" onclick="toggleSlot(1)">
-          <div class="slot-card-top">
-            <div class="slot-time">2:00 PM</div>
-            <div class="slot-check" id="sc1"></div>
-          </div>
-          <div class="slot-info">Turno vespertino · 2:00 PM – 6:00 PM · 4 horas</div>
-          <div class="slot-badge">Disponible</div>
-        </div>
-      </div>
-      <div class="full-day-banner" id="full-day-btn" onclick="toggleFullDay()">
-        <div>
-          <div class="fd-title">Día completo</div>
-          <div class="fd-sub">9:00 AM – 6:00 PM · Ambos turnos · 8 horas</div>
-        </div>
-        <div class="fd-check" id="fd-check">
-          <svg id="fd-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none;"><polyline points="2,6 5,9 10,3" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </div>
-      <div class="price-summary">
-        <div class="ps-row" id="ps-row1" style="display:none;"><span>Turno matutino (9 AM)</span><span id="ps-p1"></span></div>
-        <div class="ps-row" id="ps-row2" style="display:none;"><span>Turno vespertino (2 PM)</span><span id="ps-p2"></span></div>
-        <div class="ps-row"><span>Cargo de servicio</span><span>$0</span></div>
-        <div class="ps-total"><span>Total</span><span id="ps-total">$0 MXN</span></div>
-      </div>
-      <div style="height:10px;"></div>
-    </div>
-    <div class="sched-footer">
-      <button class="sched-btn" id="sched-btn" disabled onclick="goTo('confirm')">Selecciona un turno</button>
-    </div>
-  </div>
-
-  <!-- SCREEN 4: CONFIRMACIÓN -->
-  <div class="screen" id="sc-confirm">
-    <div class="topbar">
-      <div class="topbar-back" onclick="goTo('schedule')">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="topbar-title">Confirmar reserva</div>
-      <div style="width:34px;"></div>
-    </div>
-    <div class="scroll-area">
-      <div class="steps-bar">
-        <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Buscar</span><div class="step-line done"></div></div>
-        <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Detalle</span><div class="step-line done"></div></div>
-        <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Horario</span><div class="step-line done"></div></div>
-        <div class="step-item"><div class="step-circle sc-cur">4</div><span class="step-lbl cur">Confirmar</span></div>
-      </div>
-      <div class="confirm-hero">
-        <img id="cf-img" src="" alt="">
-        <div class="ch-overlay"></div>
-        <div class="ch-text">
-          <div class="ch-name" id="cf-name"></div>
-          <div class="ch-loc" id="cf-loc"></div>
-          <div class="ch-addr" id="cf-addr"></div>
-        </div>
-      </div>
-      <div class="confirm-rows">
-        <div class="cr"><span class="cr-label">Fecha</span><span class="cr-value" id="cf-date">Jueves, 12 de marzo 2026</span></div>
-        <div class="cr"><span class="cr-label">Turno(s)</span><span class="cr-value" id="cf-times"></span></div>
-        <div class="cr"><span class="cr-label">Duración</span><span class="cr-value" id="cf-dur"></span></div>
-        <div class="cr">
-          <span class="cr-label">Distancia</span>
-          <span class="cr-dist" id="cf-dist">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
-            62 km · ~45 min
-          </span>
-        </div>
-        <div class="cr"><span class="cr-label">Equipo</span><span class="cr-value" id="cf-equip"></span></div>
-        <div class="cr"><span class="cr-label">Especialidad</span><span class="cr-value">Medicina general</span></div>
-      </div>
-      <div style="height:14px;"></div>
-      <div class="total-bar">
-        <div class="tb-label">Total a pagar</div>
-        <div class="tb-amount" id="cf-total"></div>
-      </div>
-      <div style="height:4px;"></div>
-    </div>
-    <div class="confirm-actions">
-      <button class="btn-sec" onclick="goTo('schedule')">← Regresar</button>
-      <button class="btn-pri" onclick="showSuccess()">Confirmar reserva</button>
-    </div>
-  </div>
-</div>
-
-<!-- SCREEN 5: AGENDA -->
-<div class="screen" id="sc-agenda">
+<!-- ══ S1: MAPA ══ -->
+<div class="screen active" id="sc-map">
   <div class="topbar">
-    <div class="topbar-logo">Medi<span>Nest</span></div>
-    <div class="topbar-icon" onclick="goTo('perfil')">
+    <div class="logo">Medi<span>Nest</span></div>
+    <div class="tb-icon">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="#185FA5" stroke-width="1.5"/><path d="M2 14c0-3 2.7-5 6-5s6 2 6 5" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
     </div>
   </div>
-  <div class="scroll-area">
-
-    <!-- Próxima reserva destacada -->
-    <div style="margin:14px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Próxima reserva</div>
-      <div style="background:var(--navy);border-radius:var(--r-lg);padding:18px;position:relative;overflow:hidden;cursor:pointer;" onclick="goTo('map')">
-        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.05);"></div>
-        <div style="position:absolute;bottom:-30px;right:20px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.04);"></div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <div style="background:var(--teal);border-radius:8px;padding:3px 9px;font-size:10px;font-weight:700;color:#fff;">Confirmada</div>
-          <div style="font-size:11px;color:rgba(255,255,255,.6);">en 3 días</div>
-        </div>
-        <div style="font-size:17px;font-weight:700;color:#fff;margin-bottom:3px;">Consultorio Médico Tepatitlán</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.7);margin-bottom:12px;">Tepatitlán de Morelos, Jal. · 62 km</div>
-        <div style="display:flex;gap:16px;">
-          <div>
-            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Fecha</div>
-            <div style="font-size:13px;font-weight:600;color:#fff;">Jue 19 Mar 2026</div>
-          </div>
-          <div>
-            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Turno</div>
-            <div style="font-size:13px;font-weight:600;color:#fff;">9:00 AM – 1:00 PM</div>
-          </div>
-          <div>
-            <div style="font-size:10px;color:rgba(255,255,255,.5);margin-bottom:2px;">Total</div>
-            <div style="font-size:13px;font-weight:600;color:#fff;">$650 MXN</div>
-          </div>
-        </div>
-      </div>
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#888" stroke-width="1.5"/><line x1="10" y1="10" x2="14" y2="14" stroke="#888" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Buscar consultorios cerca de GDL…
     </div>
-
-    <!-- Recordatorios -->
-    <div style="margin:18px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Recordatorios</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--blue);">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2a6 6 0 100 12A6 6 0 008 2z" stroke="#185FA5" stroke-width="1.4"/><path d="M8 5v4l2.5 2" stroke="#185FA5" stroke-width="1.4" stroke-linecap="round"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">Salir temprano — Jue 19 Mar</div>
-            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">62 km a Tepatitlán · Salida recomendada: 7:30 AM</div>
-          </div>
+  </div>
+  <div class="chips">
+    <div class="chip on">Todos</div>
+    <div class="chip">Especialidad</div>
+    <div class="chip">&lt;50 km</div>
+    <div class="chip">&lt;100 km</div>
+    <div class="chip">Equipo</div>
+  </div>
+  <div class="map-wrap">
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-104.6000%2C19.9000%2C-102.2000%2C21.4000&layer=mapnik" loading="lazy"></iframe>
+    <div class="map-pins" id="map-pins"></div>
+    <div class="map-card" onclick="goDetail(-1)">
+      <div class="mc-name" id="mc-name">Consultorio Médico Tepatitlán</div>
+      <div class="mc-loc" id="mc-loc">Tepatitlán de Morelos, Jal.</div>
+      <div class="mc-row">
+        <div class="mc-price" id="mc-price">$650 MXN / turno</div>
+        <div class="mc-dist" id="mc-dist">
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>
+          62 km
         </div>
-        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid #F0A500;">
-          <div style="width:36px;height:36px;border-radius:10px;background:#FAEEDA;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.5 6H14l-3.5 2.5 1.3 4L8 10l-3.8 2.5 1.3-4L2 6h4.5z" stroke="#854F0B" stroke-width="1.3" fill="none"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">Completar perfil</div>
-            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">Sube tu foto y agrega tu especialidad para más visibilidad</div>
-          </div>
-        </div>
-        <div style="background:var(--bg);border-radius:var(--r);padding:12px 14px;display:flex;align-items:center;gap:12px;border-left:3px solid var(--teal);">
-          <div style="width:36px;height:36px;border-radius:10px;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,9 6,13 14,4" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">Cédula verificada</div>
-            <div style="font-size:11px;color:var(--gray-mid);margin-top:1px;">Tu cédula profesional está activa y verificada</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Próximas reservas -->
-    <div style="margin:18px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Próximas reservas</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:44px;height:44px;border-radius:10px;background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:16px;font-weight:800;color:var(--blue);line-height:1;">19</div>
-            <div style="font-size:9px;font-weight:600;color:var(--blue-mid);">MAR</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:13px;font-weight:700;color:var(--navy);">Tepatitlán de Morelos</div>
-            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 1:00 PM · $650 MXN</div>
-          </div>
-          <div style="background:var(--teal-bg);color:var(--teal);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Confirmada</div>
-        </div>
-        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:44px;height:44px;border-radius:10px;background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:16px;font-weight:800;color:var(--blue);line-height:1;">2</div>
-            <div style="font-size:9px;font-weight:600;color:var(--blue-mid);">ABR</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:13px;font-weight:700;color:var(--navy);">Lagos de Moreno</div>
-            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 6:00 PM · $1,200 MXN</div>
-          </div>
-          <div style="background:var(--teal-bg);color:var(--teal);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Confirmada</div>
-        </div>
-        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:44px;height:44px;border-radius:10px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:16px;font-weight:800;color:var(--gray-mid);line-height:1;">10</div>
-            <div style="font-size:9px;font-weight:600;color:var(--gray-mid);">ABR</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:13px;font-weight:700;color:var(--navy);">Ameca, Jalisco</div>
-            <div style="font-size:11px;color:var(--gray-mid);">2:00 PM – 6:00 PM · $520 MXN</div>
-          </div>
-          <div style="background:var(--blue-pale);color:var(--blue);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;flex-shrink:0;">Pendiente</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Historial -->
-    <div style="margin:18px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Historial reciente</div>
-      <div style="display:flex;flex-direction:column;gap:1px;background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
-        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--gray-pale);">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">5</div>
-            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">MAR</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--gray);">Colima, Col.</div>
-            <div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,440 MXN</div>
-          </div>
-          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
-        </div>
-        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--gray-pale);">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">20</div>
-            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">FEB</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--gray);">San Juan de los Lagos</div>
-            <div style="font-size:11px;color:var(--gray-mid);">9:00 AM – 1:00 PM · $580 MXN</div>
-          </div>
-          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
-        </div>
-        <div style="padding:12px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:38px;height:38px;border-radius:8px;background:var(--gray-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;">
-            <div style="font-size:14px;font-weight:800;color:var(--gray-mid);line-height:1;">8</div>
-            <div style="font-size:8px;font-weight:600;color:var(--gray-mid);">FEB</div>
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--gray);">Tepatitlán de Morelos</div>
-            <div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,300 MXN</div>
-          </div>
-          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Estadísticas rápidas -->
-    <div style="margin:18px 16px 24px;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Tu impacto en 2026</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <div style="background:var(--blue-pale);border-radius:var(--r);padding:14px;text-align:center;">
-          <div style="font-size:26px;font-weight:800;color:var(--blue);">8</div>
-          <div style="font-size:11px;color:var(--blue-mid);margin-top:2px;">Consultas realizadas</div>
-        </div>
-        <div style="background:var(--teal-bg);border-radius:var(--r);padding:14px;text-align:center;">
-          <div style="font-size:26px;font-weight:800;color:var(--teal);">5</div>
-          <div style="font-size:11px;color:var(--teal);margin-top:2px;">Localidades visitadas</div>
-        </div>
-        <div style="background:var(--bg);border-radius:var(--r);padding:14px;text-align:center;border:1.5px solid var(--gray-pale);">
-          <div style="font-size:26px;font-weight:800;color:var(--navy);">$6,290</div>
-          <div style="font-size:11px;color:var(--gray-mid);margin-top:2px;">MXN generados</div>
-        </div>
-        <div style="background:var(--bg);border-radius:var(--r);padding:14px;text-align:center;border:1.5px solid var(--gray-pale);">
-          <div style="font-size:26px;font-weight:800;color:var(--navy);">4.8</div>
-          <div style="font-size:11px;color:var(--gray-mid);margin-top:2px;">★ Calificación promedio</div>
-        </div>
+        <button class="mc-btn">Ver detalle →</button>
       </div>
     </div>
   </div>
-  <div class="bottom-nav">
-    <div class="bn-item" onclick="goTo('map')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-      <span class="bn-label">Mapa</span>
+  <div class="bnav">
+    <div class="bni" id="bni-map" onclick="goTo('map')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl on" id="bnl-map">Mapa</span>
     </div>
-    <div class="bn-item on" onclick="goTo('agenda')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#185FA5" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#185FA5" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#185FA5"/><circle cx="10" cy="13" r="1" fill="#185FA5"/><circle cx="13" cy="13" r="1" fill="#185FA5"/></svg>
-      <span class="bn-label on">Agenda</span>
+    <div class="bni" id="bni-agenda" onclick="goTo('agenda')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
+      <span class="bni-lbl" id="bnl-agenda">Agenda</span>
     </div>
-    <div class="bn-item" onclick="goTo('perfil')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-      <span class="bn-label">Perfil</span>
+    <div class="bni" id="bni-perfil" onclick="goTo('perfil')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl" id="bnl-perfil">Perfil</span>
     </div>
   </div>
 </div>
 
-<!-- SCREEN 6: PERFIL -->
-<div class="screen" id="sc-perfil">
+<!-- ══ S2: DETALLE ══ -->
+<div class="screen" id="sc-detail">
   <div class="topbar">
-    <div class="topbar-logo">Medi<span>Nest</span></div>
-    <div style="background:var(--gray-pale);border-radius:8px;padding:5px 11px;font-size:12px;color:var(--gray);cursor:pointer;font-weight:500;">Editar</div>
+    <div class="tb-back" onclick="goTo('map')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="tb-title" id="det-title">Detalle</div>
+    <div class="tb-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2l2 3.5 4 .6-2.9 2.8.7 4L8 11.3l-3.8 2 .7-4L2 6.1l4-.6z" stroke="#185FA5" stroke-width="1.4" fill="none"/></svg></div>
   </div>
   <div class="scroll-area">
-
-    <!-- Header de perfil -->
-    <div style="background:var(--navy);padding:24px 20px 28px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);"></div>
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
-        <div style="width:68px;height:68px;border-radius:50%;background:var(--blue-mid);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;flex-shrink:0;border:3px solid rgba(255,255,255,.25);">CM</div>
-        <div>
-          <div style="font-size:18px;font-weight:700;color:#fff;">Dr. Carlos Mendoza</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.75);margin-top:2px;">Médico Internista</div>
-          <div style="display:flex;align-items:center;gap:5px;margin-top:5px;">
-            <div style="background:var(--teal);border-radius:5px;padding:2px 8px;font-size:10px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px;">
-              <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Cédula verificada
-            </div>
-          </div>
-        </div>
+    <div class="gallery">
+      <div class="gslides" id="gslides"></div>
+      <div class="avail-tag">Disponible</div>
+      <button class="gbtn prev" onclick="galNav(-1)">‹</button>
+      <button class="gBtn next" style="position:absolute;top:50%;transform:translateY(-50%);right:10px;background:rgba(255,255,255,.85);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--navy);z-index:5;font-weight:700;" onclick="galNav(1)">›</button>
+      <div class="gdots" id="gdots"></div>
+    </div>
+    <div class="d-body">
+      <div class="d-name" id="d-name"></div>
+      <div class="d-loc" id="d-loc"></div>
+      <div class="d-addr" id="d-addr"></div>
+      <div style="margin-bottom:10px;">
+        <span class="dist-pill" id="d-dist-pill"></span>
+        <span class="drive-pill" id="d-drive-pill"></span>
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;background:rgba(255,255,255,.08);border-radius:12px;padding:12px;">
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:800;color:#fff;">8</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Reservas</div>
+      <div class="stars-row">
+        <div style="font-size:18px;font-weight:700;color:var(--navy);" id="d-rating"></div>
+        <div style="font-size:14px;color:#F0A500;">★★★★★</div>
+        <div style="font-size:12px;color:var(--gray-mid);" id="d-rcount"></div>
+      </div>
+      <div class="impact-box" id="d-impact">
+        <div class="impact-ico"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.3" fill="none"/><path d="M9 6v4l2.5 2" stroke="white" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <div class="impact-txt" id="d-impact-txt"></div>
+      </div>
+      <div class="sec-lbl">Equipo disponible</div>
+      <div class="equip-grid" id="d-equip"></div>
+      <div class="sec-lbl">Amenidades</div>
+      <div class="amen-grid" id="d-amen"></div>
+      <div class="sec-lbl">Descripción</div>
+      <div style="font-size:13px;color:var(--gray);line-height:1.7;" id="d-desc"></div>
+      <div class="sec-lbl">Reseñas</div>
+      <div id="d-reviews"></div>
+      <div style="height:20px;"></div>
+    </div>
+  </div>
+  <div class="bfooter">
+    <div class="bf-row">
+      <div class="bf-price" id="d-price"></div>
+      <div style="font-size:11px;color:var(--teal);font-weight:600;">Hoy disponible</div>
+    </div>
+    <button class="bf-btn" onclick="goTo('schedule')">Reservar este consultorio</button>
+  </div>
+</div>
+
+<!-- ══ S3: HORARIO ══ -->
+<div class="screen" id="sc-schedule">
+  <div class="topbar">
+    <div class="tb-back" onclick="goTo('detail')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="tb-title">Seleccionar horario</div>
+    <div style="width:34px;"></div>
+  </div>
+  <div class="scroll-area">
+    <div class="clinic-mini">
+      <div class="cm-thumb"><img id="sch-img" src="" alt=""></div>
+      <div>
+        <div class="cm-name" id="sch-name"></div>
+        <div class="cm-loc" id="sch-loc"></div>
+        <div class="cm-sub" id="sch-sub"></div>
+      </div>
+    </div>
+    <div class="cal-card">
+      <div class="cal-nav">
+        <button class="cal-btn" id="cal-prev">‹</button>
+        <div class="cal-month" id="cal-month"></div>
+        <button class="cal-btn" id="cal-next">›</button>
+      </div>
+      <div class="cal-dow"><span>Do</span><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span></div>
+      <div class="cal-days" id="cal-days"></div>
+      <div class="cal-legend">
+        <div><span class="leg-dot" style="background:var(--blue);"></span>Disponible</div>
+        <div><span class="leg-dot" style="background:var(--blue);opacity:.35;"></span>Sel.</div>
+        <div><span class="leg-dot" style="background:var(--gray-pale);"></span>No disponible</div>
+      </div>
+    </div>
+    <div class="slots-sec">
+      <div class="slot-lbl" id="slot-lbl">Selecciona una fecha</div>
+      <div class="slot-card on" id="slot0" onclick="toggleSlot(0)">
+        <div class="slot-top">
+          <div class="slot-time">9:00 AM</div>
+          <div class="slot-chk on" id="sc0"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div style="text-align:center;border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15);">
-          <div style="font-size:20px;font-weight:800;color:#fff;">4.8★</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Calificación</div>
+        <div class="slot-info">Turno matutino · 9:00 AM – 1:00 PM · 4 horas</div>
+        <div class="slot-badge">Disponible</div>
+      </div>
+      <div class="slot-card" id="slot1" onclick="toggleSlot(1)">
+        <div class="slot-top">
+          <div class="slot-time">2:00 PM</div>
+          <div class="slot-chk" id="sc1"></div>
         </div>
-        <div style="text-align:center;">
-          <div style="font-size:20px;font-weight:800;color:#fff;">5</div>
-          <div style="font-size:10px;color:rgba(255,255,255,.6);margin-top:1px;">Localidades</div>
+        <div class="slot-info">Turno vespertino · 2:00 PM – 6:00 PM · 4 horas</div>
+        <div class="slot-badge">Disponible</div>
+      </div>
+    </div>
+    <div class="fullday-btn" id="fd-btn" onclick="toggleFullDay()">
+      <div>
+        <div class="fd-title">Día completo</div>
+        <div class="fd-sub">9:00 AM – 6:00 PM · Ambos turnos · 8 horas</div>
+      </div>
+      <div class="fd-chk" id="fd-chk">
+        <svg id="fd-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" style="display:none;"><polyline points="2,6 5,9 10,3" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+    <!-- discount badge — only visible when both slots selected -->
+    <div class="discount-badge" id="disc-badge" style="display:none;">
+      <div class="disc-pct">20%</div>
+      <div>
+        <div class="disc-txt">¡Descuento día completo!</div>
+        <div style="font-size:11px;color:var(--amber);margin-top:1px;">Reserva ambos turnos y ahorra en tu jornada</div>
+      </div>
+    </div>
+    <div class="price-sum">
+      <div class="ps-row" id="ps-r1" style="display:none;"><span>Turno 9 AM</span><span id="ps-p1"></span></div>
+      <div class="ps-row" id="ps-r2" style="display:none;"><span>Turno 2 PM</span><span id="ps-p2"></span></div>
+      <div class="ps-row strike" id="ps-orig" style="display:none;"><span>Subtotal sin descuento</span><span id="ps-orig-val"></span></div>
+      <div class="ps-row saving" id="ps-save" style="display:none;"><span>Descuento día completo (20%)</span><span id="ps-save-val"></span></div>
+      <div class="ps-row"><span>Cargo de servicio</span><span>$0</span></div>
+      <div class="ps-total"><span>Total</span><span id="ps-total">$0 MXN</span></div>
+    </div>
+    <div style="height:10px;"></div>
+  </div>
+  <div class="sched-footer">
+    <button class="sched-btn" id="sched-btn" disabled onclick="goTo('confirm')">Selecciona un turno</button>
+  </div>
+</div>
+
+<!-- ══ S4: CONFIRMACIÓN ══ -->
+<div class="screen" id="sc-confirm">
+  <div class="topbar">
+    <div class="tb-back" onclick="goTo('schedule')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polyline points="9,2 4,7 9,12" stroke="#1a1a1a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="tb-title">Confirmar reserva</div>
+    <div style="width:34px;"></div>
+  </div>
+  <div class="scroll-area">
+    <div class="steps-bar">
+      <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Buscar</span><div class="step-line done"></div></div>
+      <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Detalle</span><div class="step-line done"></div></div>
+      <div class="step-item"><div class="step-circle sc-done">✓</div><span class="step-lbl">Horario</span><div class="step-line done"></div></div>
+      <div class="step-item"><div class="step-circle sc-cur">4</div><span class="step-lbl cur">Confirmar</span></div>
+    </div>
+    <div class="conf-hero">
+      <img id="cf-img" src="" alt="">
+      <div class="ch-overlay"></div>
+      <div class="ch-txt"><div class="ch-name" id="cf-name"></div><div class="ch-loc" id="cf-loc"></div><div class="ch-addr" id="cf-addr"></div></div>
+    </div>
+    <div class="conf-rows">
+      <div class="cr"><span class="cr-lbl">Fecha</span><span class="cr-val" id="cf-date"></span></div>
+      <div class="cr"><span class="cr-lbl">Turno(s)</span><span class="cr-val" id="cf-times"></span></div>
+      <div class="cr"><span class="cr-lbl">Duración</span><span class="cr-val" id="cf-dur"></span></div>
+      <div class="cr"><span class="cr-lbl">Distancia</span><span class="cr-dist" id="cf-dist"></span></div>
+      <div class="cr"><span class="cr-lbl">Equipo</span><span class="cr-val" id="cf-equip"></span></div>
+    </div>
+    <div style="height:14px;"></div>
+    <div class="total-bar">
+      <div class="tb-main">
+        <div class="tb-label">Total a pagar</div>
+        <div class="tb-amount" id="cf-total"></div>
+      </div>
+      <div class="tb-saving" id="cf-saving" style="display:none;"></div>
+    </div>
+    <div style="height:4px;"></div>
+  </div>
+  <div class="conf-actions">
+    <button class="btn-sec" onclick="goTo('schedule')">← Regresar</button>
+    <button class="btn-pri" onclick="showSuccess()">Confirmar reserva</button>
+  </div>
+</div>
+
+<!-- ══ S5: AGENDA ══ -->
+<div class="screen" id="sc-agenda">
+  <div class="topbar">
+    <div class="logo">Medi<span>Nest</span></div>
+    <div style="font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;">Mar 2026</div>
+  </div>
+  <div class="scroll-area">
+    <div style="padding:16px 16px 0;">
+      <div class="section-lbl">Próxima reserva</div>
+      <div class="next-card" onclick="goTo('map')">
+        <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
+        <div class="nc-badge">Confirmada · en 3 días</div>
+        <div class="nc-name">Consultorio Médico Tepatitlán</div>
+        <div class="nc-loc">Tepatitlán de Morelos · 62 km desde GDL</div>
+        <div class="nc-row">
+          <div><div class="nc-col-lbl">Fecha</div><div class="nc-col-val">Jue 19 Mar 2026</div></div>
+          <div><div class="nc-col-lbl">Turno</div><div class="nc-col-val">9 AM – 6 PM</div></div>
+          <div><div class="nc-col-lbl">Total</div><div class="nc-col-val">$1,040 MXN</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Datos profesionales -->
-    <div style="margin:16px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Datos profesionales</div>
-      <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
-          <span style="font-size:12px;color:var(--gray-mid);">Especialidad</span>
-          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">Medicina Interna</span>
+    <div style="padding:18px 16px 0;">
+      <div class="section-lbl">Recordatorios</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="reminder-card" style="border-left:3px solid var(--blue);">
+          <div class="rem-icon" style="background:var(--blue-pale);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="#185FA5" stroke-width="1.4" fill="none"/><path d="M8 5v4l2.5 2" stroke="#185FA5" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <div class="rem-title">Salir temprano — Jue 19 Mar</div>
+            <div class="rem-sub">62 km a Tepatitlán · Salida recomendada: 7:30 AM</div>
+          </div>
         </div>
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
-          <span style="font-size:12px;color:var(--gray-mid);">Cédula profesional</span>
+        <div class="reminder-card" style="border-left:3px solid var(--amber-border);">
+          <div class="rem-icon" style="background:var(--amber-bg);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.5 6H14l-3.5 2.5 1.3 4L8 10l-3.8 2.5 1.3-4L2 6h4.5z" stroke="#854F0B" stroke-width="1.3" fill="none"/></svg>
+          </div>
+          <div>
+            <div class="rem-title">Completa tu perfil</div>
+            <div class="rem-sub">Agrega foto y especialidad para más visibilidad</div>
+          </div>
+        </div>
+        <div class="reminder-card" style="border-left:3px solid var(--teal);">
+          <div class="rem-icon" style="background:var(--teal-bg);">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><polyline points="2,9 6,13 14,4" stroke="#1D9E75" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <div class="rem-title">Cédula verificada</div>
+            <div class="rem-sub">Tu cédula profesional está activa y verificada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:18px 16px 0;">
+      <div class="section-lbl">Próximas reservas</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div class="agenda-item">
+          <div class="ai-date" style="background:var(--blue-pale);">
+            <div class="ai-day" style="color:var(--blue);">19</div>
+            <div class="ai-mon" style="color:var(--blue-mid);">MAR</div>
+          </div>
+          <div style="flex:1;">
+            <div class="ai-name">Tepatitlán de Morelos</div>
+            <div class="ai-sub">9:00 AM – 6:00 PM · Día completo</div>
+          </div>
+          <div class="ai-badge" style="background:var(--teal-bg);color:var(--teal);">Confirmada</div>
+        </div>
+        <div class="agenda-item">
+          <div class="ai-date" style="background:var(--blue-pale);">
+            <div class="ai-day" style="color:var(--blue);">2</div>
+            <div class="ai-mon" style="color:var(--blue-mid);">ABR</div>
+          </div>
+          <div style="flex:1;">
+            <div class="ai-name">Lagos de Moreno</div>
+            <div class="ai-sub">9:00 AM – 1:00 PM · Matutino</div>
+          </div>
+          <div class="ai-badge" style="background:var(--teal-bg);color:var(--teal);">Confirmada</div>
+        </div>
+        <div class="agenda-item">
+          <div class="ai-date" style="background:var(--gray-pale);">
+            <div class="ai-day" style="color:var(--gray-mid);">10</div>
+            <div class="ai-mon" style="color:var(--gray-mid);">ABR</div>
+          </div>
+          <div style="flex:1;">
+            <div class="ai-name">Ameca, Jalisco</div>
+            <div class="ai-sub">2:00 PM – 6:00 PM · Vespertino</div>
+          </div>
+          <div class="ai-badge" style="background:var(--blue-pale);color:var(--blue);">Pendiente</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:18px 16px 0;">
+      <div class="section-lbl">Historial reciente</div>
+      <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
+        <div class="hist-row" style="border-bottom:1px solid var(--gray-pale);">
+          <div class="hist-date"><div class="hist-day">5</div><div class="hist-mon">MAR</div></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--gray);">Colima, Col.</div><div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,440 MXN</div></div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+        <div class="hist-row" style="border-bottom:1px solid var(--gray-pale);">
+          <div class="hist-date"><div class="hist-day">20</div><div class="hist-mon">FEB</div></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--gray);">San Juan de los Lagos</div><div style="font-size:11px;color:var(--gray-mid);">9 AM – 1 PM · $580 MXN</div></div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+        <div class="hist-row">
+          <div class="hist-date"><div class="hist-day">8</div><div class="hist-mon">FEB</div></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--gray);">Tepatitlán</div><div style="font-size:11px;color:var(--gray-mid);">Día completo · $1,300 MXN</div></div>
+          <div style="font-size:10px;color:var(--gray-mid);">Completada</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:18px 16px 24px;">
+      <div class="section-lbl">Tu impacto en 2026</div>
+      <div class="stat-grid">
+        <div class="stat-box" style="background:var(--blue-pale);">
+          <div class="stat-num" style="color:var(--blue);">8</div>
+          <div class="stat-sub" style="color:var(--blue-mid);">Consultas realizadas</div>
+        </div>
+        <div class="stat-box" style="background:var(--teal-bg);">
+          <div class="stat-num" style="color:var(--teal);">5</div>
+          <div class="stat-sub" style="color:var(--teal);">Localidades visitadas</div>
+        </div>
+        <div class="stat-box" style="background:var(--bg);border:1.5px solid var(--gray-pale);">
+          <div class="stat-num" style="color:var(--navy);">$6,290</div>
+          <div class="stat-sub" style="color:var(--gray-mid);">MXN generados</div>
+        </div>
+        <div class="stat-box" style="background:var(--bg);border:1.5px solid var(--gray-pale);">
+          <div class="stat-num" style="color:var(--navy);">4.8★</div>
+          <div class="stat-sub" style="color:var(--gray-mid);">Calificación promedio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="bni" onclick="goTo('map')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl">Mapa</span>
+    </div>
+    <div class="bni" onclick="goTo('agenda')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#185FA5" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#185FA5" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#185FA5" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#185FA5"/><circle cx="10" cy="13" r="1" fill="#185FA5"/><circle cx="13" cy="13" r="1" fill="#185FA5"/></svg>
+      <span class="bni-lbl on">Agenda</span>
+    </div>
+    <div class="bni" onclick="goTo('perfil')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl">Perfil</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ S6: PERFIL ══ -->
+<div class="screen" id="sc-perfil">
+  <div class="topbar">
+    <div class="logo">Medi<span>Nest</span></div>
+    <div style="background:var(--gray-pale);border-radius:8px;padding:5px 12px;font-size:12px;color:var(--gray);cursor:pointer;font-weight:500;">Editar</div>
+  </div>
+  <div class="scroll-area">
+    <div class="perfil-header">
+      <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <div class="p-avatar">CM</div>
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#fff;">Dr. Carlos Mendoza</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.75);margin-top:2px;">Médico Internista</div>
+          <div style="margin-top:6px;">
+            <span style="background:var(--teal);border-radius:5px;padding:3px 9px;font-size:10px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:4px;">
+              <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><polyline points="1.5,4.5 3.5,6.5 7.5,2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Cédula verificada
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="p-stats">
+        <div class="p-stat"><div class="p-stat-num">8</div><div class="p-stat-lbl">Reservas</div></div>
+        <div class="p-stat" style="border-left:1px solid rgba(255,255,255,.15);border-right:1px solid rgba(255,255,255,.15);"><div class="p-stat-num">4.8★</div><div class="p-stat-lbl">Calificación</div></div>
+        <div class="p-stat"><div class="p-stat-num">5</div><div class="p-stat-lbl">Localidades</div></div>
+      </div>
+    </div>
+
+    <div style="padding:16px 16px 0;">
+      <div class="section-lbl">Datos profesionales</div>
+      <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);overflow:hidden;">
+        <div class="info-row"><span class="info-lbl">Especialidad</span><span class="info-val">Medicina Interna</span></div>
+        <div class="info-row">
+          <span class="info-lbl">Cédula profesional</span>
           <span style="display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal);">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="#1D9E75" stroke-width="1.2"/><polyline points="3,6 5,8 9,3.5" stroke="#1D9E75" stroke-width="1.3" stroke-linecap="round"/></svg>
             6243891 · Verificada
           </span>
         </div>
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
-          <span style="font-size:12px;color:var(--gray-mid);">Institución</span>
-          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">U de G — CUCS</span>
-        </div>
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--gray-pale);">
-          <span style="font-size:12px;color:var(--gray-mid);">Años de experiencia</span>
-          <span style="font-size:13px;font-weight:600;color:var(--gray-dark);">7 años</span>
-        </div>
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center;">
-          <span style="font-size:12px;color:var(--gray-mid);">Correo</span>
-          <span style="font-size:13px;font-weight:600;color:var(--blue);">c.mendoza@medinest.mx</span>
-        </div>
+        <div class="info-row"><span class="info-lbl">Institución</span><span class="info-val">U de G — CUCS</span></div>
+        <div class="info-row"><span class="info-lbl">Experiencia</span><span class="info-val">7 años</span></div>
+        <div class="info-row"><span class="info-lbl">Correo</span><span style="font-size:13px;font-weight:600;color:var(--blue);">c.mendoza@medinest.mx</span></div>
       </div>
     </div>
 
-    <!-- Especialidades secundarias -->
-    <div style="margin:16px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Áreas de atención</div>
+    <div style="padding:16px 16px 0;">
+      <div class="section-lbl">Áreas de atención</div>
       <div style="display:flex;flex-wrap:wrap;gap:7px;">
         <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Medicina Interna</span>
         <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Diabetes tipo 2</span>
         <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Hipertensión</span>
         <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Chequeos generales</span>
-        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Enfermedades crónicas</span>
+        <span style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:20px;padding:5px 13px;font-size:12px;color:var(--blue);font-weight:500;">Enf. crónicas</span>
       </div>
     </div>
 
-    <!-- Historial de reservas -->
-    <div style="margin:16px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Historial de reservas</div>
+    <div style="padding:16px 16px 0;">
+      <div class="section-lbl">Historial de reservas</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
-            <img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">Tepatitlán de Morelos</div>
-            <div style="font-size:11px;color:var(--gray-mid);">5 Mar 2026 · Día completo</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">$1,300</div>
-            <div style="font-size:10px;color:var(--teal);">★ 5.0</div>
-          </div>
+          <div class="hist-thumb"><img src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=80&q=70" onerror="this.style.display='none'" alt=""></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--navy);">Tepatitlán de Morelos</div><div style="font-size:11px;color:var(--gray-mid);">5 Mar 2026 · Día completo</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;font-weight:700;color:var(--navy);">$1,300</div><div style="font-size:11px;color:var(--teal);">★ 5.0</div></div>
         </div>
         <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
-            <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">Colima, Col.</div>
-            <div style="font-size:11px;color:var(--gray-mid);">20 Feb 2026 · Tarde</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">$720</div>
-            <div style="font-size:10px;color:var(--teal);">★ 4.8</div>
-          </div>
+          <div class="hist-thumb"><img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=80&q=70" onerror="this.style.display='none'" alt=""></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--navy);">Colima, Col.</div><div style="font-size:11px;color:var(--gray-mid);">20 Feb 2026 · Tarde</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;font-weight:700;color:var(--navy);">$720</div><div style="font-size:11px;color:var(--teal);">★ 4.8</div></div>
         </div>
         <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;display:flex;align-items:center;gap:12px;">
-          <div style="width:40px;height:40px;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--blue-light);">
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&q=70" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
-          </div>
-          <div style="flex:1;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">San Juan de los Lagos</div>
-            <div style="font-size:11px;color:var(--gray-mid);">8 Feb 2026 · Mañana</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-size:12px;font-weight:700;color:var(--navy);">$580</div>
-            <div style="font-size:10px;color:var(--teal);">★ 4.7</div>
-          </div>
+          <div class="hist-thumb"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=80&q=70" onerror="this.style.display='none'" alt=""></div>
+          <div style="flex:1;"><div style="font-size:12px;font-weight:700;color:var(--navy);">San Juan de los Lagos</div><div style="font-size:11px;color:var(--gray-mid);">8 Feb 2026 · Mañana</div></div>
+          <div style="text-align:right;"><div style="font-size:12px;font-weight:700;color:var(--navy);">$580</div><div style="font-size:11px;color:var(--teal);">★ 4.7</div></div>
         </div>
       </div>
     </div>
 
-    <!-- Reseñas recibidas -->
-    <div style="margin:16px 16px 0;">
-      <div style="font-size:11px;font-weight:700;color:var(--gray-mid);letter-spacing:.7px;text-transform:uppercase;margin-bottom:10px;">Reseñas de otros médicos</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <div style="width:30px;height:30px;border-radius:50%;background:var(--blue-pale);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue);flex-shrink:0;">AT</div>
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--navy);">Dra. Ana Torres</div>
-              <div style="font-size:10px;color:#F0A500;">★★★★★</div>
-            </div>
-            <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">5 Mar 2026</div>
-          </div>
-          <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Médico muy profesional, el consultorio perfecto para atender pacientes de la región."</div>
+    <div style="padding:16px 16px 0;">
+      <div class="section-lbl">Reseñas recibidas</div>
+      <div class="rev-item">
+        <div class="rev-head">
+          <div class="rev-avatar" style="background:var(--blue-pale);color:var(--blue);">AT</div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--navy);">Dra. Ana Torres</div><div style="font-size:10px;color:#F0A500;">★★★★★</div></div>
+          <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">5 Mar 2026</div>
         </div>
-        <div style="background:var(--white);border:1.5px solid var(--gray-pale);border-radius:var(--r);padding:13px 14px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-            <div style="width:30px;height:30px;border-radius:50%;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--teal);flex-shrink:0;">MR</div>
-            <div>
-              <div style="font-size:12px;font-weight:700;color:var(--navy);">Dr. Miguel Ríos</div>
-              <div style="font-size:10px;color:#F0A500;">★★★★☆</div>
-            </div>
-            <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">20 Feb 2026</div>
-          </div>
-          <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Buen trato con los pacientes, muy puntual. El espacio en Colima muy recomendable."</div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Médico muy profesional. El consultorio perfecto para atender pacientes de la región."</div>
+      </div>
+      <div class="rev-item">
+        <div class="rev-head">
+          <div class="rev-avatar" style="background:var(--teal-bg);color:var(--teal);">MR</div>
+          <div><div style="font-size:12px;font-weight:700;color:var(--navy);">Dr. Miguel Ríos</div><div style="font-size:10px;color:#F0A500;">★★★★☆</div></div>
+          <div style="margin-left:auto;font-size:10px;color:var(--gray-mid);">20 Feb 2026</div>
         </div>
+        <div style="font-size:12px;color:var(--gray);line-height:1.5;">"Buen trato con los pacientes, muy puntual. Espacio en Colima muy recomendable."</div>
       </div>
     </div>
 
-    <!-- Botón cerrar sesión -->
-    <div style="margin:20px 16px 28px;">
+    <div style="padding:20px 16px 28px;">
       <button style="width:100%;background:transparent;border:1.5px solid var(--gray-light);border-radius:12px;padding:13px;font-size:14px;font-weight:600;color:var(--gray);cursor:pointer;font-family:'Sora',sans-serif;">Cerrar sesión</button>
     </div>
   </div>
-  <div class="bottom-nav">
-    <div class="bn-item" onclick="goTo('map')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
-      <span class="bn-label">Mapa</span>
+  <div class="bnav">
+    <div class="bni" onclick="goTo('map')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="8" r="3.5" stroke="#888" stroke-width="1.5"/><path d="M10 19s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z" stroke="#888" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl">Mapa</span>
     </div>
-    <div class="bn-item" onclick="goTo('agenda')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
-      <span class="bn-label">Agenda</span>
+    <div class="bni" onclick="goTo('agenda')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="13" rx="2.5" stroke="#888" stroke-width="1.5"/><line x1="7" y1="2" x2="7" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="2" x2="13" y2="6" stroke="#888" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="9" x2="17" y2="9" stroke="#888" stroke-width="1.3"/><circle cx="7" cy="13" r="1" fill="#888"/><circle cx="10" cy="13" r="1" fill="#888"/><circle cx="13" cy="13" r="1" fill="#888"/></svg>
+      <span class="bni-lbl">Agenda</span>
     </div>
-    <div class="bn-item on" onclick="goTo('perfil')">
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
-      <span class="bn-label on">Perfil</span>
+    <div class="bni" onclick="goTo('perfil')">
+      <svg class="bni-ico" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="#185FA5" stroke-width="1.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6" stroke="#185FA5" stroke-width="1.5" fill="none"/></svg>
+      <span class="bni-lbl on">Perfil</span>
     </div>
   </div>
 </div>
 
-<!-- MODAL -->
+</div><!-- /app -->
+
+<!-- MODAL ÉXITO -->
 <div class="modal-bg" id="modal-bg" onclick="if(event.target===this)this.classList.remove('show')">
   <div class="modal-box">
     <div class="modal-icon">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" stroke="#1D9E75" stroke-width="2"/><polyline points="8,16 13,21 24,10" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <div class="modal-title">¡Reserva confirmada!</div>
-    <div class="modal-sub" id="modal-msg">Tu consultorio ha sido reservado exitosamente.</div>
-    <div class="modal-id"><span class="mid-label">ID de confirmación</span><span class="mid-val">#MN-29043</span></div>
+    <div class="modal-sub" id="modal-msg"></div>
+    <div class="modal-id"><span style="font-size:12px;color:var(--gray-mid);">ID de confirmación</span><span style="font-size:12px;font-weight:700;color:var(--navy);font-family:monospace;">#MN-29043</span></div>
     <button class="modal-btn" onclick="document.getElementById('modal-bg').classList.remove('show');goTo('map')">Nueva búsqueda</button>
   </div>
 </div>
 
 <script>
-// Clinics ~50–100 km from Guadalajara in real towns
+const DISC = 0.20; // 20% discount for full day
+
 const clinics=[
-  {
-    name:"Consultorio Médico Tepatitlán",
-    loc:"Tepatitlán de Morelos, Jal.",
-    addr:"Calle Morelos 45, Centro",
-    fullAddr:"Morelos 45, Centro, Tepatitlán de Morelos, Jalisco",
-    distKm:62, driveMin:50,
-    price:650, rating:"4.8", rcount:"(31 reseñas)",
-    equip:["Escritorio","Camilla","Monitor ECG","Oxímetro"],
-    amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi"],
-    desc:"Espacio clínico en el corazón de Tepatitlán, ciudad con alta demanda de especialistas. Consultorio equipado, con sala de espera cómoda y fácil acceso desde la carretera GDL–Tepa.",
-    impact:"Llevarás medicina especializada a Tepatitlán, donde la mayoría de pacientes deben viajar a GDL para ver un especialista.",
-    reviews:[{doc:"Dra. Lucía Ríos — Ginecología",txt:"Muy bien ubicado, pacientes muy agradecidos de no tener que ir hasta Guadalajara."},{doc:"Dr. Ernesto Mora — Medicina Interna",txt:"Excelente instalaciones para ser una ciudad del interior."}],
-    imgs:["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80"],
-    colors:["#c8ddf5","#b8cce8","#a8bbdb"],
-    mapX:"72%",mapY:"38%"
-  },
-  {
-    name:"Centro Médico Lagos de Moreno",
-    loc:"Lagos de Moreno, Jal.",
-    addr:"Av. Juárez 120, Centro",
-    fullAddr:"Av. Juárez 120, Centro, Lagos de Moreno, Jalisco",
-    distKm:95, driveMin:80,
-    price:600, rating:"4.6", rcount:"(18 reseñas)",
-    equip:["Escritorio","Camilla","Ultrasonido","Báscula"],
-    amenities:["Sala espera","WiFi","A/C","Sanitarios"],
-    desc:"Consultorio amplio en Lagos de Moreno, ciudad fronteriza entre Jalisco y Guanajuato. Zona de alta concentración ganadera con poca oferta de especialistas médicos privados.",
-    impact:"Lagos de Moreno tiene más de 160,000 habitantes y muy pocos especialistas. Tu visita puede atender a decenas de pacientes sin opciones locales.",
-    reviews:[{doc:"Dr. Héctor Sandoval — Cardiología",txt:"La comunidad lo necesita mucho. Los pacientes llegaron desde ranchos cercanos."},{doc:"Dra. Verónica Castro — Pediatría",txt:"Buen espacio, la gente muy receptiva y agradecida."}],
-    imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"],
-    colors:["#b8cce8","#c8ddf5","#a8bbdb"],
-    mapX:"85%",mapY:"25%"
-  },
-  {
-    name:"Consultorio San Juan de los Lagos",
-    loc:"San Juan de los Lagos, Jal.",
-    addr:"Portal Morelos 8, Centro",
-    fullAddr:"Portal Morelos 8, Centro, San Juan de los Lagos",
-    distKm:80, driveMin:65,
-    price:580, rating:"4.7", rcount:"(22 reseñas)",
-    equip:["Escritorio","Camilla","Oxímetro","Estetoscopio digital"],
-    amenities:["Sala espera","Estacionamiento","WiFi"],
-    desc:"Consultorio céntrico en una de las ciudades más visitadas de Jalisco por su basílica. Alta afluencia de personas de toda la región los fines de semana y días festivos.",
-    impact:"San Juan atrae peregrinos de toda la región. Muchos vienen de municipios sin atención médica especializada — una gran oportunidad de impacto.",
-    reviews:[{doc:"Dra. Patricia Núñez — Endocrinología",txt:"Llegaron pacientes de 3 municipios distintos el mismo día. Gran necesidad."},{doc:"Dr. Alfonso Leal — Medicina Gral.",txt:"Espacio cómodo, bien ubicado junto a la plaza principal."}],
-    imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80"],
-    colors:["#a8bbdb","#c8ddf5","#b8cce8"],
-    mapX:"80%",mapY:"32%"
-  },
-  {
-    name:"Clínica Privada Colima Norte",
-    loc:"Colima, Col.",
-    addr:"Blvd. Camino Real 310",
-    fullAddr:"Blvd. Camino Real 310, Col. Las Víboras, Colima",
-    distKm:98, driveMin:85,
-    price:720, rating:"4.9", rcount:"(44 reseñas)",
-    equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG","Nebulizador","Oxímetro"],
-    amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi","A/C","Cafetería"],
-    desc:"Clínica bien equipada en la capital colimense. Espacio moderno, ideal para especialistas que buscan atender pacientes de Colima y municipios del estado con poca oferta privada.",
-    impact:"Colima tiene escasa oferta de especialistas privados. Atender aquí amplía el acceso a salud a toda la región costera y de la sierra.",
-    reviews:[{doc:"Dra. Claudia Ibarra — Dermatología",txt:"Instalaciones excelentes, los mejores de mi red fuera de GDL."},{doc:"Dr. Roberto Ángeles — Neurología",txt:"Pacientes muy bien atendidos, la clínica tiene todo lo necesario."}],
-    imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],
-    colors:["#c8ddf5","#a8bbdb","#b8cce8"],
-    mapX:"30%",mapY:"82%"
-  },
-  {
-    name:"Consultorio Médico Ameca",
-    loc:"Ameca, Jalisco",
-    addr:"Calle Hidalgo 55, Centro",
-    fullAddr:"Hidalgo 55, Centro, Ameca, Jalisco",
-    distKm:55, driveMin:45,
-    price:520, rating:"4.4", rcount:"(14 reseñas)",
-    equip:["Escritorio","Camilla","Báscula","Tensiómetro"],
-    amenities:["Sala espera","Estacionamiento"],
-    desc:"Consultorio funcional en Ameca, municipio de la región Valles. Zona agrícola con alta necesidad de atención médica especializada accesible.",
-    impact:"La región Valles carece de especialistas. Ameca es punto de concentración para docenas de comunidades rurales del entorno.",
-    reviews:[{doc:"Dr. Jaime Delgado — Medicina Interna",txt:"La gente espera mucho poder ver a un especialista aquí, vale la pena el viaje."},{doc:"Dra. Silvia Torres — Nutrición",txt:"Buena opción para llegar a pacientes que nunca han tenido acceso."}],
-    imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],
-    colors:["#a8bbdb","#b8cce8","#c8ddf5"],
-    mapX:"18%",mapY:"44%"
-  }
+  {name:"Consultorio Médico Tepatitlán",loc:"Tepatitlán de Morelos, Jal.",addr:"Calle Morelos 45, Centro",fullAddr:"Morelos 45, Centro, Tepatitlán de Morelos, Jalisco",distKm:62,driveMin:50,price:650,rating:"4.8",rcount:"(31 reseñas)",equip:["Escritorio","Camilla","Monitor ECG","Oxímetro"],amenities:["Sala espera","Recepcionista","Estacionamiento","WiFi"],desc:"Espacio clínico en el corazón de Tepatitlán. Consultorio equipado, fácil acceso desde la carretera GDL–Tepa.",impact:"Llevarás medicina especializada a Tepatitlán, donde la mayoría de pacientes deben viajar a GDL para ver un especialista.",reviews:[{doc:"Dra. Lucía Ríos — Ginecología",txt:"Muy bien ubicado, pacientes muy agradecidos de no tener que ir a GDL."},{doc:"Dr. Ernesto Mora — Medicina Interna",txt:"Excelentes instalaciones para ser una ciudad del interior."}],imgs:["https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80"],colors:["#c8ddf5","#b8cce8","#a8bbdb"],mapX:"72%",mapY:"38%"},
+  {name:"Centro Médico Lagos de Moreno",loc:"Lagos de Moreno, Jal.",addr:"Av. Juárez 120, Centro",fullAddr:"Av. Juárez 120, Centro, Lagos de Moreno, Jalisco",distKm:95,driveMin:80,price:600,rating:"4.6",rcount:"(18 reseñas)",equip:["Escritorio","Camilla","Ultrasonido","Báscula"],amenities:["Sala espera","WiFi","A/C","Sanitarios"],desc:"Consultorio amplio en Lagos de Moreno, ciudad fronteriza con poca oferta de especialistas.",impact:"Lagos de Moreno tiene más de 160,000 habitantes y muy pocos especialistas. Tu visita puede atender a decenas de pacientes.",reviews:[{doc:"Dr. Héctor Sandoval — Cardiología",txt:"Pacientes llegaron desde ranchos cercanos. La comunidad lo necesita mucho."},{doc:"Dra. Verónica Castro — Pediatría",txt:"Buen espacio, la gente muy receptiva y agradecida."}],imgs:["https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80"],colors:["#b8cce8","#c8ddf5","#a8bbdb"],mapX:"85%",mapY:"25%"},
+  {name:"Consultorio San Juan de los Lagos",loc:"San Juan de los Lagos, Jal.",addr:"Portal Morelos 8, Centro",fullAddr:"Portal Morelos 8, Centro, San Juan de los Lagos",distKm:80,driveMin:65,price:580,rating:"4.7",rcount:"(22 reseñas)",equip:["Escritorio","Camilla","Oxímetro","Estetoscopio digital"],amenities:["Sala espera","Estacionamiento","WiFi"],desc:"Consultorio céntrico en San Juan de los Lagos. Alta afluencia de personas de toda la región los fines de semana.",impact:"San Juan atrae peregrinos de toda la región — muchos vienen de municipios sin atención médica especializada.",reviews:[{doc:"Dra. Patricia Núñez — Endocrinología",txt:"Llegaron pacientes de 3 municipios distintos el mismo día."},{doc:"Dr. Alfonso Leal — Medicina Gral.",txt:"Espacio cómodo, bien ubicado junto a la plaza principal."}],imgs:["https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80"],colors:["#a8bbdb","#c8ddf5","#b8cce8"],mapX:"80%",mapY:"32%"},
+  {name:"Clínica Privada Colima Norte",loc:"Colima, Col.",addr:"Blvd. Camino Real 310",fullAddr:"Blvd. Camino Real 310, Colima, Col.",distKm:98,driveMin:85,price:720,rating:"4.9",rcount:"(44 reseñas)",equip:["Escritorio","Camilla","Ultrasonido","Monitor ECG","Nebulizador","Oxímetro"],amenities:["Sala espera VIP","Recepcionista","Estacionamiento","WiFi","A/C","Cafetería"],desc:"Clínica bien equipada en la capital colimense. Espacio moderno, ideal para especialistas.",impact:"Colima tiene escasa oferta de especialistas privados. Atender aquí amplía el acceso a salud a toda la región costera.",reviews:[{doc:"Dra. Claudia Ibarra — Dermatología",txt:"Instalaciones excelentes, los mejores de mi red fuera de GDL."},{doc:"Dr. Roberto Ángeles — Neurología",txt:"Pacientes muy bien atendidos, la clínica tiene todo lo necesario."}],imgs:["https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&q=80","https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],colors:["#c8ddf5","#a8bbdb","#b8cce8"],mapX:"30%",mapY:"82%"},
+  {name:"Consultorio Médico Ameca",loc:"Ameca, Jalisco",addr:"Calle Hidalgo 55, Centro",fullAddr:"Hidalgo 55, Centro, Ameca, Jalisco",distKm:55,driveMin:45,price:520,rating:"4.4",rcount:"(14 reseñas)",equip:["Escritorio","Camilla","Báscula","Tensiómetro"],amenities:["Sala espera","Estacionamiento"],desc:"Consultorio funcional en Ameca. Zona agrícola con alta necesidad de atención especializada accesible.",impact:"La región Valles carece de especialistas. Ameca es punto de concentración para docenas de comunidades rurales.",reviews:[{doc:"Dr. Jaime Delgado — Medicina Interna",txt:"La gente espera mucho poder ver a un especialista aquí."},{doc:"Dra. Silvia Torres — Nutrición",txt:"Buena opción para llegar a pacientes que nunca han tenido acceso."}],imgs:["https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=600&q=80","https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&q=80","https://images.unsplash.com/photo-1666214280557-f1b5022eb634?w=600&q=80"],colors:["#a8bbdb","#b8cce8","#c8ddf5"],mapX:"18%",mapY:"44%"}
 ];
 
 const MONTHS=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-const DAY_NAMES=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
-const MONTH_NAMES_ES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+const DNAMES=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const MNAMES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
 
 let sel=0, galIdx=0, slots=[true,false], fullDay=false;
-let calYear=2026, calMonth=2, selDay=12;
+let calY=2026, calM=2, selDay=12;
 
-function getAvailDays(year,month){
-  const avail=[], d=new Date(year,month,1);
-  const today=new Date(); today.setHours(0,0,0,0);
-  while(d.getMonth()===month){
-    if(d.getDay()!==0&&d.getDay()!==6&&d>=today) avail.push(d.getDate());
-    d.setDate(d.getDate()+1);
-  }
-  return avail;
+function getAvailDays(y,m){
+  const av=[],d=new Date(y,m,1),today=new Date();today.setHours(0,0,0,0);
+  while(d.getMonth()===m){if(d.getDay()!==0&&d.getDay()!==6&&d>=today)av.push(d.getDate());d.setDate(d.getDate()+1);}
+  return av;
 }
 
+// Gallery
 function buildGallery(){
   const c=clinics[sel];
-  document.getElementById('gallery-slides').innerHTML=c.imgs.map((url,i)=>`
-    <div style="min-width:100%;height:100%;overflow:hidden;background:${c.colors[i]||'#c8ddf5'};">
-      <img src="${url}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'">
-    </div>`).join('');
-  galIdx=0; updateGalleryPos();
+  document.getElementById('gslides').innerHTML=c.imgs.map((u,i)=>`<div style="min-width:100%;height:100%;overflow:hidden;background:${c.colors[i]||'#c8ddf5'};"><img src="${u}" style="width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none'"></div>`).join('');
+  galIdx=0;updateGal();
 }
-
-function updateGalleryPos(){
-  document.getElementById('gallery-slides').style.transform=`translateX(-${galIdx*100}%)`;
-  const c=clinics[sel];
-  document.getElementById('gallery-dots').innerHTML=c.imgs.map((_,i)=>`<div class="gdot${i===galIdx?' on':''}"></div>`).join('');
+function updateGal(){
+  document.getElementById('gslides').style.transform=`translateX(-${galIdx*100}%)`;
+  document.getElementById('gdots').innerHTML=clinics[sel].imgs.map((_,i)=>`<div class="gdot${i===galIdx?' on':''}"></div>`).join('');
 }
+function galNav(dir){const c=clinics[sel];galIdx=(galIdx+dir+c.imgs.length)%c.imgs.length;updateGal();}
 
-function galNav(dir){
-  const c=clinics[sel]; galIdx=(galIdx+dir+c.imgs.length)%c.imgs.length; updateGalleryPos();
-}
-
+// Pins
 function buildPins(){
   document.getElementById('map-pins').innerHTML=clinics.map((c,i)=>`
     <div class="pin" style="left:${c.mapX};top:${c.mapY};" onclick="selectPin(${i})">
       <div style="display:flex;flex-direction:column;align-items:center;">
         <div class="pin-body${i===sel?' on':''}">
-          <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-            <rect x="1" y="3" width="9" height="7" rx="1.3" fill="white" opacity=".9"/>
-            <rect x="2" y="1" width="7" height="3.5" rx=".8" fill="white" opacity=".7"/>
-            <rect x="4" y="5.5" width="3" height="3.5" rx=".4" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
-            <rect x="1.8" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
-            <rect x="7.2" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/>
-          </svg>
-          <span>${c.distKm} km</span>
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="1" y="3" width="9" height="7" rx="1.3" fill="white" opacity=".9"/><rect x="2" y="1" width="7" height="3.5" rx=".8" fill="white" opacity=".7"/><rect x="4" y="5.5" width="3" height="3.5" rx=".4" fill="${i===sel?'#0F6E56':'#185FA5'}"/><rect x="1.8" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/><rect x="7.2" y="5" width="2" height="2" rx=".3" fill="${i===sel?'#0F6E56':'#185FA5'}"/></svg>
+          ${c.distKm} km
         </div>
         <div class="pin-tail${i===sel?' on':''}"></div>
       </div>
     </div>`).join('');
 }
-
 function updatePreview(){
   const c=clinics[sel];
-  document.getElementById('mp-name').textContent=c.name;
-  document.getElementById('mp-loc').textContent=c.loc;
-  document.getElementById('mp-price').textContent=`$${c.price} MXN / turno`;
-  document.getElementById('mp-dist').innerHTML=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km`;
+  document.getElementById('mc-name').textContent=c.name;
+  document.getElementById('mc-loc').textContent=c.loc;
+  document.getElementById('mc-price').textContent=`$${c.price} MXN / turno`;
+  document.getElementById('mc-dist').innerHTML=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="4.5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M5.5 11s-4-3-4-6.5a4 4 0 018 0C9.5 8 5.5 11 5.5 11z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km`;
 }
-
 function selectPin(i){sel=i;buildPins();updatePreview();}
 
+// Calendar
 function buildCal(){
-  const avail=getAvailDays(calYear,calMonth);
-  document.getElementById('cal-month-label').textContent=`${MONTHS[calMonth]} ${calYear}`;
-  const firstDow=new Date(calYear,calMonth,1).getDay();
-  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
-  let html='';
-  for(let i=0;i<firstDow;i++) html+=`<div class="cday mut"></div>`;
-  for(let d=1;d<=daysInMonth;d++){
-    const isSel=d===selDay;
-    const isAv=avail.includes(d);
-    let cls='cday'+(isSel&&isAv?' sel':isAv?' av':' mut');
-    html+=`<div class="${cls}"${isAv?` onclick="selectDay(${d})"`:''}>${d}</div>`;
+  const av=getAvailDays(calY,calM);
+  document.getElementById('cal-month').textContent=`${MONTHS[calM]} ${calY}`;
+  const fd=new Date(calY,calM,1).getDay(),dim=new Date(calY,calM+1,0).getDate();
+  let h='';
+  for(let i=0;i<fd;i++)h+=`<div class="cday mut"></div>`;
+  for(let d=1;d<=dim;d++){
+    const isSel=d===selDay,isAv=av.includes(d);
+    h+=`<div class="cday${isSel&&isAv?' sel':isAv?' av':' mut'}"${isAv?` onclick="selectDay(${d})"`:''}>${d}</div>`;
   }
-  document.getElementById('cal-days').innerHTML=html;
-  updateSlotLabel();
+  document.getElementById('cal-days').innerHTML=h;
+  updateSlotLbl();
 }
-
 function selectDay(d){selDay=d;buildCal();}
-
-function updateSlotLabel(){
-  const dow=new Date(calYear,calMonth,selDay).getDay();
-  const dayName=DAY_NAMES[dow];
-  const mName=MONTH_NAMES_ES[calMonth];
-  document.getElementById('slot-date-label').textContent=`${dayName[0].toUpperCase()+dayName.slice(1)}, ${selDay} de ${mName} — Turnos disponibles`;
-  document.getElementById('cf-date').textContent=`${dayName[0].toUpperCase()+dayName.slice(1)}, ${selDay} de ${mName} ${calYear}`;
+function updateSlotLbl(){
+  const dow=new Date(calY,calM,selDay).getDay();
+  document.getElementById('slot-lbl').textContent=`${DNAMES[dow][0].toUpperCase()+DNAMES[dow].slice(1)}, ${selDay} de ${MNAMES[calM]} — Turnos disponibles`;
+  document.getElementById('cf-date').textContent=`${DNAMES[dow][0].toUpperCase()+DNAMES[dow].slice(1)}, ${selDay} de ${MNAMES[calM]} ${calY}`;
 }
+document.getElementById('cal-prev').addEventListener('click',()=>{calM--;if(calM<0){calM=11;calY--;}selDay=1;buildCal();});
+document.getElementById('cal-next').addEventListener('click',()=>{calM++;if(calM>11){calM=0;calY++;}selDay=1;buildCal();});
 
-document.getElementById('cal-prev').addEventListener('click',()=>{
-  calMonth--; if(calMonth<0){calMonth=11;calYear--;} selDay=1; buildCal();
-});
-document.getElementById('cal-next').addEventListener('click',()=>{
-  calMonth++; if(calMonth>11){calMonth=0;calYear++;} selDay=1; buildCal();
-});
-
-function toggleSlot(i){
-  if(fullDay)return;
-  slots[i]=!slots[i];
-  document.getElementById('slot'+i).classList.toggle('on',slots[i]);
-  const chk=document.getElementById('sc'+i);
-  chk.classList.toggle('on',slots[i]);
-  chk.innerHTML=slots[i]?`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`:'';
-  updatePriceSummary();
+// Slots
+const CHK_SVG=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+function setSlot(i,on){
+  document.getElementById('slot'+i).classList.toggle('on',on);
+  const chk=document.getElementById('sc'+i);chk.classList.toggle('on',on);chk.innerHTML=on?CHK_SVG:'';
 }
-
+function toggleSlot(i){if(fullDay)return;slots[i]=!slots[i];setSlot(i,slots[i]);updatePrice();}
 function toggleFullDay(){
-  fullDay=!fullDay; slots=[fullDay,fullDay];
-  document.getElementById('fd-check').classList.toggle('on',fullDay);
+  fullDay=!fullDay;slots=[fullDay,fullDay];
+  document.getElementById('fd-btn').classList.toggle('on',fullDay);
+  document.getElementById('fd-chk').classList.toggle('on',fullDay);
   document.getElementById('fd-svg').style.display=fullDay?'block':'none';
-  document.getElementById('full-day-btn').classList.toggle('on',fullDay);
-  [0,1].forEach(i=>{
-    document.getElementById('slot'+i).classList.toggle('on',fullDay);
-    const chk=document.getElementById('sc'+i);
-    chk.classList.toggle('on',fullDay);
-    chk.innerHTML=fullDay?`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`:'';
-  });
-  updatePriceSummary();
+  [0,1].forEach(i=>setSlot(i,fullDay));
+  updatePrice();
 }
 
-function updatePriceSummary(){
+function calcTotal(){
   const c=clinics[sel];
   const s0=slots[0],s1=slots[1];
-  let total=(s0?c.price:0)+(s1?c.price:0);
-  document.getElementById('ps-row1').style.display=s0?'flex':'none';
-  document.getElementById('ps-row2').style.display=s1?'flex':'none';
-  document.getElementById('ps-p1').textContent=`$${c.price} MXN`;
-  document.getElementById('ps-p2').textContent=`$${c.price} MXN`;
+  const both=s0&&s1;
+  const gross=(s0?c.price:0)+(s1?c.price:0);
+  const saving=both?Math.round(gross*DISC):0;
+  return{s0,s1,both,gross,saving,total:gross-saving,price:c.price};
+}
+
+function updatePrice(){
+  const{s0,s1,both,gross,saving,total,price}=calcTotal();
+  document.getElementById('ps-r1').style.display=s0?'flex':'none';
+  document.getElementById('ps-r2').style.display=s1?'flex':'none';
+  document.getElementById('ps-p1').textContent=`$${price} MXN`;
+  document.getElementById('ps-p2').textContent=`$${price} MXN`;
+  document.getElementById('ps-orig').style.display=both?'flex':'none';
+  document.getElementById('ps-save').style.display=both?'flex':'none';
+  document.getElementById('disc-badge').style.display=both?'flex':'none';
+  if(both){
+    document.getElementById('ps-orig-val').textContent=`$${gross} MXN`;
+    document.getElementById('ps-save-val').textContent=`-$${saving} MXN`;
+  }
   document.getElementById('ps-total').textContent=total>0?`$${total} MXN`:'$0 MXN';
   const btn=document.getElementById('sched-btn');
   btn.disabled=total===0;
   btn.textContent=total>0?`Continuar — $${total} MXN →`:'Selecciona un turno';
 }
 
+// Navigation
 function goDetail(i){
-  if(i>=0) sel=i;
+  if(i>=0)sel=i;
   const c=clinics[sel];
   document.getElementById('det-title').textContent=c.loc;
   document.getElementById('d-name').textContent=c.name;
@@ -1069,9 +908,9 @@ function goDetail(i){
   document.getElementById('d-drive-pill').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="10" height="6" rx="1.5" stroke="#633806" stroke-width="1.1"/><path d="M3 4V3a3 3 0 016 0v1" stroke="#633806" stroke-width="1.1" fill="none"/><circle cx="3.5" cy="8" r="1" fill="#633806"/><circle cx="8.5" cy="8" r="1" fill="#633806"/></svg>~${c.driveMin} min en auto`;
   document.getElementById('d-rating').textContent=c.rating;
   document.getElementById('d-rcount').textContent=c.rcount;
-  document.getElementById('d-impact-text').innerHTML=c.impact.replace(c.loc.split(',')[0],`<strong>${c.loc.split(',')[0]}</strong>`);
+  document.getElementById('d-impact-txt').innerHTML=c.impact.replace(c.loc.split(',')[0],`<strong>${c.loc.split(',')[0]}</strong>`);
   document.getElementById('d-equip').innerHTML=c.equip.map(e=>`<div class="equip-chip">${e}</div>`).join('');
-  document.getElementById('d-amenities').innerHTML=c.amenities.map(a=>`<div class="am-item"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#888" stroke-width="1"/><polyline points="2.5,5 4,6.5 7.5,3" stroke="#888" stroke-width="1.2" stroke-linecap="round"/></svg>${a}</div>`).join('');
+  document.getElementById('d-amen').innerHTML=c.amenities.map(a=>`<div class="amen-item"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#888" stroke-width="1"/><polyline points="2.5,5 4,6.5 7.5,3" stroke="#888" stroke-width="1.2" stroke-linecap="round"/></svg>${a}</div>`).join('');
   document.getElementById('d-desc').textContent=c.desc;
   document.getElementById('d-reviews').innerHTML=c.reviews.map(r=>`<div class="review-item"><div class="review-doc">${r.doc}</div><div class="review-txt">"${r.txt}"</div></div>`).join('');
   document.getElementById('d-price').innerHTML=`$${c.price} <span>MXN / turno</span>`;
@@ -1080,70 +919,71 @@ function goDetail(i){
 }
 
 function goTo(sc){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   const ids={map:'sc-map',detail:'sc-detail',schedule:'sc-schedule',confirm:'sc-confirm',agenda:'sc-agenda',perfil:'sc-perfil'};
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(ids[sc]).classList.add('active');
   document.querySelector(`#${ids[sc]} .scroll-area`)?.scrollTo(0,0);
-  // update main nav badge
+  // update nav highlight
   ['map','agenda','perfil'].forEach(n=>{
-    const el=document.getElementById('bn-'+n);
     const lbl=document.getElementById('bnl-'+n);
-    if(el&&lbl){el.classList.toggle('on',n===sc);lbl.classList.toggle('on',n===sc);}
+    const bni=document.getElementById('bni-'+n);
+    if(lbl)lbl.classList.toggle('on',n===sc);
+    if(bni)bni.classList.toggle('on',n===sc);
   });
   if(sc==='schedule'){
     const c=clinics[sel];
     document.getElementById('sch-img').src=c.imgs[0];
     document.getElementById('sch-name').textContent=c.name;
     document.getElementById('sch-loc').textContent=c.loc;
-    document.getElementById('sch-addr').textContent=`${c.distKm} km · ~${c.driveMin} min desde GDL`;
-    slots=[true,false]; fullDay=false;
-    document.getElementById('full-day-btn').classList.remove('on');
-    document.getElementById('fd-check').classList.remove('on');
+    document.getElementById('sch-sub').textContent=`${c.distKm} km · ~${c.driveMin} min desde GDL`;
+    slots=[true,false];fullDay=false;
+    document.getElementById('fd-btn').classList.remove('on');
+    document.getElementById('fd-chk').classList.remove('on');
     document.getElementById('fd-svg').style.display='none';
-    [0,1].forEach(i=>{
-      const s=document.getElementById('slot'+i);
-      const chk=document.getElementById('sc'+i);
-      if(i===0){s.classList.add('on');chk.classList.add('on');chk.innerHTML=`<svg width="11" height="11" viewBox="0 0 11 11" fill="none"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
-      else{s.classList.remove('on');chk.classList.remove('on');chk.innerHTML='';}
-    });
-    buildCal(); updatePriceSummary();
+    document.getElementById('disc-badge').style.display='none';
+    [0,1].forEach(i=>setSlot(i,i===0));
+    buildCal();updatePrice();
   }
   if(sc==='confirm'){
     const c=clinics[sel];
+    const{s0,s1,both,saving,total}=calcTotal();
     document.getElementById('cf-img').src=c.imgs[0];
     document.getElementById('cf-name').textContent=c.name;
     document.getElementById('cf-loc').textContent=c.loc;
     document.getElementById('cf-addr').textContent=c.fullAddr;
     document.getElementById('cf-dist').innerHTML=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="2" stroke="#185FA5" stroke-width="1.2"/><path d="M6 12s-4.5-3.5-4.5-7a4.5 4.5 0 019 0C10.5 8.5 6 12 6 12z" stroke="#185FA5" stroke-width="1.2" fill="none"/></svg>${c.distKm} km · ~${c.driveMin} min en auto`;
     document.getElementById('cf-equip').textContent=c.equip.join(', ');
-    const s0=slots[0],s1=slots[1];
-    let timesStr='',dur='';
+    let timesStr,dur;
     if(s0&&s1){timesStr='9:00 AM – 6:00 PM (día completo)';dur='8 horas';}
     else if(s0){timesStr='9:00 AM – 1:00 PM';dur='4 horas';}
     else{timesStr='2:00 PM – 6:00 PM';dur='4 horas';}
     document.getElementById('cf-times').textContent=timesStr;
     document.getElementById('cf-dur').textContent=dur;
-    document.getElementById('cf-total').textContent=`$${(s0?c.price:0)+(s1?c.price:0)} MXN`;
-    updateSlotLabel();
+    document.getElementById('cf-total').textContent=`$${total} MXN`;
+    const savEl=document.getElementById('cf-saving');
+    if(both&&saving>0){savEl.textContent=`Ahorraste $${saving} MXN con descuento día completo`;savEl.style.display='block';}
+    else savEl.style.display='none';
+    updateSlotLbl();
   }
 }
 
 function showSuccess(){
   const c=clinics[sel];
-  const s0=slots[0],s1=slots[1];
-  const t=s0&&s1?'día completo (9 AM – 6 PM)':s0?'turno matutino':'turno vespertino';
-  document.getElementById('modal-msg').textContent=`${c.name} en ${c.loc} reservado para el ${document.getElementById('cf-date').textContent}, ${t}. Confirmación enviada a tu correo.`;
+  const{s0,s1,both,saving,total}=calcTotal();
+  const t=both?'día completo (9 AM – 6 PM)':s0?'turno matutino':'turno vespertino';
+  const discTxt=both&&saving>0?` Con descuento de $${saving} MXN por día completo.`:'';
+  document.getElementById('modal-msg').textContent=`${c.name} en ${c.loc} reservado para el ${document.getElementById('cf-date').textContent}, ${t}. Total: $${total} MXN.${discTxt} Confirmación enviada a tu correo.`;
   document.getElementById('modal-bg').classList.add('show');
 }
 
 document.querySelectorAll('.chip').forEach(ch=>{
   ch.addEventListener('click',function(){
-    this.closest('.chips-wrap').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
+    this.closest('.chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
     this.classList.add('on');
   });
 });
 
-buildPins(); updatePreview();
+buildPins();updatePreview();
 </script>
 </body>
 </html>
